@@ -3,7 +3,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link href="Home.css" rel="stylesheet">
+<style>
+	li {
+		list-style : none;
+		
+	}
+
+</style>
 <meta charset="UTF-8">
 <title>Home</title>
 </head>
@@ -16,7 +22,8 @@
 	
 	<div>
 		<form action="">
-		
+			
+			<label for="rechercheArticle">Filtres : </label>
 			<input type="text" id="rechercheArticle" name="rechercheArticle">
 			
 			<label for="categories">Categorie : </label>
