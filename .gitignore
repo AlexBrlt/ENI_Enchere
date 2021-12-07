@@ -1,0 +1,4 @@
+# Fichier d'exclusion des fichiers à push
+# Eclipse
+
+.metadata
