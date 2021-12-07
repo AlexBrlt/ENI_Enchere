@@ -18,7 +18,7 @@ public class UserManager {
 	private static UserDAO dao;
 	
 	private UserManager() {
-		dao = UserDAOFactory.getRepasDAO();
+		dao = UserDAOFactory.getUserDAO();
 	};
 
 	public static UserManager getInstance() {
