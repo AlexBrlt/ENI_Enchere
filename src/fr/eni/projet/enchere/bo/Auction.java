@@ -55,7 +55,7 @@ public class Auction {
 	// CONSTRUCTEUR
 
 	public Auction(int no_enchere, LocalDateTime date_enchere, int montant, int no_article, int no_utilisateur) {
-		super();
+		
 		this.no_enchere = no_enchere;
 		this.date_enchere = date_enchere;
 		this.montant = montant;

@@ -92,7 +92,7 @@ public class Article {
 
 	public Article(int no_article, String nom_article, String description, LocalDateTime date_debut_encheres,
 			LocalDateTime date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie) {
-		super();
+		
 		this.no_article = no_article;
 		this.nom_article = nom_article;
 		this.description = description;
