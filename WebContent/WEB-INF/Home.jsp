@@ -32,8 +32,6 @@
 				<option></option>
 			</select>	
 			
-			<input type="radio" name="achatetvente" id="achat">
-			
 			<div class="container">
 			  <ul>
 			    <li>
