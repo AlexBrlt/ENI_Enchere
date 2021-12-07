@@ -1,0 +1,153 @@
+package fr.eni.projet.enchere.bll;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.sun.org.apache.bcel.internal.generic.RETURN;
+
+import fr.eni.projet.enchere.bo.User;
+import fr.eni.projet.enchere.dal.DALException;
+import fr.eni.projet.enchere.dal.UserDAO;
+import fr.eni.projet.enchere.dal.UserDAOFactory;
+
+public class UserManager {
+	
+	private static UserManager instance;
+	
+	private static UserDAO dao;
+	
+	private UserManager() {
+		dao = UserDAOFactory.getRepasDAO();
+	};
+
+	public static UserManager getInstance() {
+		if(instance == null) {
+			instance = new UserManager();
+		}
+		return instance;
+	}
+
+
+	
+	public User ajouterUser(User nouveauUser) throws DALException {
+		
+		
+		BLLException ex = new BLLException();
+		
+		validationPseudo(nouveauUser.getPseudo(), ex);
+		validationNom(nouveauUser.getNom(), ex);
+		validationPrenom(nouveauUser.getPrenom(), ex);
+		validationTelephone(nouveauUser.getTelephone(), ex);
+		validationEmail(nouveauUser.getEmail(), ex);
+		validationVille(nouveauUser.getVille(), ex);
+		validationCode_postal(nouveauUser.getCode_postal(), ex);
+		
+		
+		// TODO Vérification des régles métier
+		
+		// Appel de la DAL
+		User utilisateur = dao.insertUser(nouveauUser);
+		
+		return utilisateur;
+	}
+	
+	public User mettreajourUser(User userModifie) throws DALException {
+		
+		//TODO vérification des régles métier 
+		
+		User utilisateur = dao.updateUser(userModifie) ;
+	
+	return utilisateur;
+	
+	}
+	
+	public void removeArticle(int idArticle) throws BLLException {
+
+		BLLException ex = new BLLException();
+		// A faire vérife
+	//	validationId(idArticle, ex);   
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			dao.delete(idArticle);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+	}
+	
+	
+
+	
+	
+	private void validationPseudo(String pseudo, BLLException ex) {
+		if(pseudo == null || pseudo.isEmpty()|| pseudo.length() > 30) {
+			ex.ajouterErreur(new ParameterException("Le pseudo est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+		}
+	}
+		private void validationNom(String nom, BLLException ex) {
+			if(nom == null || nom.isEmpty()|| nom.length() > 30) {
+				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+			}	
+		}
+		private void validationPrenom(String prenom, BLLException ex) {
+			if(prenom == null || prenom.isEmpty()|| prenom.length() > 30) {
+				ex.ajouterErreur(new ParameterException("Le prenom est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+			}	
+		}
+		
+		private void validationEmail(String email, BLLException ex) {
+			if(email == null || email.isEmpty()|| email.length() > 50) {
+				ex.ajouterErreur(new ParameterException("L'email est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+			}	
+		}
+		
+		private void validationTelephone(String telephone, BLLException ex) {
+			if(telephone == null || telephone.isEmpty()|| telephone.length() > 15) {
+				ex.ajouterErreur(new ParameterException("Le telephone est obligatoire et doit avoir une longueur comprise entre 1 et 15"));
+			}	
+		}
+		
+		private void validationRue(String rue, BLLException ex) {
+			if(rue == null || rue.isEmpty()|| rue.length() > 30) {
+				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 30"));
+			}	
+		}
+		
+		private void validationCode_postal(String code_postal, BLLException ex) {
+			if(code_postal == null || code_postal.isEmpty()|| code_postal.length() > 10) {
+				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 10"));
+			}	
+		}
+		
+		private void validationVille(String ville, BLLException ex) {
+			if(ville == null || ville.isEmpty()|| ville.length() > 50) {
+				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 50"));
+			}	
+		}
+	
+	}	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
