@@ -77,5 +77,21 @@
 		</form>
 	</div>
 	
+  <div class="card mb-3" style="max-width: 540px;">
+	  <div class="row no-gutters">
+		 <div class="col-md-4">
+			  <img src="/ENI_Encheres/images/imageDummy.png" alt="dummy image">
+		</div>
+		  <div class="col-md-8 pl-2">
+		      <div class="card-body pl-4 p-0">
+		        <h5 class="card-title">Fauteuil</h5>
+		        <p class="card-text">Prix : 310 points</p>
+		        <p class="card-text">Fin de l'enchère : 01/09/2018</p>
+		        <p class="card-text">Vendeur: NineJea</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		  </div>
+	  </div>
+</div>
 </body>
 </html>
