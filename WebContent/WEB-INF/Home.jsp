@@ -17,16 +17,39 @@
 <title>Home</title>
 </head>
 <body>
-
-	<%-- <c:if test="${empty sessionScope}"> --%>
-<%-- 		<div>
-			<a href="<c:url value = "/login"/>">S'inscrire - se connecter</a>
-		</div> --%>
-	<%-- </c:if> --%>
-	
-	<%-- <c:if test="${!empty sessionScope}"> --%>
-	
+		<div class="d-flex flex-row-reverse pr-4">
 		
+			<ul class="nav">
+			  <li class="nav-item">
+			    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+			  </li>
+	
+			</ul>
+		
+		</div>
+
+		<div class="d-flex flex-row-reverse pr-4">
+		
+			<ul class="nav">
+			  <li class="nav-item">
+			    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+			  </li>
+	
+			</ul>
+		
+		</div>
 		<div>
 			<a href="<c:url value = "/addArticle"/>">Vendre un article</a>
 			<a href="<c:url value = "/profil"/>">Mon profil</a>
@@ -92,6 +115,6 @@
 		      </div>
 		  </div>
 	  </div>
-</div>
+	</div>
 </body>
 </html>
