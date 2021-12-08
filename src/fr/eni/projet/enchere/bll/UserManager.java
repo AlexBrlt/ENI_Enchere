@@ -164,6 +164,7 @@ public class UserManager {
 				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 50"));
 			}	
 		}
+		
 	
 	}	
 	

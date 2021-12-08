@@ -200,7 +200,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 				String email = rs.getString("email");
 				String telephone = rs.getString("telephone");
 				String rue = rs.getString("rue");
-				String code_postal = rs.getString("code-postal");
+				String code_postal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, null, 0, false);
 

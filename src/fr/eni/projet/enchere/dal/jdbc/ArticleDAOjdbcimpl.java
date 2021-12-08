@@ -6,17 +6,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import fr.eni.projet.enchere.bo.Article;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.ArticleDAO;
+import fr.eni.projet.enchere.dal.DALException;
 
 public class ArticleDAOjdbcimpl implements ArticleDAO {
 
 	private static final String SQL_INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
-	private static final String SQL_SELECT_USER_BY_ID = "SELECT * from UTILISATEURS WHERE no_utilisateur = ? ";
+	private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	private static final String SQL_INSERT_RETRAIT_ARTICLE = "INSERT INTO RETRAITS VALUES ( ?, ?, ?, ?)";
-
+	private static final String SQL_SELECT_BY_CATEGORiE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?";
+	
 	public Article insertArticle(Article nouvelArticle) {
 		String pseudo;String nom;String prenom;String email;String telephone;String rue = null;
 		String code_postal = null;String ville = null;
@@ -103,6 +107,46 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		return nouvelArticle;
 
 	}
+	
+	public List<Article> selectByCategorie(int no_categorie) throws DALException  {
+		List<Article> articles = new ArrayList<Article>();
+		
+		try(Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORiE);
+			ordre.setInt(1, no_categorie);
+			
+			
+			ResultSet rs = ordre.executeQuery();
+			while(rs.next()) {
+				
+				int no_article = rs.getInt("no_article");
+				String nom_article = rs.getString("nom_article");
+				String description = rs.getString("description");
+				LocalDateTime date_debut_encheres = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+				LocalDateTime date_fin_encheres = rs.getTimestamp("date_fin_encheres").toLocalDateTime();
+				int prix_initial = rs.getInt("prix_initial");
+				int prix_vente = rs.getInt("prix_vente");
+				int no_utilisateur = rs.getInt("no_utilisateur");
+				
+				Article a = new Article(no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente, no_utilisateur, no_categorie);
+
+						articles.add(a);
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+		}
+		
+		return articles;
+	}
+	
+	
+	
+	
+	
+	
 	
 
 }
