@@ -4,131 +4,123 @@ import java.time.LocalDateTime;
 
 public class Article {
 
-	private int no_article;
-	private String nom_article;
+	private int noArticle;
+	private String nameArticle;
 	private String description;
-	private LocalDateTime date_debut_encheres;
-	private LocalDateTime date_fin_encheres;
-	private int prix_initial;
-	private int prix_vente;
-	private int no_utilisateur;
-	private int no_categorie;
+	private LocalDateTime dateStartAuction;
+	private LocalDateTime dateEndAuction;
+	private int priceStart;
+	private int priceSold;
+	private int noUser;
+	private int noCategorie;
+	
+	//TODO Un article a besoin d'une catégorie
+	//TODO Un article a besoin d'un point de retrait
+	//TODO Un article a besoin d'un vendeur
+	//TODO Un article a besoin d'un acheteur
 
 	// GETTER & SETTER
+	
 
-	public int getNo_article() {
-		return no_article;
+	public int getNoArticle() {
+		return noArticle;
 	}
-
-	public void setNo_article(int no_article) {
-		this.no_article = no_article;
+	public void setNoArticle(int noArticle) {
+		this.noArticle = noArticle;
 	}
-
-	public String getNom_article() {
-		return nom_article;
+	public String getNameArticle() {
+		return nameArticle;
 	}
-
-	public void setNom_article(String nom_article) {
-		this.nom_article = nom_article;
+	public void setNameArticle(String nameArticle) {
+		this.nameArticle = nameArticle;
 	}
-
 	public String getDescription() {
 		return description;
 	}
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
-	public LocalDateTime getDate_debut_encheres() {
-		return date_debut_encheres;
+	public LocalDateTime getDateStartAuction() {
+		return dateStartAuction;
+	}
+	public void setDateStartAuction(LocalDateTime dateStartAuction) {
+		this.dateStartAuction = dateStartAuction;
+	}
+	public LocalDateTime getDateEndAuction() {
+		return dateEndAuction;
+	}
+	public void setDateEndAuction(LocalDateTime dateEndAuction) {
+		this.dateEndAuction = dateEndAuction;
+	}
+	public int getPriceStart() {
+		return priceStart;
+	}
+	public void setPriceStart(int priceStart) {
+		this.priceStart = priceStart;
+	}
+	public int getPriceSold() {
+		return priceSold;
+	}
+	public void setPriceSold(int priceSold) {
+		this.priceSold = priceSold;
+	}
+	public int getNoUser() {
+		return noUser;
+	}
+	public void setNoUser(int noUser) {
+		this.noUser = noUser;
+	}
+	public int getNoCategorie() {
+		return noCategorie;
+	}
+	public void setNoCategorie(int noCategorie) {
+		this.noCategorie = noCategorie;
 	}
 
-	public void setDate_debut_encheres(LocalDateTime date_debut_encheres) {
-		this.date_debut_encheres = date_debut_encheres;
-	}
-
-	public LocalDateTime getDate_fin_encheres() {
-		return date_fin_encheres;
-	}
-
-	public void setDate_fin_encheres(LocalDateTime date_fin_encheres) {
-		this.date_fin_encheres = date_fin_encheres;
-	}
-
-	public int getPrix_initial() {
-		return prix_initial;
-	}
-
-	public void setPrix_initial(int prix_initial) {
-		this.prix_initial = prix_initial;
-	}
-
-	public int getPrix_vente() {
-		return prix_vente;
-	}
-
-	public void setPrix_vente(int prix_vente) {
-		this.prix_vente = prix_vente;
-	}
-
-	public int getNo_utilisateur() {
-		return no_utilisateur;
-	}
-
-	public void setNo_utilisateur(int no_utilisateur) {
-		this.no_utilisateur = no_utilisateur;
-	}
-
-	public int getNo_categorie() {
-		return no_categorie;
-	}
-
-	public void setNo_categorie(int no_categorie) {
-		this.no_categorie = no_categorie;
-	}
 
 	// CONSTRUCTEUR
 
-	public Article(int no_article, String nom_article, String description, LocalDateTime date_debut_encheres,
-			LocalDateTime date_fin_encheres, int prix_initial, int prix_vente, int no_utilisateur, int no_categorie) {
-		
-		this.no_article = no_article;
-		this.nom_article = nom_article;
+	public Article(int noArticle, String nameArticle, String description, LocalDateTime dateStartAuction,
+			LocalDateTime dateEndAuction, int priceStart, int priceSold, int noUser, int noCategorie) {
+		super();
+		this.noArticle = noArticle;
+		this.nameArticle = nameArticle;
 		this.description = description;
-		this.date_debut_encheres = date_debut_encheres;
-		this.date_fin_encheres = date_fin_encheres;
-		this.prix_initial = prix_initial;
-		this.prix_vente = prix_vente;
-		this.no_utilisateur = no_utilisateur;
-		this.no_categorie = no_categorie;
+		this.dateStartAuction = dateStartAuction;
+		this.dateEndAuction = dateEndAuction;
+		this.priceStart = priceStart;
+		this.priceSold = priceSold;
+		this.noUser = noUser;
+		this.noCategorie = noCategorie;
 	}
 
 	// ToString
-
+	
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Article [no_article=");
-		builder.append(no_article);
-		builder.append(", nom_article=");
-		builder.append(nom_article);
-		builder.append(", description=");
-		builder.append(description);
-		builder.append(", date_debut_encheres=");
-		builder.append(date_debut_encheres);
-		builder.append(", date_fin_encheres=");
-		builder.append(date_fin_encheres);
-		builder.append(", prix_initial=");
-		builder.append(prix_initial);
-		builder.append(", prix_vente=");
-		builder.append(prix_vente);
-		builder.append(", no_utilisateur=");
-		builder.append(no_utilisateur);
-		builder.append(", no_categorie=");
-		builder.append(no_categorie);
-		builder.append("]");
-		return builder.toString();
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("Article [getNoArticle()=");
+		stringBuilder.append(getNoArticle());
+		stringBuilder.append(", getNameArticle()=");
+		stringBuilder.append(getNameArticle());
+		stringBuilder.append(", getDescription()=");
+		stringBuilder.append(getDescription());
+		stringBuilder.append(", getDateStartAuction()=");
+		stringBuilder.append(getDateStartAuction());
+		stringBuilder.append(", getDateEndAuction()=");
+		stringBuilder.append(getDateEndAuction());
+		stringBuilder.append(", getPriceStart()=");
+		stringBuilder.append(getPriceStart());
+		stringBuilder.append(", getPriceSold()=");
+		stringBuilder.append(getPriceSold());
+		stringBuilder.append(", getNoUser()=");
+		stringBuilder.append(getNoUser());
+		stringBuilder.append(", getNoCategorie()=");
+		stringBuilder.append(getNoCategorie());
+		stringBuilder.append("]");
+		return stringBuilder.toString();
 	}
+
+
 
 }
