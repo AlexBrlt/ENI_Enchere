@@ -11,61 +11,61 @@
 
 <div> <a href="Home.jsp">Eni_Enchères</a></div>
 
-<h1> Mon profil</h1>
+<h1>Créer votre compte client</h1>
 
-<form action="<%request.getContextPath()%>/login" method="post">
+<form action="<%=getServletContext().getContextPath()%>/login" method="post">
   <div class="row">
     <div class="col-lg-6">
         <div>
             <label>Pseudo : </label> 
-            <input type="text" name="pseudo" value="<%user.getPseudo()%>" required>
+            <input type="text" name="pseudo" required>
         </div>
 
         <div>
             <label>Prénom : </label> 
-            <input type="text" name="name" value="<%user.getName()%>">
+            <input type="text" name="name" >
         </div>
 
         <div>
             <label>Téléphone : </label> 
-            <input type="text" name="phone" maxlenght=10 value="<%user.getPhone()%>">
+            <input type="text" name="phone" maxlenght=10 >
         </div>
 
         <div>
             <label>Code postal : </label> 
-            <input type="text" name="cp" maxlength=5 value="<%user.getCP()%>" >
+            <input type="text" name="cp" maxlength=5  >
         </div>
 
         <div>
             <label>Mot de passe : </label> 
-            <input type="password" name="password" value="<%user.getPassword()%>" required>
+            <input type="password" name="password" required>
         </div>
   </div>
 
   <div class="col-lg-6">
         <div>
             <label>Nom : </label> 
-            <input type="text" name="surname" value="<%user.getSurname()%>" required>
+            <input type="text" name="surname"  required>
         </div>
 
         <div>
             <label>Email : </label> 
-            <input type="text" name="mail" value="<%user.getMail()%>" required>
+            <input type="text" name="mail" required>
         </div>
 
         <div>
             <label>Rue : </label> 
-            <input type="text" name="street" value="<%user.getStreet()%>" required>
+            <input type="text" name="street"  required>
         </div>
 
         <div>
             <label>Ville : </label> 
-            <input type="text" name="city" value="<%user.getCity()%>" required>
+            <input type="text" name="city"  required>
         </div>
 
         <div>
             <label>Confirmation : </label> 
-            <input type="text" name="PasswordConf" value="<%user.getPasswordConf()%>" required>
+            <input type="text" name="PasswordConf" required>
         </div>
 
   </div>
@@ -78,7 +78,7 @@
 </div>
 
 <div>
-    <a href="<%=request.getContextPath()%>/login.jsp"><button>Annuler</button></a>
+    <a href="<%=getServletContext().getContextPath()%>/web-inf/jsp/login"><button>Annuler</button></a>
 </div>
 
 
