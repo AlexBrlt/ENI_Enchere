@@ -2,23 +2,20 @@ package fr.eni.projet.enchere.bo;
 
 public class User {
 	
-	
-	
 	private int no_utilisateur;
 	private String pseudo;
-	private String nom;
-	private String prenom;
-	private String email;
-	private String telephone;
-	private String rue;
-	private String code_postal;
-	private String ville;
-	private String mot_de_passe;
+	private String surname;
+	private String name;
+	private String mail;
+	private String phone;
+	private String street;
+	private String postalCode;
+	private String city;
+	private String password;
 	private int credit;
 	private boolean administrateur;
 	
 	//GETTER & SETTER
-	
 	public int getNo_utilisateur() {
 		return no_utilisateur;
 	}
@@ -31,53 +28,53 @@ public class User {
 	public void setPseudo(String pseudo) {
 		this.pseudo = pseudo;
 	}
-	public String getNom() {
-		return nom;
+	public String getSurname() {
+		return surname;
 	}
 	public void setNom(String nom) {
-		this.nom = nom;
+		this.surname = nom;
 	}
-	public String getPrenom() {
-		return prenom;
+	public String getName() {
+		return name;
 	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+	public void setName(String prenom) {
+		this.name = prenom;
 	}
-	public String getEmail() {
-		return email;
+	public String getMail() {
+		return mail;
 	}
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMail(String email) {
+		this.mail = email;
 	}
-	public String getTelephone() {
-		return telephone;
+	public String getPhone() {
+		return phone;
 	}
-	public void setTelephone(String telephone) {
-		this.telephone = telephone;
+	public void setPhone(String telephone) {
+		this.phone = telephone;
 	}
-	public String getRue() {
-		return rue;
+	public String getStreet() {
+		return street;
 	}
-	public void setRue(String rue) {
-		this.rue = rue;
+	public void setStreet(String rue) {
+		this.street = rue;
 	}
-	public String getCode_postal() {
-		return code_postal;
+	public String getPostalCode() {
+		return postalCode;
 	}
-	public void setCode_postal(String code_postal) {
-		this.code_postal = code_postal;
+	public void setPostalCode(String code_postal) {
+		this.postalCode = code_postal;
 	}
-	public String getVille() {
-		return ville;
+	public String getCity() {
+		return city;
 	}
-	public void setVille(String ville) {
-		this.ville = ville;
+	public void setCity(String ville) {
+		this.city = ville;
 	}
-	public String getMot_de_passe() {
-		return mot_de_passe;
+	public String getPassword() {
+		return password;
 	}
-	public void setMot_de_passe(String mot_de_passe) {
-		this.mot_de_passe = mot_de_passe;
+	public void setPassword(String mot_de_passe) {
+		this.password = mot_de_passe;
 	}
 	public int getCredit() {
 		return credit;
@@ -93,26 +90,24 @@ public class User {
 	}
 	
 	// CONSTRUCTEUR
-	
 	public User(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
 			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
 		
 		this.no_utilisateur = no_utilisateur;
 		this.pseudo = pseudo;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.email = email;
-		this.telephone = telephone;
-		this.rue = rue;
-		this.code_postal = code_postal;
-		this.ville = ville;
-		this.mot_de_passe = mot_de_passe;
+		this.surname = nom;
+		this.name = prenom;
+		this.mail = email;
+		this.phone = telephone;
+		this.street = rue;
+		this.postalCode = code_postal;
+		this.city = ville;
+		this.password = mot_de_passe;
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
 	
 	// ToString
-	
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -121,21 +116,21 @@ public class User {
 		builder.append(", pseudo=");
 		builder.append(pseudo);
 		builder.append(", nom=");
-		builder.append(nom);
+		builder.append(surname);
 		builder.append(", prenom=");
-		builder.append(prenom);
+		builder.append(name);
 		builder.append(", email=");
-		builder.append(email);
+		builder.append(mail);
 		builder.append(", telephone=");
-		builder.append(telephone);
+		builder.append(phone);
 		builder.append(", rue=");
-		builder.append(rue);
+		builder.append(street);
 		builder.append(", code_postal=");
-		builder.append(code_postal);
+		builder.append(postalCode);
 		builder.append(", ville=");
-		builder.append(ville);
+		builder.append(city);
 		builder.append(", mot_de_passe=");
-		builder.append(mot_de_passe);
+		builder.append(password);
 		builder.append(", credit=");
 		builder.append(credit);
 		builder.append(", administrateur=");
@@ -143,10 +138,4 @@ public class User {
 		builder.append("]");
 		return builder.toString();
 	}
-	
-	
-	
-	
-	
-
 }
