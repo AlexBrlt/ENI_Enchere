@@ -76,8 +76,8 @@ public class Login extends HttpServlet {
 		
 			
 			
-				if (pseudo.equals(userID) || email.equals(userID) && mot_de_passe.equals(password)) {
-					
+				if ((pseudo.equals(userID) || email.equals(userID)) && mot_de_passe.equals(password)) {
+					System.out.println("ici");
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 					dispatcher.forward(request, response);
 					
