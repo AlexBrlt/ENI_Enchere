@@ -35,7 +35,6 @@
       <br>
    	<a href="<c:url value="/register" />"><input type="button" value="Créer un compte"/></a>
    	
-   	
   </div>
 
   </div>

@@ -86,8 +86,6 @@ public class Login extends HttpServlet {
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
 					dispatcher.forward(request, response);	
 				}
-
 		}
-
 	}
 }
