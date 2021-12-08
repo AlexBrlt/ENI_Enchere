@@ -1,11 +1,6 @@
 package fr.eni.projet.enchere.bll;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-
-
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
 import fr.eni.projet.enchere.dal.UserDAO;
@@ -63,6 +58,7 @@ public class UserManager {
 		validationEmail(userModifie.getEmail(), ex);
 		validationVille(userModifie.getVille(), ex);
 		validationCode_postal(userModifie.getCode_postal(), ex);
+		validationRue(userModifie.getRue(), ex);
 		
 		
 		

@@ -59,7 +59,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
 
-			// Récupérer l'identifiant du repas généré par la base de données
+			// Récupérer l'identifiant de l'Article généré par la base de données
 			ResultSet rs = ordre.getGeneratedKeys();
 			if (rs.next()) {
 				no_Article = rs.getInt(1); // 1 : première colonne du résultat (qui n'en contient qu'une)
@@ -79,7 +79,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				 email = rs.getString("email");
 				 telephone = rs.getString("telephone");
 				 rue = rs.getString("rue");
-				 code_postal = rs.getString("code-postal");
+				 code_postal = rs.getString("code_postal");
 				 ville = rs.getString("ville");
 
 			}
@@ -87,8 +87,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			PreparedStatement ordre3 = cnx.prepareStatement(SQL_INSERT_RETRAIT_ARTICLE);
 			ordre3.setInt(1, no_Article);
 			ordre3.setString(2, rue );
-			ordre3.setString(2, code_postal );
-			ordre3.setString(2, ville );
+			ordre3.setString(3, code_postal );
+			ordre3.setString(4, ville );
 			
 			ordre3.executeUpdate();
 			
@@ -103,5 +103,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		return nouvelArticle;
 
 	}
+	
 
 }
