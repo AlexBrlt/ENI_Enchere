@@ -1,6 +1,7 @@
 package fr.eni.projet.enchere.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import fr.eni.projet.enchere.bll.BLLException;
+import fr.eni.projet.enchere.bll.UserManager;
+import fr.eni.projet.enchere.bo.User;
 
 /**
  * Servlet implementation class Register
@@ -43,11 +48,23 @@ public class Login extends HttpServlet {
 		System.out.println(password);
 		
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
-		dispatcher.forward(request, response);
-		
-	}
-	
-	
+		List<User> utilisateurs = null;
+		try {
+			utilisateurs = UserManager.getInstance().detailPseudo(userID);
+		} catch (BLLException e) {
 
+			e.printStackTrace();
+		}
+		
+			if (utilisateurs.contains(userID) && utilisateurs.contains(password)) {
+				
+				RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
+				dispatcher.forward(request, response);
+				
+			} else {
+			
+				RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
+				dispatcher.forward(request, response);	
+			}	
+	}
 }
