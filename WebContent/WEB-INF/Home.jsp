@@ -3,6 +3,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <style>
 	li {
 		list-style : none;
@@ -15,10 +17,23 @@
 </head>
 <body>
 
+	<c:if test="${empty sessionScope}">
+		<div>
+			<a href="<c:url value = "/login"/>">S'inscrire - se connecter</a>
+		</div>
+	</c:if>
+	
+	<c:if test="${!empty sessionScope}">
+		<div>
+			<a href="<c:url value = "/addArticle"/>">Vendre un article</a>
+			<a href="<c:url value = "/profil"/>">Mon profil</a>
+			<a href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+		</div>
+	</c:if>
+	
 	<div>
 		<h1>Liste des enchères</h1>
 	</div>
-	
 	
 	<div>
 		<form action="">
@@ -31,7 +46,7 @@
 			<select id="categories" name="categories">
 				<option></option>
 			</select>	
-			
+			<c:if test="${!empty sessionScope}">
 			<div class="container">
 			  <ul>
 			    <li>
@@ -51,10 +66,13 @@
 			    </li>
 			  </ul>
 			</div>
+			</c:if>
+			
 			<div>
 			<input type="submit" value="Rechercher">
 			</div>
 		</form>
 	</div>
+	
 </body>
 </html>
