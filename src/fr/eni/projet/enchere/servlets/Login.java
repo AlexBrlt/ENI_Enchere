@@ -69,7 +69,7 @@ public class Login extends HttpServlet {
 			
 			User user = utilisateurs.get(0);
 			String pseudo = user.getPseudo();
-			String mot_de_passe = user.getMot_de_passe();
+			String mot_de_passe = user.getPassword();
 		
 			
 			

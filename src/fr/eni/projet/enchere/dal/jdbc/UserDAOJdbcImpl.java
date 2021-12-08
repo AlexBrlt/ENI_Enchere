@@ -53,14 +53,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = nouveauUser.getPseudo();
-			String nom = nouveauUser.getNom();
-			String prenom = nouveauUser.getPrenom();
-			String email = nouveauUser.getEmail();
-			String telephone = nouveauUser.getTelephone();
-			String rue = nouveauUser.getRue();
-			String code_postal = nouveauUser.getCode_postal();
-			String ville = nouveauUser.getVille();
-			String mot_de_passe = nouveauUser.getMot_de_passe();
+			String nom = nouveauUser.getName();
+			String prenom = nouveauUser.getSurname();
+			String email = nouveauUser.getMail();
+			String telephone = nouveauUser.getPhone();
+			String rue = nouveauUser.getStreet();
+			String code_postal = nouveauUser.getPostalCode();
+			String ville = nouveauUser.getCity();
+			String mot_de_passe = nouveauUser.getPassword();
 			int credit = nouveauUser.getCredit();
 			
 			boolean administrateur = false;
@@ -126,14 +126,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = usermodifie.getPseudo();
-			String nom = usermodifie.getNom();
-			String prenom = usermodifie.getPrenom();
-			String email = usermodifie.getEmail();
-			String telephone = usermodifie.getTelephone();
-			String rue = usermodifie.getRue();
-			String code_postal = usermodifie.getCode_postal();
-			String ville = usermodifie.getVille();
-			String mot_de_passe = usermodifie.getMot_de_passe();
+			String nom = usermodifie.getName();
+			String prenom = usermodifie.getSurname();
+			String email = usermodifie.getMail();
+			String telephone = usermodifie.getPhone();
+			String rue = usermodifie.getStreet();
+			String code_postal = usermodifie.getPostalCode();
+			String ville = usermodifie.getCity();
+			String mot_de_passe = usermodifie.getPassword();
 			int credit = 100;
 //			int credit = usermodifie.getCredit();
 			
