@@ -34,7 +34,7 @@
     <div class="container">
       <br>
    	<a href="<c:url value="/register" />"><input type="button" value="Créer un compte"/></a>
-   	<a href="<c:url value="/pageAccueil" />"><input type="button" value="Annuler" /></a>
+   	
    	
   </div>
 
