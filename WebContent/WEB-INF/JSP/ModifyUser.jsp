@@ -4,21 +4,12 @@
 <head>
 <meta content="text/html" charset="UTF-8">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <title>Modifier mon compte</title>
+
 </head>
 
 <body>
-
-<% 
-String user_pseudo = session.getAttribute("pseudo").toString();
-String user_name = session.getAttribute("name").toString();
-String user_surname = session.getAttribute("surname").toString();
-String user_mail = session.getAttribute("mail").toString();
-String user_phone = session.getAttribute("phone").toString();
-String user_street = session.getAttribute("street").toString();
-String user_cp = session.getAttribute("cp").toString();
-String user_city = session.getAttribute("city").toString();
-%>
 
 <div> <a href="Home.jsp">Eni_Enchères</a></div>
 
@@ -29,27 +20,27 @@ String user_city = session.getAttribute("city").toString();
     <div class="col-lg-6">
         <div>
             <label>Pseudo : </label> 
-            <%user.getPseudo()%>
+            <c:out value="${sessionScope.user.pseudo}"></c:out>
         </div>
 
         <div>
             <label>Prénom : </label> 
-            <input type="text" name="name" value="<%user.getName()%>">
+            <input type="text" name="name" value="<c:out value="${sessionScope.user.name}"></c:out>" >
         </div>
 
         <div>
             <label>Téléphone : </label> 
-            <input type="text" name="phone" maxlenght=10 value="<%user.getPhone()%>">
+            <input type="text" name="phone" maxlenght=10 value="<c:out value="${sessionScope.user.telephone}"></c:out>">
         </div>
 
         <div>
             <label>Code postal : </label> 
-            <input type="text" name="cp" maxlength=5 value="<%user.getCP()%>" >
+            <input type="text" name="cp" maxlength=5 value="<c:out value="${sessionScope.user.code_postal}"></c:out>" >
         </div>
 
         <div>
             <label>Mot de passe : </label> 
-            <input type="password" name="password" value="<%user.getPassword()%>" required>
+            <input type="password" name="password" value="<c:out value="${sessionScope.user.mot_de_passe}"></c:out>" required>
         </div>
   </div>
 

@@ -21,7 +21,7 @@ import fr.eni.projet.enchere.bo.User;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VUE = "/WEB-INF/JSP/Login.jsp";
-	private static final String VUETRUE = "/WEB-INF/JSP/Home.jsp";
+	private static final String VUETRUE = "/WEB-INF/Home.jsp";
 	private static final String VUEFALSE = "/WEB-INF/JSP/Login.jsp";
 	
 
@@ -56,15 +56,36 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-			if (utilisateurs.contains(userID) && utilisateurs.contains(password)) {
-				
-				RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
-				dispatcher.forward(request, response);
-				
-			} else {
+		
+		
+		if (utilisateurs.isEmpty()) {
 			
-				RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
-				dispatcher.forward(request, response);	
-			}	
+			System.out.println("Coucou");
+			RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
+			dispatcher.forward(request, response);
+			
+			
+		} else {
+			
+			User user = utilisateurs.get(0);
+			String pseudo = user.getPseudo();
+			String mot_de_passe = user.getMot_de_passe();
+		
+			
+			
+				if (pseudo.equals(userID) && mot_de_passe.equals(password)) {
+					
+					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
+					dispatcher.forward(request, response);
+					
+				} else {
+					System.out.println("Coucou");
+					RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
+					dispatcher.forward(request, response);	
+				}
+
+		}
+		
+	
 	}
 }
