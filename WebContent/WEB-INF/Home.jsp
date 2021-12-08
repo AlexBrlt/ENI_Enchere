@@ -6,10 +6,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
 	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <style>
 	li {
 		list-style : none;
-		
 	}
 </style>
 
@@ -18,19 +18,21 @@
 </head>
 <body>
 
-	<c:if test="${empty sessionScope}">
-		<div>
+	<%-- <c:if test="${empty sessionScope}"> --%>
+<%-- 		<div>
 			<a href="<c:url value = "/login"/>">S'inscrire - se connecter</a>
-		</div>
-	</c:if>
+		</div> --%>
+	<%-- </c:if> --%>
 	
-	<c:if test="${!empty sessionScope}">
+	<%-- <c:if test="${!empty sessionScope}"> --%>
+	
+		
 		<div>
 			<a href="<c:url value = "/addArticle"/>">Vendre un article</a>
 			<a href="<c:url value = "/profil"/>">Mon profil</a>
 			<a href="<c:url value = "/deconnexion"/>">Déconnexion</a>
 		</div>
-	</c:if>
+	<%-- </c:if> --%>
 	
 	<div>
 		<h1>Liste des enchères</h1>
@@ -75,5 +77,21 @@
 		</form>
 	</div>
 	
+  <div class="card mb-3" style="max-width: 540px;">
+	  <div class="row no-gutters">
+		 <div class="col-md-4">
+			  <img src="/ENI_Enchere/images/imageDummy.png" alt="dummy image">
+		</div>
+		  <div class="col-md-8 pl-2">
+		      <div class="card-body pl-4 p-0">
+		        <h5 class="card-title">Fauteuil</h5>
+		        <p class="card-text">Prix : 310 points</p>
+		        <p class="card-text">Fin de l'enchère : 01/09/2018</p>
+		        <p class="card-text">Vendeur: NineJea</p>
+		        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+		      </div>
+		  </div>
+	  </div>
+</div>
 </body>
 </html>
