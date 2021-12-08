@@ -90,17 +90,17 @@ public class UserManager {
 		
 	}
 	
-	public List<User> detailPseudo(String userPseudo_) throws BLLException {
+	public List<User> detailPseudo(String user_Pseudo) throws BLLException {
 		BLLException ex = new BLLException();
 		
-		validationPseudo(userPseudo_, ex);
+		validationPseudo(user_Pseudo, ex);
 		
 		if(ex.hasErreur()) {
 			throw ex;
 		}
 		
 		try {
-			return dao.selectByPseudo(userPseudo_);
+			return dao.selectByPseudo(user_Pseudo);
 		} catch (DALException e) {
 			e.printStackTrace();
 			ex.ajouterErreur(e);

@@ -56,6 +56,8 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 		
+		for(User s : utilisateurs)
+	        System.out.println(s);
 		
 		
 		if (utilisateurs.isEmpty()) {
@@ -69,11 +71,12 @@ public class Login extends HttpServlet {
 			
 			User user = utilisateurs.get(0);
 			String pseudo = user.getPseudo();
+			String email = user.getMail();
 			String mot_de_passe = user.getPassword();
 		
 			
 			
-				if (pseudo.equals(userID) && mot_de_passe.equals(password)) {
+				if (pseudo.equals(userID) || email.equals(userID) && mot_de_passe.equals(password)) {
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 					dispatcher.forward(request, response);
