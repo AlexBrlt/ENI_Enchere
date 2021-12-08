@@ -82,13 +82,12 @@ public class Login extends HttpServlet {
 					dispatcher.forward(request, response);
 					
 				} else {
-					System.out.println("Coucou");
+					System.out.println("salut");
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
 					dispatcher.forward(request, response);	
 				}
 
 		}
-		
-	
+
 	}
 }
