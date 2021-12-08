@@ -187,7 +187,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO);
-			ordre.setString(1, '%' + selectPseudo + '%');
+			ordre.setString(1, selectPseudo);
 			
 			
 			ResultSet rs = ordre.executeQuery();

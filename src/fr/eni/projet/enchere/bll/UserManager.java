@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 
+
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
 import fr.eni.projet.enchere.dal.UserDAO;
@@ -17,7 +18,7 @@ public class UserManager {
 	private static UserDAO dao;
 	
 	private UserManager() {
-		dao = UserDAOFactory.getRepasDAO();
+		dao = UserDAOFactory.getUserDAO();
 	};
 
 	public static UserManager getInstance() {
@@ -53,7 +54,17 @@ public class UserManager {
 	
 	public User mettreajourUser(User userModifie) throws DALException {
 		
-		//TODO vérification des régles métier 
+		BLLException ex = new BLLException();
+		
+		validationPseudo(userModifie.getPseudo(), ex);
+		validationNom(userModifie.getNom(), ex);
+		validationPrenom(userModifie.getPrenom(), ex);
+		validationTelephone(userModifie.getTelephone(), ex);
+		validationEmail(userModifie.getEmail(), ex);
+		validationVille(userModifie.getVille(), ex);
+		validationCode_postal(userModifie.getCode_postal(), ex);
+		
+		
 		
 		User utilisateur = dao.updateUser(userModifie) ;
 	
@@ -61,9 +72,12 @@ public class UserManager {
 	
 	}
 	
-	public void removeArticle(int idArticle) throws BLLException {
-
+	public void removeUser(int no_utilisateur) throws BLLException {
+		
 		BLLException ex = new BLLException();
+		validationId(no_utilisateur, ex);
+		
+	
 		// A faire vérife
 	//	validationId(idArticle, ex);   
 		
@@ -72,7 +86,7 @@ public class UserManager {
 		}
 		
 		try {
-			dao.delete(idArticle);
+			dao.delete(no_utilisateur);
 		} catch (DALException e) {
 			e.printStackTrace();
 			ex.ajouterErreur(e);
@@ -81,9 +95,33 @@ public class UserManager {
 		
 	}
 	
+	public List<User> detailPseudo(String userPseudo_) throws BLLException {
+		BLLException ex = new BLLException();
+		
+		validationPseudo(userPseudo_, ex);
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			return dao.selectByPseudo(userPseudo_);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+		
+	}
+	
 	
 
-	
+	private void validationId(int no_user, BLLException ex) throws BLLException {
+		if(no_user < 1) {
+			ex.ajouterErreur(new ParameterException("L'id doit être un entier positif >= 1"));
+		}
+	}
 	
 	private void validationPseudo(String pseudo, BLLException ex) {
 		if(pseudo == null || pseudo.isEmpty()|| pseudo.length() > 30) {

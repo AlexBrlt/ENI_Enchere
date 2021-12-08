@@ -26,7 +26,7 @@ public class Category {
 	// CONSTRUCTEUR
 
 	public Category(int no_categorie, String libelle) {
-		super();
+		
 		this.no_categorie = no_categorie;
 		this.libelle = libelle;
 	}
