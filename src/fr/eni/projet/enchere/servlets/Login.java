@@ -56,13 +56,20 @@ public class Login extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-			if (utilisateurs.contains(userID) && utilisateurs.contains(password)) {
+		User user = utilisateurs.get(0);
+	
+		String pseudo = user.getPseudo();
+		String mot_de_passe = user.getMot_de_passe();
+	
+		
+		
+			if (pseudo.equals(userID) && mot_de_passe.equals(password)) {
 				
 				RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 				dispatcher.forward(request, response);
 				
 			} else {
-			
+				System.out.println("Coucou");
 				RequestDispatcher dispatcher = request.getRequestDispatcher(VUEFALSE);
 				dispatcher.forward(request, response);	
 			}	
