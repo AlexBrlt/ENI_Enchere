@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +34,8 @@
     <div class="container">
       <br>
    	<a href="<c:url value="/register" />"><input type="button" value="Créer un compte"/></a>
+   	<a href="<c:url value="/pageAccueil" />"><input type="button" value="Annuler" /></a>
+   	
   </div>
 
   </div>
