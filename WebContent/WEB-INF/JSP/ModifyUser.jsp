@@ -11,76 +11,82 @@
 
 <body>
 
-<div> <a href="Home.jsp">Eni_Enchères</a></div>
+<section class="container">
+	<div class="row">
+		<p class="display-4"><c:out value="${sessionScope.user.pseudo }, gardez vos informations à jour"></c:out></p>
+	</div>
+	<div class="row">
+		<p>Vous possédez : </p><p class="text-success"><c:out value="${sessionScope.user.credit } crédits"></c:out></p>
+	</div>
+</section>
 
-<h1>Modifier mon compte</h1>
+<section class="container border">
+	<form action="ModifyUser" method="post">
+	 	<div class="form-group">
+	    	<label for="pseudo">Pseudo</label>
+	    	<input type="text" class="form-control" id="pseudo" name="pseudo" value="<c:out value="${sessionScope.user.pseudo}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="name">Nom</label>
+	    	<input type="text" class="form-control" id="name" name="name" value="<c:out value="${sessionScope.user.name}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="prenom">Prenom</label>
+	    	<input type="text" class="form-control" id="prenom" name="prenom" value="<c:out value="${sessionScope.user.surname}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="street">Rue</label>
+	    	<input type="email" class="form-control" id="street" name="street" value="<c:out value="${sessionScope.user.street}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="email">Adresse email</label>
+	    	<input type="email" class="form-control" id="email" name="email" value="<c:out value="${sessionScope.user.mail}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="telephone">Téléphone</label>
+	    	<input type="text" class="form-control" id="telephone" name="telephone" value="<c:out value="${sessionScope.user.phone}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="postalCode">Code postal</label>
+	    	<input type="text" class="form-control" id="postalCode" name="postalCode" value="<c:out value="${sessionScope.user.postalCode}"></c:out>">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="city">Ville</label>
+	    	<input type="text" class="form-control" id="city" name="city" value="<c:out value="${sessionScope.user.city}"></c:out>">
+	  	</div>
+	
+	  	<button type="submit" class="btn btn-success">Mettre à jour</button>
+	</form>
+</section>
 
-<form action="<%=getServletContext().getContextPath()%>/login" method="post">
-  <div class="row">
-    <div class="col-lg-6">
-        <div>
-            <label>Pseudo : </label> 
-            <c:out value="${sessionScope.user.pseudo}"></c:out>
-        </div>
+<section class="container border">
+	<form action="ModifyUser" method="post">
+		<h3>Sécutité</h3>
+		
+		<div class="form-group">
+	    	<label for="passwordCurrent">Mot de passe actuel</label>
+	    	<input type="password" class="form-control" id="passwordCurrent" name="passwordCurrent">
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="passwordNew">Nouveau mot de passe</label>
+	    	<input type="password" class="form-control" id="passwordNew" name="passwordNew" aria-describedby="passwordHelp">
+	    	<small id="passwordHelp" class="form-text text-muted">
+	    	Le mot de passe doit :<br>
+	    	- Comporter entre 5 et 25 caractères<br>
+	    	- Contenir une minuscule et une majuscule<br>
+	    	- Contenir au moins un chiffre<br>
+	    	</small>
+	  	</div>
+	  	<div class="form-group">
+	    	<label for="passwordRewrite">Retaper le mot de passe</label>
+	    	<input type="password" class="form-control" id="passwordRewrite" name="passwordRewrite">
+	  	</div>
+	  	<button type="submit" class="btn btn-success">Mettre à jour</button>
+	 </form>
 
-        <div>
-            <label>Prénom : </label> 
-            <input type="text" name="name" value="<c:out value="${sessionScope.user.name}"></c:out>" >
-        </div>
+</section>
 
-        <div>
-            <label>Téléphone : </label> 
-            <input type="text" name="phone" maxlenght=10 value="<c:out value="${sessionScope.user.telephone}"></c:out>">
-        </div>
 
-        <div>
-            <label>Code postal : </label> 
-            <input type="text" name="cp" maxlength=5 value="<c:out value="${sessionScope.user.code_postal}"></c:out>" >
-        </div>
-
-        <div>
-            <label>Mot de passe : </label> 
-            <input type="password" name="password" value="<c:out value="${sessionScope.user.mot_de_passe}"></c:out>" required>
-        </div>
-  </div>
-
-  <div class="col-lg-6">
-        <div>
-            <label>Nom : </label> 
-            <input type="text" name="surname" value="<%user.getSurname()%>" required>
-        </div>
-
-        <div>
-            <label>Email : </label> 
-            <input type="text" name="mail" value="<%user.getMail()%>" required>
-        </div>
-
-        <div>
-            <label>Rue : </label> 
-            <input type="text" name="street" value="<%user.getStreet()%>" required>
-        </div>
-
-        <div>
-            <label>Ville : </label> 
-            <input type="text" name="city" value="<%user.getCity()%>" required>
-        </div>
-
-        <div>
-            <label>Confirmation : </label> 
-            <input type="text" name="PasswordConf" value="<%user.getPasswordConf()%>" required>
-        </div>
-
-  </div>
-</div>
-
-</form>
-
-<div>
-    <button type="submit">Modifier</button>
-</div>
-
-<div>
-</div>
 
 
 </body>
