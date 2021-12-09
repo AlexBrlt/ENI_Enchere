@@ -90,19 +90,19 @@ public class User {
 	}
 	
 	// CONSTRUCTEUR
-	public User(int no_utilisateur, String pseudo, String nom, String prenom, String email, String telephone,
-			String rue, String code_postal, String ville, String mot_de_passe, int credit, boolean administrateur) {
+	public User(int no_utilisateur, String pseudo, String name, String surname, String mail, String phone,
+			String street, String postalCode, String city, String password, int credit, boolean administrateur) {
 		
 		this.no_utilisateur = no_utilisateur;
 		this.pseudo = pseudo;
-		this.surname = nom;
-		this.name = prenom;
-		this.mail = email;
-		this.phone = telephone;
-		this.street = rue;
-		this.postalCode = code_postal;
-		this.city = ville;
-		this.password = mot_de_passe;
+		this.surname = name;
+		this.name = surname;
+		this.mail = mail;
+		this.phone = phone;
+		this.street = street;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.password = password;
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}

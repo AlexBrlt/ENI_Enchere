@@ -31,8 +31,8 @@
 	    	<input type="text" class="form-control" id="name" name="name" value="<c:out value="${sessionScope.user.name}"></c:out>">
 	  	</div>
 	  	<div class="form-group">
-	    	<label for="prenom">Prenom</label>
-	    	<input type="text" class="form-control" id="prenom" name="prenom" value="<c:out value="${sessionScope.user.surname}"></c:out>">
+	    	<label for="surname">Prenom</label>
+	    	<input type="text" class="form-control" id="surname" name="surname" value="<c:out value="${sessionScope.user.surname}"></c:out>">
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="street">Rue</label>
