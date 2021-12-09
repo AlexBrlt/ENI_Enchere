@@ -12,7 +12,7 @@
         <h1> Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ? </h1>
     </section>
 
-    <section class="container border bg-white p-4 mb-4">
+    <section class="container border bg-white p-4 mb-4 w-50">
         <h2>Informations article</h2>
         <form>
             <div class="mb-3 form-group">
@@ -39,8 +39,8 @@
                 <input class="form-control" type="file" id="formFile">
             </div>
             <div class="input-group mb-3 form-group">
-                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <span class="input-group-text" id="basic-addon2">points</span>
+                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="points">
+                <span class="input-group-text" id="points">points</span>
             </div>
             <div class="mb-3 form-group">
                 <label for="StartAuction" class="form-label">Début de l'enchère</label>
@@ -56,7 +56,7 @@
     </section>
 
 
-    <section class="container border bg-white p-4">
+    <section class="container border bg-white p-4 w-50">
         <h2>Informations retrait</h2>
         <div class="mb-3 form-group">
             <label for="rue" class="form-label">Rue</label>
@@ -71,7 +71,7 @@
             <input type="text" class="form-control" id="ville">
         </div>
     </section>
-    <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0">
+    <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
         <button type="button" class="btn btn-danger">Annuler</button>
         <button type="button" class="btn btn-success">Mettre en ligne</button>
     </section>
