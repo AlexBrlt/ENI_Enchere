@@ -21,16 +21,27 @@ public class AddArticleServlet extends HttpServlet {
        
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		//Afficher la vue
 		RequestDispatcher rd = request.getRequestDispatcher(JSP_AJOUT_ARTICLE);
 		rd.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//Récupérer les paramètres du formulaire
+				String nomArticle = request.getParameter("nameArticle");
+				String descriptionArticle = request.getParameter("description");
+				String categoryArticle = request.getParameter("categories");
+				String photoArticle = request.getParameter("formFile");
+				String pointArticle = request.getParameter("points");
+				String debutEnchere = request.getParameter("StartAuction");
+				String finEnchere = request.getParameter("EndAuction");
+				
+				String rueUser = request.getParameter("rue");
+				String codePostalUser = request.getParameter("codePostal");
+				String villeUser = request.getParameter("ville");
+			
+		//Vérification
+		System.out.println("nom Article : " + nomArticle);
 	}
 
 }
