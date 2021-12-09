@@ -1,4 +1,5 @@
-# Fichier d'exclusion des fichiers à push
+﻿# Fichier d'exclusion des fichiers à push
 # Eclipse
 
-.metadata
+.metadata/
+build/
