@@ -17,17 +17,17 @@
         <form>
             <div class="mb-3 form-group">
                 <label for="nameArticle" class="form-label">Nom de l'article</label>
-                <input type="text" class="form-control" id="nameArticle">
+                <input type="text" class="form-control" id="nameArticle" name="nameArticle">
                 <div id="helpNameArticle" class="form-text text-secondary">Soyez concis dans votre titre</div>
             </div>
             <div class="mb-3 form-group">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" rows="3"></textarea>
+                <textarea class="form-control" id="description" rows="3" name="description"></textarea>
                 <div id="helpDescription" class="form-text text-secondary">Une bonne description augmente vos chances de vente</div>
             </div>
             <div class="form-group">
                 <label for="categories">Choisir une catégorie</label>
-                <select class="form-control" id="categories">
+                <select class="form-control" id="categories" name="categories">
                     <option>Ameublement</option>
                     <option>Informatique</option>
                     <option>Vêtements</option>
@@ -36,20 +36,20 @@
             </div>
             <div class="mb-3">
                 <label for="formFile" class="form-label">Photo de l'article</label>
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="formFile" name="formFile">
             </div>
             <div class="input-group mb-3 form-group">
-                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="points">
+                <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="points" name="points" id="points">
                 <span class="input-group-text" id="points">points</span>
             </div>
             <div class="mb-3 form-group">
                 <label for="StartAuction" class="form-label">Début de l'enchère</label>
-                <input type="date" class="form-control" id="StartAuction">
+                <input type="date" class="form-control" id="StartAuction" name="StartAuction">
                 <div id="helpAuctionStart" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
             <div class="mb-3 form-group">
                 <label for="EndAuction" class="form-label">Fin de l'enchère</label>
-                <input type="date" class="form-control" id="EndAuction">
+                <input type="date" class="form-control" id="EndAuction" name="EndAuction">
                 <div id="helpAuctionEnd" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
         </form>
@@ -60,15 +60,15 @@
         <h2>Informations retrait</h2>
         <div class="mb-3 form-group">
             <label for="rue" class="form-label">Rue</label>
-            <input type="text" class="form-control" id="rue">
+            <input type="text" class="form-control" id="rue" name="rue">
         </div>
         <div class="mb-3 form-group">
             <label for="codePostal" class="form-label">Code postal</label>
-            <input type="text" class="form-control" id="codePostal">
+            <input type="text" class="form-control" id="codePostal" name="codePostal">
         </div>
         <div class="mb-3 form-group">
             <label for="ville" class="form-label">Ville</label>
-            <input type="text" class="form-control" id="ville">
+            <input type="text" class="form-control" id="ville" name="ville">
         </div>
     </section>
     <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
