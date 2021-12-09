@@ -18,31 +18,45 @@
 </head>
 <body>
 
-		<div class="d-flex flex-row-reverse pr-4">
+
+	<div class="d-flex flex-row-reverse pr-4">
+		<c:choose>
+			<c:when test="${!empty sessionScope}">
+				
+			
+					<ul class="nav">
+					  <li class="nav-item">
+					    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+					  </li>
+			
+					</ul>
+				
+			</c:when>
+			
+			<c:when test="${empty sessionScope}">
+				<a class="btn btn-success" href="<c:url value = "/login"/>">S'inscrire/Se connecter</a>
+			
+			</c:when>
+			
 		
-			<ul class="nav">
-			  <li class="nav-item">
-			    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
-			  </li>
-	
-			</ul>
 		
-		</div>
-		
-		
-	
-	
-	<div class="d-flex justify-content-center">
-		<h1>Liste des enchères</h1>
+		</c:choose>
 	</div>
+		
+		
 	
-			<div class="container">
+	<div class="container">
+		<div class="d-flex justify-content-center">
+			<h1>Les objets sont nos amis</h1>
+		</div>
+	
+			
 				<div class="row">
 						<div class="col-4">
 							<form action="">
@@ -104,6 +118,10 @@
 							</form>
 						</div>
 					</div>
+				</div>
+				
+				
+				
 		<div>
 		<div class="card mb-3 col-2" style="max-width: 540px;">
 				  <div class="row no-gutters">
@@ -178,7 +196,7 @@
 		</div>	
 			  
 				
-			</div>
+			
 			
 		
 
