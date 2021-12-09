@@ -22,7 +22,8 @@ public class profilServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("user", new User("toto", "nom"));
+		// TODO Modifier le setAttribute car les élements à afficher dans la jps profil (venant de la servlet profil) sont en durs pour le moment.
+		request.setAttribute("user", new User("", "", "", "", "", "", ""));
 		request.getRequestDispatcher("/WEB-INF/JSP/profil.jsp").forward(request, response);
 	}
 

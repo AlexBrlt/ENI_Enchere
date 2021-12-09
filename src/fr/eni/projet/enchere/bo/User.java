@@ -124,12 +124,19 @@ public class User {
 		this.administrateur = administrateur;
 	}
 	
-	
-	public User(String pseudo, String name) {
+//	Constructeur pour le profil
+	public User(String pseudo, String name, String mail, String phone, String street, String postalCode, String city) {
 		super();
 		this.pseudo = pseudo;
 		this.name = name;
+		this.mail = mail;
+		this.phone = phone;
+		this.street = street;
+		this.postalCode = postalCode;
+		this.city = city;
 	}
+	
+	
 	// ToString
 	@Override
 	public String toString() {
