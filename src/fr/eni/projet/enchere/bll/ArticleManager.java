@@ -31,13 +31,13 @@ public class ArticleManager {
 
 		BLLException ex = new BLLException();
 
-		validationNo_article(nouvelArticle.getNo_article(), ex);
-		validationDate_Debut(nouvelArticle.getDate_debut_encheres(), ex);
-		validationDate_Fin(nouvelArticle.getDate_fin_encheres(), ex);
-		validationNo_Categorie(nouvelArticle.getNo_categorie(), ex);
+		validationNo_article(nouvelArticle.getNoArticle(), ex);
+		validationDate_Debut(nouvelArticle.getDateStartAuction(), ex);
+		validationDate_Fin(nouvelArticle.getDateEndAuction(), ex);
+		validationNo_Categorie(nouvelArticle.getNoCategorie(), ex);
 		validationDescription(nouvelArticle.getDescription(), ex);
-		validationNom_Article(nouvelArticle.getNom_article(), ex);
-		validationNo_utilisateur(nouvelArticle.getNo_utilisateur(), ex);
+		validationNom_Article(nouvelArticle.getNameArticle(), ex);
+		validationNo_utilisateur(nouvelArticle.getNoUser(), ex);
 
 		Article article = dao.insertArticle(nouvelArticle);
 
