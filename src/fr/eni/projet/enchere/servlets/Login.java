@@ -51,7 +51,7 @@ public class Login extends HttpServlet {
 		
 		List<User> utilisateurs = null;
 		try {
-			utilisateurs = UserManager.getInstance().detailPseudo(userID);
+			utilisateurs = UserManager.getInstance().SeLoguer(userID);
 		} catch (BLLException e) {
 
 			e.printStackTrace();
