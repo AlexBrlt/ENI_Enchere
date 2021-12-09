@@ -26,8 +26,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 
 	private final static String SQL_UPDATE_USER = "UPDATE UTILISATEURS SET " +
 			 "pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, ville=?, mot_de_passe=?, credit=?, administrateur=? " +
-			 "WHERE idArticle=?";
-	private final static String SQL_SELECT_USER_BY_PSEUDO = "select * from UTILISATEURS where pseudo = ? OR email = ? ";
+			 "WHERE no_utilisateur=?";
+	private final static String SQL_SELECT_USER_BY_PSEUDO = "SELECT * from UTILISATEURS where pseudo = ? OR email = ? ";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";												
 	
 	public UserDAOJdbcImpl() {
@@ -63,6 +63,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			String mot_de_passe = nouveauUser.getPassword();
 			int credit = nouveauUser.getCredit();
 			
+			
 			boolean administrateur = false;
 			administrateur = nouveauUser.isAdministrateur();
 			int value;
@@ -88,6 +89,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ordre.setString(9, mot_de_passe);
 			ordre.setInt(10, credit);
 			ordre.setInt(11, value);
+			
 
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
@@ -96,7 +98,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ResultSet rs = ordre.getGeneratedKeys();
 			if (rs.next()) {
 				no_user = rs.getInt(1); // 1 : première colonne du résultat (qui n'en contient qu'une)
-				nouveauUser.setNo_utilisateur(no_user);
+				
 			}
 
 		} catch (SQLException sqle) {
@@ -134,6 +136,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			String code_postal = usermodifie.getPostalCode();
 			String ville = usermodifie.getCity();
 			String mot_de_passe = usermodifie.getPassword();
+			no_user	=	usermodifie.getNo_utilisateur();
 			int credit = 100;
 //			int credit = usermodifie.getCredit();
 			
@@ -162,7 +165,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ordre.setString(9, mot_de_passe);
 			ordre.setInt(10, credit);
 			ordre.setInt(11, value);
-
+			ordre.setInt(12, no_user);
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
 
