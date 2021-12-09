@@ -123,6 +123,13 @@ public class User {
 		this.credit = credit;
 		this.administrateur = administrateur;
 	}
+	
+	
+	public User(String pseudo, String name) {
+		super();
+		this.pseudo = pseudo;
+		this.name = name;
+	}
 	// ToString
 	@Override
 	public String toString() {
