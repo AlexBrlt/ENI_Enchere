@@ -107,6 +107,22 @@ public class User {
 		this.administrateur = administrateur;
 	}
 	
+	
+	public User(String pseudo, String surname, String name, String mail, String phone, String street, String postalCode,
+			String city, String password, int credit, boolean administrateur) {
+		
+		this.pseudo = pseudo;
+		this.surname = surname;
+		this.name = name;
+		this.mail = mail;
+		this.phone = phone;
+		this.street = street;
+		this.postalCode = postalCode;
+		this.city = city;
+		this.password = password;
+		this.credit = credit;
+		this.administrateur = administrateur;
+	}
 	// ToString
 	@Override
 	public String toString() {

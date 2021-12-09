@@ -53,8 +53,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = nouveauUser.getPseudo();
-			String nom = nouveauUser.getName();
-			String prenom = nouveauUser.getSurname();
+			String nom = nouveauUser.getSurname();
+			String prenom = nouveauUser.getName();
 			String email = nouveauUser.getMail();
 			String telephone = nouveauUser.getPhone();
 			String rue = nouveauUser.getStreet();
@@ -126,8 +126,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = usermodifie.getPseudo();
-			String nom = usermodifie.getName();
-			String prenom = usermodifie.getSurname();
+			String nom = usermodifie.getSurname();
+			String prenom = usermodifie.getName();
 			String email = usermodifie.getMail();
 			String telephone = usermodifie.getPhone();
 			String rue = usermodifie.getStreet();

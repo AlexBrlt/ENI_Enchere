@@ -9,6 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.enchere.bll.UserManager;
+import fr.eni.projet.enchere.bo.User;
+import fr.eni.projet.enchere.dal.DALException;
+
 /**
  * Servlet implementation class Register
  */
@@ -31,6 +35,33 @@ public class Register extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+		
+		String pseudo = request.getParameter("pseudo");
+		
+		String surname = request.getParameter("surname");
+		String name = request.getParameter("name");
+		String mail = request.getParameter("mail");
+		String phone = request.getParameter("phone");
+		String street = request.getParameter("street");
+		String postalCode = request.getParameter("cp");
+		String city = request.getParameter("city");
+		String password = request.getParameter("password");
+		
+		System.out.println("salut");
+
+		User user = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, 100, false);
+
+		try {
+		UserManager.getInstance().ajouterUser(user);
+		} catch (DALException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		}
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Login.jsp");
+		dispatcher.forward(request, response);
+		
+		
+		
 	}
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html>
 <head>
 <meta content="text/html" charset="UTF-8">
@@ -13,7 +14,7 @@
 
 <h1>Créer votre compte client</h1>
 
-<form action="<%=getServletContext().getContextPath()%>/login" method="post">
+<form action="<c:url value="/register" />" method="post">
   <div class="row">
     <div class="col-lg-6">
         <div>
@@ -70,15 +71,14 @@
 
   </div>
 </div>
-
-</form>
-
 <div>
     <button type="submit">Créer</button>
 </div>
 
+</form>
+
 <div>
-    <a href="<%=getServletContext().getContextPath()%>/web-inf/jsp/login"><button>Annuler</button></a>
+    <a href="<c:url value="/web-inf/jsp/login" />"><button>Annuler</button></a>
 </div>
 
 
