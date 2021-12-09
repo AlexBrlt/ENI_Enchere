@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -10,7 +10,7 @@
 <body>
 
 <div>
-<h1> ENI-Enchères</h1>
+<h1> ENI-EnchÃ¨res</h1>
 </div>
 
 <div>
@@ -28,12 +28,12 @@
    	<input type="submit" value="Connexion" />
       <input type="checkbox" name="remember"> Se souvenir de moi
       <br>
-      <a href="#">Mot de passe oublié?</a>
+      <a href="#">Mot de passe oubliÃ©?</a>
   </div>
     </form>
     <div class="container">
       <br>
-   	<a href="<c:url value="/register" />"><input type="button" value="Créer un compte"/></a>
+   	<a href="<c:url value="/register" />"><input type="button" value="CrÃ©er un compte"/></a>
    	
   </div>
 
