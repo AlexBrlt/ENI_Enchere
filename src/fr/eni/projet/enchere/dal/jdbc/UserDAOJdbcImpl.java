@@ -191,7 +191,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO);
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO_AND_EMAIL);
 			ordre.setString(1, login);
 			ordre.setString(2, login);
 			
@@ -285,7 +285,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO);
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_EMAIL);
 			ordre.setString(1, mail);
 			
 			

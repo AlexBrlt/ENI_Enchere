@@ -21,13 +21,13 @@
     
     <section class="container w-25">
     
-    <form name="loginForm" method="post" action="<%=getServletContext().getContextPath()%>/login">
+    <form name="loginForm" method="post" action="<c:url value = "/login"/>">
 	<div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="Identifiant" required>
+      <input name = "userID" type="text" class="form-control" id="floatingInput" placeholder="Identifiant" required>
     </div>
     
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" required>
+      <input name ="password" type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" required>
     </div>
     
     <div class="checkbox mb-3">
@@ -44,7 +44,7 @@
    </form>
    
    <div>
-   <form name="loginForm" method="post" action="<%=getServletContext().getContextPath()%>/register">
+   <form name="loginForm" method="post" action="<c:url value = "/register"/>">
    	<button type="button" class="btn btn-primary w-100">Créer un compte</button>
    	</form>
    	
