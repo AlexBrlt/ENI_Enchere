@@ -125,6 +125,8 @@ public class ModifyUser extends HttpServlet {
 					}
 				}
 				
+				doGet(request, response);
+				
 			}
 			
 //			passwordCurrent, passwordNew, passwordRewrite
