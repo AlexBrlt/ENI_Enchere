@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bll.UserManager;
@@ -78,6 +79,8 @@ public class Login extends HttpServlet {
 			
 				if ((pseudo.equals(userID) || email.equals(userID)) && mot_de_passe.equals(password)) {
 					System.out.println("ici");
+					HttpSession session = request.getSession();
+					session.setAttribute("user", user);
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 					dispatcher.forward(request, response);
 					
