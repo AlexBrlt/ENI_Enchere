@@ -42,14 +42,14 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre = cnx.prepareStatement(SQL_INSERT_ARTICLE, PreparedStatement.RETURN_GENERATED_KEYS);
 			
 			// Paramétrer l'objet de commande
-			String nom_article = nouvelArticle.getNom_article();
+			String nom_article = nouvelArticle.getNameArticle();
 			String description = nouvelArticle.getDescription();
-			LocalDateTime date_debut_encheres = nouvelArticle.getDate_debut_encheres();
-			LocalDateTime date_fin_encheres = nouvelArticle.getDate_fin_encheres();
-			int prix_initial = nouvelArticle.getPrix_initial();
-			int prix_vente = nouvelArticle.getPrix_initial();
-			int no_utilisateur = nouvelArticle.getNo_utilisateur();
-			int no_categorie = nouvelArticle.getNo_categorie();
+			LocalDateTime date_debut_encheres = nouvelArticle.getDateStartAuction();
+			LocalDateTime date_fin_encheres = nouvelArticle.getDateEndAuction();
+			int prix_initial = nouvelArticle.getPriceStart();
+			int prix_vente = nouvelArticle.getPriceSold();
+			int no_utilisateur = nouvelArticle.getNoUser();
+			int no_categorie = nouvelArticle.getNoCategorie();
 			
 
 			ordre.setString(1, nom_article);
@@ -69,7 +69,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ResultSet rs = ordre.getGeneratedKeys();
 			if (rs.next()) {
 				no_Article = rs.getInt(1); // 1 : première colonne du résultat (qui n'en contient qu'une)
-				nouvelArticle.setNo_article(no_Article);;
+				nouvelArticle.setNoArticle(no_Article);;
 			}
 			
 			PreparedStatement ordre2 = cnx.prepareStatement(SQL_SELECT_USER_BY_ID);

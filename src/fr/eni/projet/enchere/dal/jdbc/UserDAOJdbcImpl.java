@@ -27,7 +27,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final static String SQL_UPDATE_USER = "UPDATE UTILISATEURS SET " +
 			 "pseudo=?, nom=?, prenom=?, email=?, telephone=?, rue=?, code_postal=?, ville=?, mot_de_passe=?, credit=?, administrateur=? " +
 			 "WHERE idArticle=?";
-	private final static String SQL_SELECT_USER_BY_PSEUDO = "select * from UTILISATEURS where pseudo = ? ";
+	private final static String SQL_SELECT_USER_BY_PSEUDO = "select * from UTILISATEURS where pseudo = ? OR email = ? ";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";												
 	
 	public UserDAOJdbcImpl() {
@@ -53,14 +53,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = nouveauUser.getPseudo();
-			String nom = nouveauUser.getNom();
-			String prenom = nouveauUser.getPrenom();
-			String email = nouveauUser.getEmail();
-			String telephone = nouveauUser.getTelephone();
-			String rue = nouveauUser.getRue();
-			String code_postal = nouveauUser.getCode_postal();
-			String ville = nouveauUser.getVille();
-			String mot_de_passe = nouveauUser.getMot_de_passe();
+			String nom = nouveauUser.getName();
+			String prenom = nouveauUser.getSurname();
+			String email = nouveauUser.getMail();
+			String telephone = nouveauUser.getPhone();
+			String rue = nouveauUser.getStreet();
+			String code_postal = nouveauUser.getPostalCode();
+			String ville = nouveauUser.getCity();
+			String mot_de_passe = nouveauUser.getPassword();
 			int credit = nouveauUser.getCredit();
 			
 			boolean administrateur = false;
@@ -126,14 +126,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			// Paramétrer l'objet de commande
 			String pseudo = usermodifie.getPseudo();
-			String nom = usermodifie.getNom();
-			String prenom = usermodifie.getPrenom();
-			String email = usermodifie.getEmail();
-			String telephone = usermodifie.getTelephone();
-			String rue = usermodifie.getRue();
-			String code_postal = usermodifie.getCode_postal();
-			String ville = usermodifie.getVille();
-			String mot_de_passe = usermodifie.getMot_de_passe();
+			String nom = usermodifie.getName();
+			String prenom = usermodifie.getSurname();
+			String email = usermodifie.getMail();
+			String telephone = usermodifie.getPhone();
+			String rue = usermodifie.getStreet();
+			String code_postal = usermodifie.getPostalCode();
+			String ville = usermodifie.getCity();
+			String mot_de_passe = usermodifie.getPassword();
 			int credit = 100;
 //			int credit = usermodifie.getCredit();
 			
@@ -181,13 +181,14 @@ public class UserDAOJdbcImpl implements UserDAO {
 	 * Le pseudo, nom, prénom, email, téléphone, rue, code postal, ville sont affichés.*/
 	
 	@Override
-	public List<User> selectByPseudo(String selectPseudo) throws DALException  {
+	public List<User> selectByPseudo(String login) throws DALException  {
 		List<User> utilisateurs = new ArrayList<User>();
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO);
-			ordre.setString(1, selectPseudo);
+			ordre.setString(1, login);
+			ordre.setString(2, login);
 			
 			
 			ResultSet rs = ordre.executeQuery();

@@ -31,12 +31,12 @@ public class UserManager {
 		BLLException ex = new BLLException();
 		
 		validationPseudo(nouveauUser.getPseudo(), ex);
-		validationNom(nouveauUser.getNom(), ex);
-		validationPrenom(nouveauUser.getPrenom(), ex);
-		validationTelephone(nouveauUser.getTelephone(), ex);
-		validationEmail(nouveauUser.getEmail(), ex);
-		validationVille(nouveauUser.getVille(), ex);
-		validationCode_postal(nouveauUser.getCode_postal(), ex);
+		validationNom(nouveauUser.getName(), ex);
+		validationPrenom(nouveauUser.getSurname(), ex);
+		validationTelephone(nouveauUser.getPhone(), ex);
+		validationEmail(nouveauUser.getMail(), ex);
+		validationVille(nouveauUser.getStreet(), ex);
+		validationCode_postal(nouveauUser.getPostalCode(), ex);
 		
 		
 		// TODO Vérification des régles métier
@@ -52,14 +52,13 @@ public class UserManager {
 		BLLException ex = new BLLException();
 		
 		validationPseudo(userModifie.getPseudo(), ex);
-		validationNom(userModifie.getNom(), ex);
-		validationPrenom(userModifie.getPrenom(), ex);
-		validationTelephone(userModifie.getTelephone(), ex);
-		validationEmail(userModifie.getEmail(), ex);
-		validationVille(userModifie.getVille(), ex);
-		validationCode_postal(userModifie.getCode_postal(), ex);
-		validationRue(userModifie.getRue(), ex);
-		
+		validationNom(userModifie.getName(), ex);
+		validationPrenom(userModifie.getSurname(), ex);
+		validationTelephone(userModifie.getPhone(), ex);
+		validationEmail(userModifie.getMail(), ex);
+		validationVille(userModifie.getCity(), ex);
+		validationCode_postal(userModifie.getPostalCode(), ex);
+		validationRue(userModifie.getStreet(), ex);
 		
 		
 		User utilisateur = dao.updateUser(userModifie) ;
@@ -91,17 +90,17 @@ public class UserManager {
 		
 	}
 	
-	public List<User> detailPseudo(String userPseudo_) throws BLLException {
+	public List<User> detailPseudo(String user_Pseudo) throws BLLException {
 		BLLException ex = new BLLException();
 		
-		validationPseudo(userPseudo_, ex);
+		validationPseudo(user_Pseudo, ex);
 		
 		if(ex.hasErreur()) {
 			throw ex;
 		}
 		
 		try {
-			return dao.selectByPseudo(userPseudo_);
+			return dao.selectByPseudo(user_Pseudo);
 		} catch (DALException e) {
 			e.printStackTrace();
 			ex.ajouterErreur(e);
