@@ -36,7 +36,7 @@
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="street">Rue</label>
-	    	<input type="email" class="form-control" id="street" name="street" value="<c:out value="${sessionScope.user.street}"></c:out>">
+	    	<input type="text" class="form-control" id="street" name="street" value="<c:out value="${sessionScope.user.street}"></c:out>">
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="email">Adresse email</label>

@@ -129,7 +129,7 @@ public class ModifyUser extends HttpServlet {
 				
 			}
 			
-//			passwordCurrent, passwordNew, passwordRewrite
+
 		}
 		
 
