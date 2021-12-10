@@ -90,7 +90,27 @@ public class UserManager {
 		
 	}
 	
-	public List<User> detailPseudo(String user_Pseudo) throws BLLException {
+	public List<User> SeLoguer(String user_Pseudo_mail) throws BLLException {
+		BLLException ex = new BLLException();
+		
+		validationPseudo(user_Pseudo_mail, ex);
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			return dao.selectBypseudoAndMail(user_Pseudo_mail);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+		
+	}
+	
+	public List<User> getByPseudo(String user_Pseudo) throws BLLException {
 		BLLException ex = new BLLException();
 		
 		validationPseudo(user_Pseudo, ex);
@@ -110,7 +130,25 @@ public class UserManager {
 		
 	}
 	
-	
+	public List<User> getByMail(String user_mail) throws BLLException {
+		BLLException ex = new BLLException();
+		
+		validationPseudo(user_mail, ex);
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			return dao.selectByMail(user_mail);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+		
+	}
 
 	private void validationId(int no_user, BLLException ex) throws BLLException {
 		if(no_user < 1) {
@@ -159,6 +197,12 @@ public class UserManager {
 		}
 		
 		private void validationVille(String ville, BLLException ex) {
+			if(ville == null || ville.isEmpty()|| ville.length() > 50) {
+				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 50"));
+			}	
+		}
+		
+		private void validationPseudoAndMailUnique(String ville, BLLException ex) {
 			if(ville == null || ville.isEmpty()|| ville.length() > 50) {
 				ex.ajouterErreur(new ParameterException("Le nom est obligatoire et doit avoir une longueur comprise entre 1 et 50"));
 			}	

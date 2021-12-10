@@ -20,7 +20,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	private static final String SQL_INSERT_RETRAIT_ARTICLE = "INSERT INTO RETRAITS VALUES ( ?, ?, ?, ?)";
 	private static final String SQL_SELECT_BY_CATEGORiE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?";
-	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE like ?";
+	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article like ?";
 	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE like ? AND WHERE no_categorie = ?";
 	
 	public Article insertArticle(Article nouvelArticle) {
