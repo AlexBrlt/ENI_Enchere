@@ -55,6 +55,10 @@ public class ModifyArticle extends HttpServlet {
 		int priceStart = Integer.valueOf(request.getParameter(PRICE_START));
 		Integer priceSold = null; // On peut modifier l'article puisqu'il n'est pas vendu
 		
+		// On remplace le character T des strings date pour pouvoir les parse
+		dateStartAuction = dateStartAuction.replace('T', ' ');
+		dateEndAuction = dateEndAuction.replace('T', ' ');
+		
 		// BON CODE, SERT A RECUPERER LE NUMERO UTILISATEUR
 //		HttpSession session = request.getSession();
 //		User user = (User) session.getAttribute(USER);

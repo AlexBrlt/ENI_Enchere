@@ -58,8 +58,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			int no_categorie = nouvelArticle.getNoCategorie();
 			
 			
-			
-			
 			ordre.setString(1, nom_article);
 			ordre.setString(2, description);
 			ordre.setTimestamp(3, Timestamp.valueOf(date_debut_encheres));
