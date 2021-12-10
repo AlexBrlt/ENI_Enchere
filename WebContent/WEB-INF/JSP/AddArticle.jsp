@@ -10,11 +10,12 @@
 <body class="bg-light">
     <section class="container text-center mb-4">
         <h1> Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ? </h1>
-    </section>
+    </section> 
+    
 
     <section class="container border bg-white p-4 mb-4 w-50">
         <h2>Informations article</h2>
-        <form>
+        <form method="post" action="AddArticle">
             <div class="mb-3 form-group">
                 <label for="nameArticle" class="form-label">Nom de l'article</label>
                 <input type="text" class="form-control" id="nameArticle" name="nameArticle">
@@ -73,7 +74,7 @@
     </section>
     <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
         <button type="button" class="btn btn-danger">Annuler</button>
-        <button type="button" class="btn btn-success">Mettre en ligne</button>
+        <button type="submit" class="btn btn-success">Mettre en ligne</button>
     </section>
 </body>
 </html>

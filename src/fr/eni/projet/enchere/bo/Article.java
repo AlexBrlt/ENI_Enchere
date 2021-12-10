@@ -14,6 +14,18 @@ public class Article {
 	private int noUser;
 	private int noCategorie;
 	
+	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
+			int priceStart, int noCategorie) {
+		super();
+		this.nameArticle = nameArticle;
+		this.description = description;
+		this.dateStartAuction = dateStartAuction;
+		this.dateEndAuction = dateEndAuction;
+		this.priceStart = priceStart;
+		this.noCategorie = noCategorie;
+	}
+
+	
 	//TODO Un article a besoin d'une catégorie
 	//TODO Un article a besoin d'un point de retrait
 	//TODO Un article a besoin d'un vendeur

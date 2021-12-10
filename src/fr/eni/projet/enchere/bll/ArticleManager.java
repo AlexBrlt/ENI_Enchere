@@ -28,7 +28,6 @@ public class ArticleManager {
 	}
 
 	public Article ajouterArticle(Article nouvelArticle) throws DALException, BLLException {
-
 		BLLException ex = new BLLException();
 
 		validationNo_article(nouvelArticle.getNoArticle(), ex);
