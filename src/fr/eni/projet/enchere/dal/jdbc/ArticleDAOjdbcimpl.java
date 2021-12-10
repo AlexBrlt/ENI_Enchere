@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import fr.eni.projet.enchere.bo.Article;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.ArticleDAO;
@@ -17,10 +18,12 @@ import fr.eni.projet.enchere.dal.DALException;
 public class ArticleDAOjdbcimpl implements ArticleDAO {
 
 	private static final String SQL_INSERT_ARTICLE = "INSERT INTO ARTICLES_VENDUS VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
+	private static final String SQL_MODIFY_ARTICLE = "UPDATE ARTICLES_VENDUS SET nom_article = ?, description =?, date_debut_encheres = ?, "
+			+ "date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?";
 	private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	private static final String SQL_INSERT_RETRAIT_ARTICLE = "INSERT INTO RETRAITS VALUES ( ?, ?, ?, ?)";
 	private static final String SQL_SELECT_BY_CATEGORiE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?";
-	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE nom_article like ?";
+	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE like ?";
 	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE like ? AND WHERE no_categorie = ?";
 	
 	public Article insertArticle(Article nouvelArticle) {
@@ -31,9 +34,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Inserer L'article
-		
-		
-		
 
 		// Obtient une objet de commande (PreparedStatement) = ordre SQL
 		int no_Article = -1;
@@ -51,7 +51,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			int no_utilisateur = nouvelArticle.getNoUser();
 			int no_categorie = nouvelArticle.getNoCategorie();
 			
-
 			ordre.setString(1, nom_article);
 			ordre.setString(2, description);
 			ordre.setDate(3, Date.valueOf(date_debut_encheres.toLocalDate()));
@@ -61,7 +60,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre.setInt(7, no_utilisateur);
 			ordre.setInt(8, no_categorie);
 			
-
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
 
@@ -74,7 +72,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			
 			PreparedStatement ordre2 = cnx.prepareStatement(SQL_SELECT_USER_BY_ID);
 			ordre.setInt(1, no_utilisateur);
-			
 			
 			ResultSet rs2 = ordre2.executeQuery();
 			while(rs.next()) {
@@ -97,18 +94,38 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre3.setString(4, ville );
 			
 			ordre3.executeUpdate();
-			
-			
-			
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 		}
 		
-
 		return nouvelArticle;
-
 	}
+	
+	public void modifyArticle (Article article) throws DALException {
+		Connection cnx = ConnectionProvider.getConnection();
+		
+		try {
+			PreparedStatement pstmt = cnx.prepareStatement(SQL_MODIFY_ARTICLE);
+			pstmt.setString(1, article.getNameArticle());
+			pstmt.setString(2, article.getDescription());
+			pstmt.setDate(3, Date.valueOf(article.getDateStartAuction().toLocalDate()));
+			pstmt.setDate(4, Date.valueOf(article.getDateEndAuction().toLocalDate()));
+			pstmt.setInt(5, article.getPriceStart());
+			pstmt.setNull(6, java.sql.Types.NULL);
+			pstmt.setInt(7, article.getNoUser());
+			pstmt.setInt(8, article.getNoCategorie());
+			pstmt.setInt(9, article.getNoArticle());
+			
+			pstmt.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+		}
+	}
+	
 	
 	public List<Article> selectByCategorie(int no_categorie) throws DALException  {
 		List<Article> articles = new ArrayList<Article>();
