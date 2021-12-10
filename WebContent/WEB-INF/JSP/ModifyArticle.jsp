@@ -3,6 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
+	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <meta charset="UTF-8">
 <title>Modification d'un article</title>
 </head>
@@ -14,7 +17,7 @@
 
     <section class="container border bg-white p-4 mb-4 w-50">
         <h2>Informations article</h2>
-        <form>
+        <form action="<c:url value = "/ModifyArticle"/>" method="post">
             <div class="mb-3 form-group">
                 <label for="nameArticle" class="form-label">Nom de l'article</label>
                 <input type="text" class="form-control" id="nameArticle" name="nameArticle" value="${requestScope.article.nameArticle }">
@@ -52,6 +55,10 @@
                 <input type="date" class="form-control" id="EndAuction" name="EndAuction" value="${!empty requestScope.article.dateEndAuction ? requestScope.article.dateEndAuction : '' }">
                 <div id="helpAuctionEnd" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
+     <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
+        <button type="button" class="btn btn-danger">Annuler</button>
+        <button type="submit" class="btn btn-success">Mettre en ligne</button>
+    </section>
         </form>
     </section>
 
@@ -72,9 +79,6 @@
             <input type="text" class="form-control" id="ville" name="ville" value="${sessionScope.user.city }">
         </div>
     </section>
-    <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
-        <button type="button" class="btn btn-danger">Annuler</button>
-        <button type="button" class="btn btn-success">Mettre en ligne</button>
-    </section>
+
 </body>
 </html>
