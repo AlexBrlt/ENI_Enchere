@@ -13,7 +13,7 @@
 
 <section class="container">
 	<div class="row">
-		<p class="display-4"><c:out value="${sessionScope.user.pseudo }, gardez vos informations à jour"></c:out></p>
+		<p class="display-4"><c:out value="${sessionScope.user.pseudo } Gardez vos informations à jour"></c:out></p>
 	</div>
 	<div class="row">
 		<p>Vous possédez : </p><p class="text-success"><c:out value="${sessionScope.user.credit } crédits"></c:out></p>
@@ -55,13 +55,13 @@
 	    	<input type="text" class="form-control" id="city" name="city" value="<c:out value="${sessionScope.user.city}"></c:out>">
 	  	</div>
 	
-	  	<button type="submit" class="btn btn-success">Mettre à jour</button>
+	  	<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
 	</form>
 </section>
 
 <section class="container border">
 	<form action="ModifyUser" method="post">
-		<h3>Sécutité</h3>
+		<h3>Sécurité</h3>
 		
 		<div class="form-group">
 	    	<label for="passwordCurrent">Mot de passe actuel</label>
@@ -81,13 +81,10 @@
 	    	<label for="passwordRewrite">Retaper le mot de passe</label>
 	    	<input type="password" class="form-control" id="passwordRewrite" name="passwordRewrite">
 	  	</div>
-	  	<button type="submit" class="btn btn-success">Mettre à jour</button>
+	  	<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
 	 </form>
 
 </section>
-
-
-
 
 </body>
 </html>

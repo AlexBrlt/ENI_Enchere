@@ -44,76 +44,55 @@
  	<div>
  		<h1 class="container text-center">Mon compte</h1>
 	</div>
-
+<section class="container border">
   <form action="<%=request.getContextPath()%>/profil" method="get"> 
 
-	<div class="row justify-content-center">
+	<div class="form-group">
 		<label for="pseudo">Pseudo</label>
-		<input value="${user.pseudo}" name="pseudo" type="text" disabled>
+		<input class="form-control" value="${user.pseudo}" name="pseudo" type="text" disabled>
  	</div>
  		</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="surname">Nom</label>
- 		<input value="${user.surname}" name="surname" type="text" disabled>
+ 		<input class="form-control" value="${user.surname}" name="surname" type="text" disabled>
  	</div>
   		</br>
-	<div class="row justify-content-center">
+	<div class="form-group">
  		<label for="name">Prénom</label>
- 		<input value="${user.name}" name="name" type="text" disabled>
+ 		<input class="form-control" value="${user.name}" name="name" type="text" disabled>
  	</div>
  	 	</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="mail">Email</label>
- 		<input value="${user.mail}" name="mail" type="text" disabled>
+ 		<input class="form-control" value="${user.mail}" name="mail" type="text" disabled>
  	</div>
  	 	</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="phone">Téléphone</label>
- 		<input value="${user.phone}" name="phone" type="text" disabled>
+ 		<input class="form-control" value="${user.phone}" name="phone" type="text" disabled>
  	</div>
  		</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="street">Rue</label>
- 		<input value="${user.street}" name="street" type="text" disabled>
+ 		<input class="form-control" value="${user.street}" name="street" type="text" disabled>
  	</div>
  		</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="postalCode">Code Postal</label>
- 		<input value="${user.postalCode}" name="postalCode" type="text" disabled>
+ 		<input class="form-control" value="${user.postalCode}" name="postalCode" type="text" disabled>
  	</div>
  		</br>
- 	<div class="row justify-content-center">
+ 	<div class="form-group">
  		<label for="city">Ville </label>
- 		<input value="${user.city}" name="city" type="text" disabled>
+ 		<input class="form-control" value="${user.city}" name="city" type="text" disabled>
  	</div>
  	 	</br>
- 	<div  class="row justify-content-center">
- 	<button type="submit" class="btn btn-success">Modifier</button>
+ 	<div  class="form-group">
+ 	<button type="submit" class="w-25 btn btn-success">Modifier</button>
  	</div>
- 	
+ </section>
  </form>
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+
  
 </div>
 </body>

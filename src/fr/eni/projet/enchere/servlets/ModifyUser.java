@@ -132,12 +132,5 @@ public class ModifyUser extends HttpServlet {
 
 		}
 		
-
-		
-		
-		
-
-		
-		
 	}
 }

@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +23,13 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			+ "date_fin_encheres = ?, prix_initial = ?, prix_vente = ?, no_utilisateur = ?, no_categorie = ? WHERE no_article = ?";
 	private static final String SQL_SELECT_USER_BY_ID = "SELECT * FROM UTILISATEURS WHERE no_utilisateur = ? ";
 	private static final String SQL_INSERT_RETRAIT_ARTICLE = "INSERT INTO RETRAITS VALUES ( ?, ?, ?, ?)";
-	private static final String SQL_SELECT_BY_CATEGORiE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?";
+	private static final String SQL_SELECT_BY_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE no_categorie = ?";
 	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE like ?";
 	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE like ? AND WHERE no_categorie = ?";
+	
+	
+	
+	
 	
 	public Article insertArticle(Article nouvelArticle) {
 		String pseudo;String nom;String prenom;String email;String telephone;String rue = null;
@@ -51,12 +56,15 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			int no_utilisateur = nouvelArticle.getNoUser();
 			int no_categorie = nouvelArticle.getNoCategorie();
 			
+			
+			
+			
 			ordre.setString(1, nom_article);
 			ordre.setString(2, description);
-			ordre.setDate(3, Date.valueOf(date_debut_encheres.toLocalDate()));
-			ordre.setDate(4, Date.valueOf(date_fin_encheres.toLocalDate()));
+			ordre.setTimestamp(3, Timestamp.valueOf(date_debut_encheres));
+			ordre.setTimestamp(4, Timestamp.valueOf(date_fin_encheres));
 			ordre.setInt(5, prix_initial);
-			ordre.setInt(6, prix_vente);
+			ordre.setNull(6, java.sql.Types.INTEGER);
 			ordre.setInt(7, no_utilisateur);
 			ordre.setInt(8, no_categorie);
 			
@@ -71,19 +79,20 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			}
 			
 			PreparedStatement ordre2 = cnx.prepareStatement(SQL_SELECT_USER_BY_ID);
-			ordre.setInt(1, no_utilisateur);
-			
+			ordre2.setInt(1, no_utilisateur);
+			System.out.println(no_utilisateur);
 			ResultSet rs2 = ordre2.executeQuery();
-			while(rs.next()) {
+			while(rs2.next()) {
 				
-				 pseudo = rs.getString("pseudo");
-				 nom = rs.getString("nom");
-				 prenom = rs.getString("prenom");
-				 email = rs.getString("email");
-				 telephone = rs.getString("telephone");
-				 rue = rs.getString("rue");
-				 code_postal = rs.getString("code_postal");
-				 ville = rs.getString("ville");
+				 pseudo = rs2.getString("pseudo");
+				 System.out.println(pseudo);
+				 nom = rs2.getString("nom");
+				 prenom = rs2.getString("prenom");
+				 email = rs2.getString("email");
+				 telephone = rs2.getString("telephone");
+				 rue = rs2.getString("rue");
+				 code_postal = rs2.getString("code_postal");
+				 ville = rs2.getString("ville");
 
 			}
 			
@@ -102,6 +111,9 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		return nouvelArticle;
 	}
 	
+	
+	
+	
 	public void modifyArticle (Article article) throws DALException {
 		Connection cnx = ConnectionProvider.getConnection();
 		
@@ -109,8 +121,11 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			PreparedStatement pstmt = cnx.prepareStatement(SQL_MODIFY_ARTICLE);
 			pstmt.setString(1, article.getNameArticle());
 			pstmt.setString(2, article.getDescription());
-			pstmt.setDate(3, Date.valueOf(article.getDateStartAuction().toLocalDate()));
-			pstmt.setDate(4, Date.valueOf(article.getDateEndAuction().toLocalDate()));
+			pstmt.setTimestamp(3, Timestamp.valueOf(article.getDateStartAuction()));
+			pstmt.setTimestamp(3, Timestamp.valueOf(article.getDateEndAuction()));
+			
+			
+			
 			pstmt.setInt(5, article.getPriceStart());
 			pstmt.setNull(6, java.sql.Types.NULL);
 			pstmt.setInt(7, article.getNoUser());
@@ -132,7 +147,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORiE);
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORIE);
 			ordre.setInt(1, no_categorie);
 			
 			
@@ -167,7 +182,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORiE);
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE);
 			ordre.setString(1,"%"+motcle+"%");
 			
 			
@@ -202,7 +217,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORiE);
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_CATEGORIE);
 			ordre.setString(1,"%"+motcle+"%");
 			ordre.setInt(2, no_category);
 			
@@ -232,6 +247,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		return articles;
 	}
+	
+	
 	
 	
 	

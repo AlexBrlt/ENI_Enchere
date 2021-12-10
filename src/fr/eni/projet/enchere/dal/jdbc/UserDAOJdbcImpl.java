@@ -30,7 +30,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final static String SQL_SELECT_USER_BY_PSEUDO_AND_EMAIL = "SELECT * from UTILISATEURS where pseudo = ? OR email = ? ";
 	private final static String SQL_SELECT_USER_BY_PSEUDO = "SELECT * from UTILISATEURS where pseudo = ? ";
 	private final static String SQL_SELECT_USER_BY_EMAIL = "SELECT * from UTILISATEURS where email = ? ";
-	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";												
+	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";		
+	
 	
 	public UserDAOJdbcImpl() {
 
