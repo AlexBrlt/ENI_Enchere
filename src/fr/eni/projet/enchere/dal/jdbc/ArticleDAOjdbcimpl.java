@@ -27,6 +27,10 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String SQL_SELECT_BY_MOTCLE = "SELECT * FROM ARTICLES_VENDUS WHERE like ?";
 	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE = "SELECT * FROM ARTICLES_VENDUS WHERE like ? AND WHERE no_categorie = ?";
 	
+	
+	
+	
+	
 	public Article insertArticle(Article nouvelArticle) {
 		String pseudo;String nom;String prenom;String email;String telephone;String rue = null;
 		String code_postal = null;String ville = null;
@@ -60,7 +64,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre.setTimestamp(3, Timestamp.valueOf(date_debut_encheres));
 			ordre.setTimestamp(4, Timestamp.valueOf(date_fin_encheres));
 			ordre.setInt(5, prix_initial);
-			ordre.setInt(6, prix_vente);
+			ordre.setNull(6, java.sql.Types.INTEGER);
 			ordre.setInt(7, no_utilisateur);
 			ordre.setInt(8, no_categorie);
 			
@@ -242,6 +246,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		return articles;
 	}
+	
+	
 	
 	
 	

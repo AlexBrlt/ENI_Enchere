@@ -2,6 +2,8 @@ package fr.eni.projet.enchere.bo;
 
 import java.time.LocalDateTime;
 
+import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
+
 public class Article {
 
 	private int noArticle;
@@ -13,6 +15,7 @@ public class Article {
 	private int priceSold;
 	private int noUser;
 	private int noCategorie;
+	
 	
 	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
 			int priceStart, int noCategorie) {

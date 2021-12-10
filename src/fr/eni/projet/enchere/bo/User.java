@@ -1,5 +1,8 @@
 package fr.eni.projet.enchere.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User {
 	
 	private int no_utilisateur;
@@ -14,10 +17,20 @@ public class User {
 	private String password;
 	private int credit;
 	private boolean administrateur;
+	private List<Article> list_article = new ArrayList<Article>();
+	private List<Auction> list_Auction = new ArrayList<Auction>();
 	
 	//GETTER & SETTER
+	
+	
 	public int getNo_utilisateur() {
 		return no_utilisateur;
+	}
+	public List<Article> getList_article() {
+		return list_article;
+	}
+	public void setList_article(List<Article> list_article) {
+		this.list_article = list_article;
 	}
 	public void setNo_utilisateur(int no_utilisateur) {
 		this.no_utilisateur = no_utilisateur;
@@ -137,6 +150,15 @@ public class User {
 	}
 	
 	
+	
+	
+	public User(int no_utilisateur, String pseudo, String surname, String name, String mail, String phone, String street,
+		String postalCode, String city, String password, int credit, boolean administrateur, List<Article> list_article,
+		List<Auction> list_Auction) {
+	this(pseudo, surname, name, mail, phone, street, postalCode, city, password, credit, administrateur);
+	this.list_article = list_article;
+	this.list_Auction = list_Auction;
+}
 	// ToString
 	@Override
 	public String toString() {
