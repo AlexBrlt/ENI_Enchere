@@ -14,38 +14,32 @@
 <body class="bg-light">
 
 	<div class="d-flex flex-row-reverse pr-4">
-		<c:choose>
-			<c:when test="${!empty sessionScope}">
-				
-			
-					<ul class="nav">
-					  <li class="nav-item">
-					    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
-					  </li>
-			
-					</ul>
-				
-			</c:when>
-			
-			<c:when test="${empty sessionScope}">
-				<a class="btn btn-success" href="<c:url value = "/login"/>">S'inscrire/Se connecter</a>
-			
-			</c:when>
-		</c:choose>
+		
+			<ul class="nav">
+			 <li class="nav-item">
+			    <a class="nav-link active" href="<c:url value = "/selling"/>">Enchères</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link disabled" href="<c:url value = "/profil"/>">Mon profil</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+			  </li>
+	
+			</ul>
+		
 	</div>
+	
  <!--  un get pour lire les informations du profil, pas de modifications de données sur cette page -->
  <div>
  	<div>
  		<h1 class="container text-center">Mon compte</h1>
 	</div>
 <section class="container border">
-  <form action="<%=request.getContextPath()%>/profil" method="get"> 
+  <form action="/profil" method="get"> 
 
 	<div class="form-group">
 		<label for="pseudo">Pseudo</label>
