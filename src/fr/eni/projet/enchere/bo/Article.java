@@ -2,8 +2,6 @@ package fr.eni.projet.enchere.bo;
 
 import java.time.LocalDateTime;
 
-import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-
 public class Article {
 
 	private int noArticle;
