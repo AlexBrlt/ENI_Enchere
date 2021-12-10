@@ -56,7 +56,7 @@ public class AddArticleServlet extends HttpServlet {
 		
 		
 		//Ajouter Article
-		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie);
+		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie, 1);
 	
 			try {
 				ArticleManager.getInstance().ajouterArticle(article);

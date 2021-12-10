@@ -18,14 +18,15 @@ public class Article {
 	
 	
 	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
-			int priceStart, int noCategorie) {
-		super();
+			int priceStart, int noCategorie, int noUser) {
+		
 		this.nameArticle = nameArticle;
 		this.description = description;
 		this.dateStartAuction = dateStartAuction;
 		this.dateEndAuction = dateEndAuction;
 		this.priceStart = priceStart;
 		this.noCategorie = noCategorie;
+		this.noUser=noUser;
 	}
 
 	

@@ -79,19 +79,20 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			}
 			
 			PreparedStatement ordre2 = cnx.prepareStatement(SQL_SELECT_USER_BY_ID);
-			ordre.setInt(1, no_utilisateur);
-			
+			ordre2.setInt(1, no_utilisateur);
+			System.out.println(no_utilisateur);
 			ResultSet rs2 = ordre2.executeQuery();
-			while(rs.next()) {
+			while(rs2.next()) {
 				
-				 pseudo = rs.getString("pseudo");
-				 nom = rs.getString("nom");
-				 prenom = rs.getString("prenom");
-				 email = rs.getString("email");
-				 telephone = rs.getString("telephone");
-				 rue = rs.getString("rue");
-				 code_postal = rs.getString("code_postal");
-				 ville = rs.getString("ville");
+				 pseudo = rs2.getString("pseudo");
+				 System.out.println(pseudo);
+				 nom = rs2.getString("nom");
+				 prenom = rs2.getString("prenom");
+				 email = rs2.getString("email");
+				 telephone = rs2.getString("telephone");
+				 rue = rs2.getString("rue");
+				 code_postal = rs2.getString("code_postal");
+				 ville = rs2.getString("ville");
 
 			}
 			
