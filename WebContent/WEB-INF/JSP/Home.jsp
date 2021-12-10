@@ -49,21 +49,62 @@
 		</c:choose>
 	</div>
 		
-    <section class="container text-center"><h1>Bon retour nom utilisateur,<br> que cherchez-vous aujourd'hui ? </h1></section>
-
+    <section class="container text-center">
+    <h1>Bon retour nom utilisateur,<br> que cherchez-vous aujourd'hui ? </h1>
+</section>
     <section class="container border bg-white pt-3 mt-4 w-50">
-        <div class="row justify-content-center">
-            <form class=" col-6">
-                <div class="mb-3 form-group">
-                    <label for="nameArticle" class="form-label">Rechercher</label>
-                    <input type="text" class="form-control" id="nameArticle">
-                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+            <section class="container">
+                <div class="row">
+                    <form class=" col-6">
+                        <div class="mb-3 form-group">
+                            <label for="nameArticle" class="form-label">Rechercher</label>
+                            <input type="text" class="form-control" id="nameArticle">
+                            <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+                        </div>
+                    </form>
+                    <form class=" col-6">
+                        <div class="form-group">
+                            <label for="categories">Choisir une catégorie</label>
+                            <select class="form-control" id="categories">
+                                <option>Ameublement</option>
+                                <option>Informatique</option>
+                                <option>Vêtements</option>
+                                <option>Sport&Loisirs</option>
+                            </select>
+                        </div>
+                    </form>
                 </div>
-                <div>
+            </section>
+        <section class="container">
+            <div class="row">
+                <div class="col-6">
                     <ul class="p-0">
                         <li  class="form-check p-0">
-                            <input type="radio" id="name">
-                            <label for="name">Achat</label>
+                            <input type="radio" id="ventes" name="choices">
+                            <label for="ventes">Mes ventes</label>
+                        </li>
+                        <ul class="p-0">
+                            <li  class="form-check">
+                                <input type="checkbox" id="name">
+                                <label for="name"> Mes ventes en cours </label>
+                            </li>
+                            <li  class="form-check">
+                                <input type="checkbox" id="name">
+                                <label for="name">Ventes non débutées</label>
+                            </li>
+                            <li  class="form-check">
+                                <input type="checkbox" id="name">
+                                <label for="name">Ventes terminées</label>
+                            </li>
+                        </ul>
+                    </ul>
+                    <button type="button" class="btn btn-success mb-4">Rechercher</button>
+                </div>
+                <div class="col-6">
+                    <ul class="p-0">
+                        <li  class="form-check p-0">
+                            <input type="radio" id="achat" name="choices">
+                            <label for="achat">Achat</label>
                         </li>
                         <ul class="p-0">
                             <li  class="form-check">
@@ -81,47 +122,11 @@
                         </ul>
                     </ul>
                 </div>
-                <button type="button" class="btn btn-success mb-4">Rechercher</button>
-            </form>
-            <form class=" col-6">
-                <div class="form-group">
-                    <label for="categories">Choisir une catégorie</label>
-                    <select class="form-control" id="categories">
-                        <option>Ameublement</option>
-                        <option>Informatique</option>
-                        <option>Vêtements</option>
-                        <option>Sport&Loisirs</option>
-                    </select>
-
-                </div>
-                <div>
-                    <ul class="p-0">
-                        <li  class="form-check p-0">
-                            <input type="radio" id="name">
-                            <label for="name">Mes ventes</label>
-                        </li>
-                        <ul class="p-0">
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name"> Mes ventes en cours </label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name">Ventes non débutées</label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name">Ventes terminées</label>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
-            </form>
-        </div>
+            </div>
+        </section>
     </section>
-
     <section class="container pt-3 mt-4">
-    	<h2>Résultats</h2>
+        <h2>Résultats</h2>
     </section>
     <section class="container pt-3 mt-4">
         <div class="row">
