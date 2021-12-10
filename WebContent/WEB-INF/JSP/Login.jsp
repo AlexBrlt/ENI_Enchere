@@ -8,29 +8,25 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" 
 	integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   </head>
-  <body class="text-center">
+  <body class="text-center mt-5 pt-5">
   
-    <section class="container">
-    <img class="mb-4" src="/WEB-INF/images/Logo_encheres.svg" alt="" width="75" height="75">
-    	<h1 class="h3 mb-3 fw-normal">Veuillez vous connecter</h1>
+    <section class="container w-50 pt-5">
+    	<img class="mt-5 mb-4" src="images/Logo_encheres.svg" alt="Logo">
+    	<h1 class="h3 mb-4 fw-normal">Veuillez vous connecter</h1>
     </section>
-    <section class="container">
-    	<div class="form-signin">
+
+    <section class="container w-25" >
+    	<div class="row justify-content-center">
+        	<form class="w-100 col-6" name="loginForm" method="post" action="<c:url value = "/login"/>">
+		<div class="form-floating mb-2">
+     		 <input name = "userID" type="text" class="form-control" id="floatingInput" placeholder="Identifiant" required>
     	</div>
-    </section>
-    
-    <section class="container w-25">
-    
-    <form name="loginForm" method="post" action="<c:url value = "/login"/>">
-	<div class="form-floating">
-      <input name = "userID" type="text" class="form-control" id="floatingInput" placeholder="Identifiant" required>
-    </div>
-    
-    <div class="form-floating">
+   
+    <div class="form-floating mb-1">
       <input name ="password" type="password" class="form-control" id="floatingPassword" placeholder="Mot de passe" required>
     </div>
     
-    <div class="checkbox mb-3">
+    <div class="checkbox mb-1">
       <label>
         <input type="checkbox" value="remember-me"> Se souvenir de moi
         <br>
@@ -39,19 +35,21 @@
     </div>
     	
    <div>
-        <button type="submit" class="btn btn-success w-100">Connexion</button>
+        <button type="submit" class="btn btn-success w-100 mb-2">Connexion</button>
    </div>
    </form>
-   
-   <div>
-   <form name="loginForm" method="post" action="<c:url value = "/register"/>">
-   	<button type="button" class="btn btn-primary w-100">Créer un compte</button>
-   	</form>
-   	
+    </div>
+    </section>
+
+   <section class="container w-25">
+   <div class="row justify-content-center">
+   <div class="w-100 col-6">
+   	<a class="btn btn-primary w-100 mb-1" href="<c:url value = "/register"/>">Créer un compte</a>
    	        <br>
 	<a href="/WEB-INF/Home.jsp">Retour à la page d'accueil</a>
+	</div>
    </div>
-   <p class="mt-5 mb-3 text-muted">&copy; 2021</p>
-</section>
+   <p class="mt-5 mb-3 text-muted">&copy; 2021 - Les objets sont nos amis</p>
+	</section>
   </body>
 </html>
