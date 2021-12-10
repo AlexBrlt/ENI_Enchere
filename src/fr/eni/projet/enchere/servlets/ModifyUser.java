@@ -83,7 +83,18 @@ public class ModifyUser extends HttpServlet {
 			User userModifie = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
 		
 			try {
+				
 				UserManager.getInstance().mettreajourUser(userModifie);
+				userInSession.setPseudo(pseudo);
+				userInSession.setName(name);
+				userInSession.setNom(surname);
+				userInSession.setStreet(street);
+				userInSession.setMail(mail);
+				userInSession.setPhone(phone);
+				userInSession.setPostalCode(postalCode);
+				userInSession.setCity(city);
+				
+				session.setAttribute("user", userInSession);
 			} catch (DALException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -119,6 +130,10 @@ public class ModifyUser extends HttpServlet {
 					
 					try {
 						UserManager.getInstance().mettreajourUser(userModifie);
+						
+						userInSession.setPassword(password);
+						session.setAttribute("user", userInSession);
+						
 					} catch (DALException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
