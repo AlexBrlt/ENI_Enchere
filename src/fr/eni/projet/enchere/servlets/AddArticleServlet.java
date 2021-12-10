@@ -53,9 +53,6 @@ public class AddArticleServlet extends HttpServlet {
 		LocalDateTime dateTimeStart = LocalDateTime.parse(dateStartAuction, formatter);
 		LocalDateTime dateTimeEnd = LocalDateTime.parse(dateEndAuction, formatter);
 		
-		
-		
-		
 		//Ajouter Article
 		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie, 1);
 
