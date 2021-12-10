@@ -31,7 +31,10 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final static String SQL_SELECT_USER_BY_PSEUDO = "SELECT * from UTILISATEURS where pseudo = ? ";
 	private final static String SQL_SELECT_USER_BY_EMAIL = "SELECT * from UTILISATEURS where email = ? ";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";		
-	
+	private final static String USER_LIST_ARTICLE_LIST_ENCHERE = "SELECT * from UTILISATEURS\r\n" + 
+			"INNER JOIN ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur\r\n" + 
+			"INNER JOIN ENCHERES ON ARTICLES_VENDUS.no_utilisateur = ENCHERES.no_utilisateur\r\n" + 
+			"WHERE UTILISATEURS.no_utilisateur=?";
 	
 	public UserDAOJdbcImpl() {
 
@@ -318,8 +321,45 @@ public class UserDAOJdbcImpl implements UserDAO {
 	}
 	
 	
-	
-	
+	@Override
+	public User userAchatVente(int no_user) throws DALException{
+		try(Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ordre = cnx.prepareStatement(USER_LIST_ARTICLE_LIST_ENCHERE);
+			ordre.setInt(1, no_user);
+			
+			
+			
+			ResultSet rs = ordre.executeQuery();
+			while(rs.next()) {
+				
+				int no_utilisateur = rs.getInt("no_utilisateur");
+				String pseudo = rs.getString("pseudo");
+				String nom = rs.getString("nom");
+				String prenom = rs.getString("prenom");
+				String email = rs.getString("email");
+				String telephone = rs.getString("telephone");
+				String rue = rs.getString("rue");
+				String code_postal = rs.getString("code_postal");
+				String ville = rs.getString("ville");
+				String mot_de_passe = rs.getString("mot_de_passe");
+				
+				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
+
+						
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+		}
+		return null;
+		
+		
+		
+		
+		
+	}
 	
 	
 	
