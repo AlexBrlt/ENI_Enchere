@@ -123,14 +123,13 @@ public class ModifyUser extends HttpServlet {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
+					
 				}
-				
-				doGet(request, response);
-				
+	
 			}
 			
 
 		}
-		
+		request.getRequestDispatcher("/WEB-INF/JSP/profil.jsp").forward(request, response);
 	}
 }
