@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -38,20 +39,22 @@ public class AddArticleServlet extends HttpServlet {
 		//Récupérer les paramètres du formulaire
 		String nameArticle = request.getParameter("nameArticle");
 		String description = request.getParameter("description");
-		int noCategorie = Integer.valueOf(request.getParameter("categories"));
+		// TODO passer en string catégorie
+//		int noCategorie = Integer.valueOf(request.getParameter("categories"));
+		int noCategorie = 2;
 		int priceStart = Integer.valueOf(request.getParameter("points"));
 				//String photoArticle = request.getParameter("formFile");
-		String dateStartAuction = request.getParameter("StartAuction");
-		String dateEndAuction = request.getParameter("EndAuction");
-				
-//				String rueUser = request.getParameter("rue");
-//				String codePostalUser = request.getParameter("codePostal");
-//				String villeUser = request.getParameter("ville");
-				
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		String dateStartAuction = request.getParameter("StartAuction")+ " 00:00:00";
+		String dateEndAuction = request.getParameter("EndAuction") + " 00:00:00";
+
+		//Conversion des paramètres
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
 		LocalDateTime dateTimeStart = LocalDateTime.parse(dateStartAuction, formatter);
 		LocalDateTime dateTimeEnd = LocalDateTime.parse(dateEndAuction, formatter);
-			
+		System.out.println(dateTimeStart.toString());
+		
+		
+		
 		//Ajouter Article
 		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie);
 	

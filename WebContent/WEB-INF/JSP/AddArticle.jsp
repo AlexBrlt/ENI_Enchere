@@ -35,10 +35,10 @@
                     <option>Sport&Loisirs</option>
                 </select>
             </div>
-            <div class="mb-3">
+<!--             <div class="mb-3">
                 <label for="formFile" class="form-label">Photo de l'article</label>
                 <input class="form-control" type="file" id="formFile" name="formFile">
-            </div>
+            </div> -->
             <div class="input-group mb-3 form-group">
                 <input type="text" class="form-control" aria-label="Recipient's username" aria-describedby="points" name="points">
                 <span class="input-group-text" id="points">points</span>
@@ -53,6 +53,11 @@
                 <input type="date" class="form-control" id="EndAuction" name="EndAuction" >
                 <div id="helpAuctionEnd" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
+        <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
+        	<button type="button" class="btn btn-danger">Annuler</button>
+        	<button type="submit" class="btn btn-success">Mettre en ligne</button>
+        	
+    </section>
         </form>
     </section>
 
@@ -72,9 +77,6 @@
             <input type="text" class="form-control" id="ville" name="ville">
         </div>
     </section>
-    <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
-        <button type="button" class="btn btn-danger">Annuler</button>
-        <button type="submit" class="btn btn-success">Mettre en ligne</button>
-    </section>
+
 </body>
 </html>
