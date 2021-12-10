@@ -13,10 +13,10 @@
 
 <section class="container">
 	<div class="row">
-		<p class="display-4"><c:out value="${sessionScope.user.pseudo } Gardez vos informations à jour"></c:out></p>
+		<p class="display-4">Bonjour <c:out value="${sessionScope.user.pseudo }! Gardez vos informations à jour"></c:out></p>
 	</div>
 	<div class="row">
-		<p>Vous possédez : </p><p class="text-success"><c:out value="${sessionScope.user.credit } crédits"></c:out></p>
+		<p>Vous possédez : </p><p class="text-success"> <c:out value="${sessionScope.user.credit } crédits"></c:out></p>
 	</div>
 </section>
 
@@ -28,11 +28,11 @@
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="name">Nom</label>
-	    	<input type="text" class="form-control" id="name" name="name" value="<c:out value="${sessionScope.user.name}"></c:out>">
+	    	<input type="text" class="form-control" id="name" name="name" value="<c:out value="${sessionScope.user.surname}"></c:out>">
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="surname">Prenom</label>
-	    	<input type="text" class="form-control" id="surname" name="surname" value="<c:out value="${sessionScope.user.surname}"></c:out>">
+	    	<input type="text" class="form-control" id="surname" name="surname" value="<c:out value="${sessionScope.user.name}"></c:out>">
 	  	</div>
 	  	<div class="form-group">
 	    	<label for="street">Rue</label>
