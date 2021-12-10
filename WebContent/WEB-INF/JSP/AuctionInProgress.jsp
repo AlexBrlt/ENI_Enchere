@@ -41,7 +41,7 @@
         <h2>Ma Proposition</h2>
         <div class="mb-3 form-group">
            <p> Proposition d'enchère (Meilleure offre : ###### points)</p>
-            <input type="text" class="form-control" id="rue" name="rue" value="${sessionScope.user.street }">  
+            <input type="text" class="form-control" id="rue" name="offre" ">  
         </div>
         <button type="submit" class="btn btn-success float-right">Enchérir</button>
      </form>   

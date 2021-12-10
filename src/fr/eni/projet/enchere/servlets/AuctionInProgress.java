@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/achatArticle")
 public class AuctionInProgress extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-private static final String Details = "/WEB-INF/JSP/buyer.jsp" ;
+private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
@@ -29,6 +29,9 @@ private static final String Details = "/WEB-INF/JSP/buyer.jsp" ;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Details);
+		dispatcher.forward(request, response);
 	
 	}
 
