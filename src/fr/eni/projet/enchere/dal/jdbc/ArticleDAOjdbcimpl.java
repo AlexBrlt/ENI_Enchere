@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +65,14 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre.setTimestamp(3, Timestamp.valueOf(date_debut_encheres));
 			ordre.setTimestamp(4, Timestamp.valueOf(date_fin_encheres));
 			ordre.setInt(5, prix_initial);
-			ordre.setNull(6, java.sql.Types.INTEGER);
+			
+			if ((Integer)prix_vente == null) {
+				ordre.setNull(6, java.sql.Types.INTEGER);
+			} else {
+				ordre.setInt(6, prix_vente);
+
+			}
+			
 			ordre.setInt(7, no_utilisateur);
 			ordre.setInt(8, no_categorie);
 			
@@ -122,12 +130,17 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			pstmt.setString(1, article.getNameArticle());
 			pstmt.setString(2, article.getDescription());
 			pstmt.setTimestamp(3, Timestamp.valueOf(article.getDateStartAuction()));
-			pstmt.setTimestamp(3, Timestamp.valueOf(article.getDateEndAuction()));
-			
-			
-			
+			pstmt.setTimestamp(4, Timestamp.valueOf(article.getDateEndAuction()));
 			pstmt.setInt(5, article.getPriceStart());
-			pstmt.setNull(6, java.sql.Types.NULL);
+			int priceSold = article.getPriceSold();
+			
+			if ((Integer)priceSold == null) {
+				pstmt.setNull(6, Types.INTEGER);
+			} else {
+				pstmt.setInt(6, priceSold);
+
+			}
+
 			pstmt.setInt(7, article.getNoUser());
 			pstmt.setInt(8, article.getNoCategorie());
 			pstmt.setInt(9, article.getNoArticle());

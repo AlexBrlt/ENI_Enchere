@@ -12,4 +12,5 @@ public interface UserDAO {
 	public void delete(int no_utilisateur) throws DALException;
 	List<User> selectBypseudoAndMail(String login) throws DALException;
 	public List<User> selectByMail(String pseudo) throws DALException;
+	User userAchatVente(int no_user) throws DALException;
 }
