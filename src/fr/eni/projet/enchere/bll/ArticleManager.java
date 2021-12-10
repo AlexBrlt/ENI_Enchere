@@ -28,6 +28,7 @@ public class ArticleManager {
 	}
 
 	public Article ajouterArticle(Article nouvelArticle) throws DALException, BLLException {
+
 		BLLException ex = new BLLException();
 
 		validationNo_article(nouvelArticle.getNoArticle(), ex);
@@ -42,6 +43,31 @@ public class ArticleManager {
 
 		return article;
 
+	}
+	
+	public Article modfierArticle(Article modifyArticle) throws BLLException {
+		
+		BLLException ex = new BLLException();
+
+		validationNo_article(modifyArticle.getNoArticle(), ex);
+		validationDate_Debut(modifyArticle.getDateStartAuction(), ex);
+		validationDate_Fin(modifyArticle.getDateEndAuction(), ex);
+		validationNo_Categorie(modifyArticle.getNoCategorie(), ex);
+		validationDescription(modifyArticle.getDescription(), ex);
+		validationNom_Article(modifyArticle.getNameArticle(), ex);
+		validationNo_utilisateur(modifyArticle.getNoUser(), ex);
+
+		Article article = null;
+		try {
+			article = dao.insertArticle(modifyArticle);
+		} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new BLLException();
+		}
+
+		return article;
+		
 	}
 
 	public List<Article> getByCategorie(int no_categorie) throws BLLException {
