@@ -1,6 +1,7 @@
 package fr.eni.projet.enchere.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bll.UserManager;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
@@ -47,18 +49,42 @@ public class Register extends HttpServlet {
 		String city = request.getParameter("city");
 		String password = request.getParameter("password");
 		
-		System.out.println("salut");
-
-		User user = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, 100, false);
-
+		List<User> userMail = null;
 		try {
-		UserManager.getInstance().ajouterUser(user);
-		} catch (DALException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+			userMail = UserManager.getInstance().getByMail(mail);
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} 
+		List<User> userPseudo = null;
+		try {
+			userPseudo = UserManager.getInstance().getByPseudo(pseudo);
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Login.jsp");
-		dispatcher.forward(request, response);
+		if (userMail.isEmpty() && userPseudo.isEmpty()) {
+			
+			System.out.println("salut");
+
+			User user = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, 100, false);
+
+			try {
+			UserManager.getInstance().ajouterUser(user);
+			} catch (DALException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			}
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Login.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/CreateUser.jsp");
+			dispatcher.forward(request, response);
+			System.out.println("bonjour");
+		}
+
+		
+		
 		
 		
 		
