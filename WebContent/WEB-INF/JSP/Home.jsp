@@ -26,7 +26,7 @@
 			
 					<ul class="nav">
 					  <li class="nav-item">
-					    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
+					    <a class="nav-link active" href="<c:url value = "/AddArticle"/>">Vendre un article</a>
 					  </li>
 					  <li class="nav-item">
 					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
@@ -120,7 +120,9 @@
         </div>
     </section>
 
-    <section class="container pt-3 mt-4"><h2>Résultats</h2></section>
+    <section class="container pt-3 mt-4">
+    	<h2>Résultats</h2>
+    </section>
     <section class="container pt-3 mt-4">
         <div class="row">
             <div class="card col-4 p-0" style="width: 18rem;">

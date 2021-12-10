@@ -45,16 +45,15 @@ public class AddArticleServlet extends HttpServlet {
 		int noUser=1;
 		int priceStart = Integer.valueOf(request.getParameter("points"));
 				//String photoArticle = request.getParameter("formFile");
-		String dateStartAuction = request.getParameter("StartAuction")+ " 00:00:00";
-		String dateEndAuction = request.getParameter("EndAuction") + " 00:00:00";
+		String dateStartAuction = request.getParameter("StartAuction");
+		String dateEndAuction = request.getParameter("EndAuction");
+		dateStartAuction = dateStartAuction.replace('T', ' ');
+		dateEndAuction = dateEndAuction.replace('T', ' ');
 
 		//Conversion des paramètres
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm", Locale.US);
 		LocalDateTime dateTimeStart = LocalDateTime.parse(dateStartAuction, formatter);
 		LocalDateTime dateTimeEnd = LocalDateTime.parse(dateEndAuction, formatter);
-		
-		
-		
 		
 		//Ajouter Article
 		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie, 1);

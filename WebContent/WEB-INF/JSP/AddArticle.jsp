@@ -45,16 +45,16 @@
             </div>
             <div class="mb-3 form-group">
                 <label for="StartAuction" class="form-label">Début de l'enchère</label>
-                <input type="date" class="form-control" id="StartAuction" name="StartAuction">
+                <input type="datetime-local" class="form-control" id="StartAuction" name="StartAuction">
                 <div id="helpAuctionStart" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
             <div class="mb-3 form-group">
                 <label for="EndAuction" class="form-label">Fin de l'enchère</label>
-                <input type="date" class="form-control" id="EndAuction" name="EndAuction" >
+                <input type="datetime-local" class="form-control" id="EndAuction" name="EndAuction" >
                 <div id="helpAuctionEnd" class="form-text text-secondary">Format DD/MM/YYYY</div>
             </div>
         <section class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
-        	<button type="button" class="btn btn-danger">Annuler</button>
+        	<a href="${pageContext.request.contextPath}/home "><button type="button" class="btn btn-danger">Annuler</button></a>
         	<button type="submit" class="btn btn-success">Mettre en ligne</button>
         	
     </section>
