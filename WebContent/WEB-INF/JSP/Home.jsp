@@ -34,7 +34,6 @@
 					  <li class="nav-item">
 					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
 					  </li>
-			
 					</ul>
 				
 			</c:when>
@@ -44,12 +43,21 @@
 			
 			</c:when>
 			
-		
-		
+	
 		</c:choose>
 	</div>
 		
-    <section class="container text-center"><h1>Bon retour nom utilisateur,<br> que cherchez-vous aujourd'hui ? </h1></section>
+    <section class="container text-center">
+  <c:choose>
+    	<c:when test="${!empty sessionScope}">
+    		<h1>Bon retour, <c:out value="${sessionScope.user.pseudo}"/><br> que cherchez-vous aujourd'hui ? </h1>
+    	</c:when>
+    	<c:when test="${empty sessionScope}">
+    		<h1>Que cherchez-vous aujourd'hui ? </h1>
+    	</c:when>
+    </c:choose>
+    		²²²²²²
+    </section>
 
     <section class="container border bg-white pt-3 mt-4 w-50">
         <div class="row justify-content-center">
@@ -118,16 +126,14 @@
 	                        </ul>
 	                    </ul>
 	                </div>
-	        </div>
-   </div>
+	       		 </div>
+   			</div>
     </section>
 
     <section class="container pt-3 mt-4">
-    	<h2>Résultats</h2>
+    	<h2>Propositions</h2>
     </section>
-    <section class="container pt-3 mt-4">
-        <h2>Résultats</h2>
-    </section>
+   
     <section class="container pt-3 mt-4">
         <div class="row">
             <div class="col-4">
