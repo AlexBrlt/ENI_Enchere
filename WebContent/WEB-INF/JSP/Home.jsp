@@ -59,29 +59,6 @@
                     <input type="text" class="form-control" id="nameArticle">
                     <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
                 </div>
-                <div>
-                    <ul class="p-0">
-                        <li  class="form-check p-0">
-                          <input type="radio" id="achat" name="choices">
-                          <label for="achat">Achat</label>
-                        </li>
-                        <ul class="p-0">
-                            <li  class="form-check">
-                                <input type="checkbox" id="encheresOuverte" class="achat">
-                                <label for="name"> Enchères ouvertes </label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="mesEncheres" class="achat">
-                                <label for="name">Mes enchères</label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="encheresRemporte" class="achat">
-                                <label for="name">Mes enchères remportées</label>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
-                <button type="button" class="btn btn-success mb-4">Rechercher</button>
             </form>
             <form class=" col-6">
                 <div class="form-group">
@@ -92,70 +69,104 @@
                         <option>Vêtements</option>
                         <option>Sport&Loisirs</option>
                     </select>
-
                 </div>
-                <div>
-                    <ul class="p-0">
-                        <li  class="form-check p-0">
-                           <input type="radio" id="ventes" name="choices">
-                            <label for="ventes">Mes ventes</label>
-                        </li>
-                        <ul class="p-0">
-                            <li  class="form-check">
-                                <input type="checkbox" id="ventesCours" class="ventes">
-                                <label for="name"> Mes ventes en cours </label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="ventesNonDebute" class="ventes">
-                                <label for="name">Ventes non débutées</label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="ventesTermine" class="ventes">
-                                <label for="name">Ventes terminées</label>
-                            </li>
-                        </ul>
-                    </ul>
-                </div>
-            </form>
-        </div>
+                 </form>
+          <div class="container"><!-- justify-content-between -->
+          	<div class="row justify-content-center">
+	                <div class="col-6">
+	                    <ul class="p-0">
+	                        <li  class="form-check p-0">
+	                           <input type="radio" id="ventes" name="choices">
+	                            <label for="ventes">Mes ventes</label>
+	                        </li>
+	                        <ul class="p-0">
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="ventesCours" class="ventes">
+	                                <label for="name"> Mes ventes en cours </label>
+	                            </li>
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="ventesNonDebute" class="ventes">
+	                                <label for="name">Ventes non débutées</label>
+	                            </li>
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="ventesTermine" class="ventes">
+	                                <label for="name">Ventes terminées</label>
+	                            </li>
+	                        </ul>
+	                    </ul>
+	                    <button type="button" class="btn btn-success mb-4">Rechercher</button>
+	                </div>
+	                <div class="col-6">
+	                    <ul class="p-0">
+	                        <li  class="form-check p-0">
+	                          <input type="radio" id="achat" name="choices">
+	                          <label for="achat">Achat</label>
+	                        </li>
+	                        <ul class="p-0">
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="encheresOuverte" class="achat">
+	                                <label for="name"> Enchères ouvertes </label>
+	                            </li>
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="mesEncheres" class="achat">
+	                                <label for="name">Mes enchères</label>
+	                            </li>
+	                            <li  class="form-check">
+	                                <input type="checkbox" id="encheresRemporte" class="achat">
+	                                <label for="name">Mes enchères remportées</label>
+	                            </li>
+	                        </ul>
+	                    </ul>
+	                </div>
+	        </div>
+   </div>
     </section>
 
     <section class="container pt-3 mt-4">
     	<h2>Résultats</h2>
     </section>
     <section class="container pt-3 mt-4">
+        <h2>Résultats</h2>
+    </section>
+    <section class="container pt-3 mt-4">
         <div class="row">
-            <div class="card col-4 p-0" style="width: 18rem;">
-                <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
-                <div class="card-body">
-                    <h5 class="card-title">PC Gamer pour travailler</h5>
-                    <p class="card-text">
-                        Prix : 210 points <br>
-                        Fin de l'enchère : 24/12/2021<br>
-                        Vendeur : LiliDeliceGamerz</p>
-                    <a href="#" class="btn btn-success">Voir l'enchère</a>
+            <div class="col-4">
+                <div class="card">
+                    <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
+                    <div class="card-body">
+                        <h5 class="card-title">PC Gamer pour travailler</h5>
+                        <p class="card-text">
+                            Prix : 210 points <br>
+                            Fin de l'enchère : 24/12/2021<br>
+                            Vendeur : LiliDeliceGamerz</p>
+                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                    </div>
                 </div>
             </div>
-            <div class="card col-4 p-0" style="width: 18rem;">
-                <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
-                <div class="card-body">
-                    <h5 class="card-title">PC Gamer pour travailler</h5>
-                    <p class="card-text">
-                        Prix : 210 points <br>
-                        Fin de l'enchère : 24/12/2021<br>
-                        Vendeur : LiliDeliceGamerz</p>
-                    <a href="#" class="btn btn-success">Voir l'enchère</a>
+            <div class="col-4">
+                <div class="card">
+                    <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
+                    <div class="card-body">
+                        <h5 class="card-title">PC Gamer pour travailler</h5>
+                        <p class="card-text">
+                            Prix : 210 points <br>
+                            Fin de l'enchère : 24/12/2021<br>
+                            Vendeur : LiliDeliceGamerz</p>
+                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                    </div>
                 </div>
             </div>
-            <div class="card col-4 p-0" style="width: 18rem;">
-                <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
-                <div class="card-body">
-                    <h5 class="card-title">PC Gamer pour travailler</h5>
-                    <p class="card-text">
-                        Prix : 210 points <br>
-                        Fin de l'enchère : 24/12/2021<br>
-                        Vendeur : LiliDeliceGamerz</p>
-                    <a href="#" class="btn btn-success">Voir l'enchère</a>
+            <div class="col-4">
+                <div class="card">
+                    <img src="https://picsum.photos/430/225" class="card-img-top" alt="randomImage">
+                    <div class="card-body">
+                        <h5 class="card-title">PC Gamer pour travailler</h5>
+                        <p class="card-text">
+                            Prix : 210 points <br>
+                            Fin de l'enchère : 24/12/2021<br>
+                            Vendeur : LiliDeliceGamerz</p>
+                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                    </div>
                 </div>
             </div>
         </div>
