@@ -56,14 +56,10 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String ADMINISTRATEUR ="administrateur";
 	private static final String LIBELLE ="libelle";
 	
-	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT ENCHERES.no_enchere AS Numero_enchere, date_enchere, montant_enchere, ENCHERES.no_article, " +
-			"ENCHERES.no_utilisateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
+	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
+			+ "administrateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
 			"INNER JOIN ARTICLES_VENDUS ON ARTICLES_VENDUS.no_article=ENCHERES.no_article WHERE ENCHERES.no_article=?";
-	
-
-	
-	
-	
+		
 	public Article selectArticle (int no_article) throws DALException{
 		String nameArticle;
 		String description;
@@ -93,6 +89,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
 		
 		try {
 			pstmt = cnx.prepareStatement(SQL_SELECT_ARTICLES_PART_1);
@@ -103,7 +100,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			
 			if(rs.next()) {
 				
-				nameArticle = rs.getString(ARTICLE_NUMBER);
+				nameArticle = rs.getString(NOM_ARTICLE);
 				description = rs.getString(DESCRIPTION);
 				dateStartAuction = rs.getTimestamp(DATE_DEBUT_ENCHERES).toLocalDateTime();
 				dateEndAuction = rs.getTimestamp(DATE_FIN_ENCHERES).toLocalDateTime();
@@ -111,7 +108,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				priceSold = rs.getInt(PRIX_VENTE);
 				noUser = rs.getInt(NO_USER);
 				noCategorie = rs.getInt(NO_CATEGORIE);
-				categorie = rs.getString(NO_CATEGORIE);
+				categorie = rs.getString(LIBELLE);
+				noUser = rs.getInt(NO_USER);
 				pseudo = rs.getString(PSEUDO);
 				surname = rs.getString(NOM);
 				name = rs.getString(PRENOM);
@@ -127,16 +125,44 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				
 				buyer = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
 				
-				article = new Article(no_article, nameArticle, description, dateStartAuction, dateEndAuction, priceStart, priceSold, noUser, noCategorie);
-				
-				
-				
-				
+				article = new Article(noUser, nameArticle, description, dateStartAuction, dateEndAuction, priceStart, priceSold, noUser, noCategorie);
+				article.setCategorie(libelle);
+				article.setBuyer(buyer);
 			}
+			
+			pstmt2 = cnx.prepareStatement(SQL_SELECT_ARTICLES_PART_2);
+			
+			pstmt2.setInt(1, no_article);
+			
+			ResultSet rs2 = pstmt2.executeQuery();
+			
+			if(rs.next()) {
+				
+				noUser = rs.getInt(NO_USER);
+				pseudo = rs2.getString(PSEUDO);
+				surname = rs2.getString(NOM);
+				name = rs2.getString(PRENOM);
+				mail = rs2.getString(EMAIL);
+				phone = rs2.getString(TELEPHONE);
+				street = rs2.getString(RUE);
+				postalCode = rs2.getString(CODE_POSTAL);
+				city = rs2.getString(VILLE);
+				password = rs2.getString(MOT_DE_PASSE);
+				credit = rs2.getInt(CREDIT);
+				administrateur = rs2.getBoolean(ADMINISTRATEUR);
+				
+				seller = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
+				article.setSeller(seller);
+			}
+			
+			cnx.close();
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException();
 		}
+		 
+		return article;
 	}
 	
 	public Article insertArticle(Article nouvelArticle) {
@@ -216,6 +242,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			ordre3.setString(4, ville );
 			
 			ordre3.executeUpdate();
+			
+			cnx.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -251,6 +279,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			pstmt.setInt(9, article.getNoArticle());
 			
 			pstmt.executeUpdate();
+			
+			cnx.close();
 			
 		} catch (SQLException e) {
 			// TODO: handle exception
