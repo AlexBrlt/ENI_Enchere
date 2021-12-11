@@ -25,7 +25,7 @@ public class UserManager {
 
 
 	
-	public User ajouterUser(User nouveauUser) throws DALException {
+	public User ajouterUser(User nouveauUser) throws BLLException {
 		
 		
 		BLLException ex = new BLLException();
@@ -39,15 +39,27 @@ public class UserManager {
 		validationCode_postal(nouveauUser.getPostalCode(), ex);
 		
 		
-		// TODO Vérification des régles métier
 		
-		// Appel de la DAL
-		User utilisateur = dao.insertUser(nouveauUser);
+		if(ex.hasErreur()) {
+			throw ex;
+		}
 		
-		return utilisateur;
+		try {
+			User utilisateur = dao.insertUser(nouveauUser);
+			
+			return utilisateur;
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+		
+		
+		
 	}
 	
-	public User mettreajourUser(User userModifie) throws DALException {
+	public User mettreajourUser(User userModifie) throws BLLException {
 		
 		BLLException ex = new BLLException();
 		
@@ -60,10 +72,25 @@ public class UserManager {
 		validationCode_postal(userModifie.getPostalCode(), ex);
 		validationRue(userModifie.getStreet(), ex);
 		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
 		
-		User utilisateur = dao.updateUser(userModifie) ;
+		try {
+			User utilisateur = dao.updateUser(userModifie) ;
+			return utilisateur;
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
+		
 	
-	return utilisateur;
+		
+		
+	
+	
 	
 	}
 	
@@ -146,9 +173,36 @@ public class UserManager {
 			ex.ajouterErreur(e);
 			throw ex;
 		}
-		
-		
+
 	}
+	
+	public User userBuyAndSold(int no_user) throws BLLException{
+		
+		
+		BLLException ex = new BLLException();
+		
+		
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			return dao.userAchatVente(no_user);
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+
+	}
+		
+		
+		
+		
+		
+
+	
 
 	private void validationId(int no_user, BLLException ex) throws BLLException {
 		if(no_user < 1) {

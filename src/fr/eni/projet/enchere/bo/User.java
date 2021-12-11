@@ -148,10 +148,7 @@ public class User {
 		this.postalCode = postalCode;
 		this.city = city;
 	}
-	
-	
-	
-	
+
 	public User(int no_utilisateur, String pseudo, String surname, String name, String mail, String phone, String street,
 		String postalCode, String city, String password, int credit, boolean administrateur, List<Article> list_article,
 		List<Auction> list_Auction) {

@@ -70,10 +70,10 @@ public class Register extends HttpServlet {
 			User user = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, 100, false);
 
 			try {
-			UserManager.getInstance().ajouterUser(user);
-			} catch (DALException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+				UserManager.getInstance().ajouterUser(user);
+			} catch (BLLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Login.jsp");
 			dispatcher.forward(request, response);

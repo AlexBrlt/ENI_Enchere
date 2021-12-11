@@ -8,13 +8,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 
-
+import fr.eni.projet.enchere.bo.Article;
+import fr.eni.projet.enchere.bo.Auction;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
 import fr.eni.projet.enchere.dal.UserDAO;
@@ -31,9 +33,13 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final static String SQL_SELECT_USER_BY_PSEUDO = "SELECT * from UTILISATEURS where pseudo = ? ";
 	private final static String SQL_SELECT_USER_BY_EMAIL = "SELECT * from UTILISATEURS where email = ? ";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";		
-	private final static String USER_LIST_ARTICLE_LIST_ENCHERE = "SELECT * from UTILISATEURS\r\n" + 
+	private final static String USER_LIST_ARTICLE = "SELECT * from UTILISATEURS\r\n" + 
 			"INNER JOIN ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur\r\n" + 
-			"INNER JOIN ENCHERES ON ARTICLES_VENDUS.no_utilisateur = ENCHERES.no_utilisateur\r\n" + 
+			"\r\n" + 
+			"WHERE UTILISATEURS.no_utilisateur=?";
+	private final static String USER_LIST_AUCTION = "SELECT * from UTILISATEURS\r\n" + 
+			"INNER JOIN ENCHERES ON UTILISATEURS.no_utilisateur = ENCHERES.no_utilisateur\r\n" + 
+			"\r\n" + 
 			"WHERE UTILISATEURS.no_utilisateur=?";
 	
 	public UserDAOJdbcImpl() {
@@ -67,7 +73,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			String code_postal = nouveauUser.getPostalCode();
 			String ville = nouveauUser.getCity();
 			String mot_de_passe = nouveauUser.getPassword();
-			int credit = nouveauUser.getCredit();
+			int credit = 100;
 			
 			
 			boolean administrateur = false;
@@ -143,7 +149,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			String ville = usermodifie.getCity();
 			String mot_de_passe = usermodifie.getPassword();
 			no_user	=	usermodifie.getNo_utilisateur();
-			int credit = 100;
+			int credit = usermodifie.getCredit();
 //			int credit = usermodifie.getCredit();
 			
 			boolean administrateur = false;
@@ -213,7 +219,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 				String code_postal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				String mot_de_passe = rs.getString("mot_de_passe");
-				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
+				int  credit =  rs.getInt("credit");
+				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false);
 
 						utilisateurs.add(u);
 			}
@@ -267,7 +274,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 				String code_postal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				String mot_de_passe = rs.getString("mot_de_passe");
-				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
+				int  credit =  rs.getInt("credit");
+				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false);
 
 						utilisateurs.add(u);
 			}
@@ -307,7 +315,8 @@ public class UserDAOJdbcImpl implements UserDAO {
 				String code_postal = rs.getString("code_postal");
 				String ville = rs.getString("ville");
 				String mot_de_passe = rs.getString("mot_de_passe");
-				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
+				int  credit =  rs.getInt("credit");
+				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false);
 
 						utilisateurs.add(u);
 			}
@@ -323,9 +332,19 @@ public class UserDAOJdbcImpl implements UserDAO {
 	
 	@Override
 	public User userAchatVente(int no_user) throws DALException{
+		List<Article> articles = new ArrayList<Article>();
+		List<Auction> encheres = new ArrayList<Auction>();
+		User u;
+		int no_utilisateur = 0;String pseudo = null;String nom = null;String prenom = null;String email = null;
+		String telephone = null;String rue = null;String code_postal = null;String ville = null;String mot_de_passe = null;
+		int credit = 0;int numero_article;String nom_article;String description;
+		LocalDateTime date_start_auction;LocalDateTime date_end_auction;int price_start;
+		int priceSold;int no_categorie;int no_auction;LocalDateTime date_auction;
+		int price_auction;int no_article;
+		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
-			PreparedStatement ordre = cnx.prepareStatement(USER_LIST_ARTICLE_LIST_ENCHERE);
+			PreparedStatement ordre = cnx.prepareStatement(USER_LIST_ARTICLE);
 			ordre.setInt(1, no_user);
 			
 			
@@ -333,32 +352,65 @@ public class UserDAOJdbcImpl implements UserDAO {
 			ResultSet rs = ordre.executeQuery();
 			while(rs.next()) {
 				
-				int no_utilisateur = rs.getInt("no_utilisateur");
-				String pseudo = rs.getString("pseudo");
-				String nom = rs.getString("nom");
-				String prenom = rs.getString("prenom");
-				String email = rs.getString("email");
-				String telephone = rs.getString("telephone");
-				String rue = rs.getString("rue");
-				String code_postal = rs.getString("code_postal");
-				String ville = rs.getString("ville");
-				String mot_de_passe = rs.getString("mot_de_passe");
+				no_utilisateur = rs.getInt("no_utilisateur");
+				pseudo = rs.getString("pseudo");
+				nom = rs.getString("nom");
+				prenom = rs.getString("prenom");
+				email = rs.getString("email");
+				telephone = rs.getString("telephone");
+				rue = rs.getString("rue");
+				code_postal = rs.getString("code_postal");
+				ville = rs.getString("ville");
+				mot_de_passe = rs.getString("mot_de_passe");
+				credit = rs.getInt("credit");
+				numero_article = rs.getInt("no_article");
+				nom_article = rs.getString("nom_article");
+				description = rs.getString("description");
+				date_start_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+				date_end_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+				price_start = rs.getInt("prix_initial");
+				priceSold = rs.getInt("prix_vente");
+				no_categorie = rs.getInt("no_categorie");
 				
-				User u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, 0, false);
-
-						
+				
+				
+				 
+				Article article = new Article(no_utilisateur, nom_article, description, date_start_auction, date_end_auction, price_start, priceSold, priceSold, no_categorie);
+				articles.add(article);	
+				
+				
+				
 			}
+			
+			
+			PreparedStatement ordre2 = cnx.prepareStatement(USER_LIST_AUCTION);
+			ordre.setInt(1, no_user);
+			
+			
+			
+			ResultSet rs2 = ordre2.executeQuery();
+			while(rs2.next()) {
+				
+				no_utilisateur = rs2.getInt("no_utilisateur");
+				no_auction = rs2.getInt("no_enchere");
+				date_auction = rs2.getTimestamp("date_enchere").toLocalDateTime();
+				price_auction = rs2.getInt("montant_enchere");
+				no_article = rs2.getInt("no_article");
+				
+				
+				
+				
+				Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article, no_utilisateur);
+				encheres.add(enchere);	
+			}
+			
+			u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false, articles, encheres);
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException(e.getMessage());
 		}
-		return null;
-		
-		
-		
-		
-		
+		return u;	
 	}
 	
 	

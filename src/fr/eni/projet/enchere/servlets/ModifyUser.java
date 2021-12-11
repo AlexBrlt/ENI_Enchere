@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bll.UserManager;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
@@ -83,22 +84,21 @@ public class ModifyUser extends HttpServlet {
 			User userModifie = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
 		
 			try {
-				
 				UserManager.getInstance().mettreajourUser(userModifie);
-				userInSession.setPseudo(pseudo);
-				userInSession.setName(name);
-				userInSession.setNom(surname);
-				userInSession.setStreet(street);
-				userInSession.setMail(mail);
-				userInSession.setPhone(phone);
-				userInSession.setPostalCode(postalCode);
-				userInSession.setCity(city);
-				
-				session.setAttribute("user", userInSession);
-			} catch (DALException e) {
+			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+			userInSession.setPseudo(pseudo);
+			userInSession.setName(name);
+			userInSession.setNom(surname);
+			userInSession.setStreet(street);
+			userInSession.setMail(mail);
+			userInSession.setPhone(phone);
+			userInSession.setPostalCode(postalCode);
+			userInSession.setCity(city);
+			
+			session.setAttribute("user", userInSession);
 		
 		} else {
 			
@@ -134,7 +134,7 @@ public class ModifyUser extends HttpServlet {
 						userInSession.setPassword(password);
 						session.setAttribute("user", userInSession);
 						
-					} catch (DALException e) {
+					} catch (BLLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}

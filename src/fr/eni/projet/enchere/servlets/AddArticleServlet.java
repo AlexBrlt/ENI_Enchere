@@ -63,9 +63,6 @@ public class AddArticleServlet extends HttpServlet {
 	
 			try {
 				ArticleManager.getInstance().ajouterArticle(article);
-			} catch (DALException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
 			} catch (BLLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

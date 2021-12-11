@@ -27,7 +27,7 @@ public class ArticleManager {
 		return instance;
 	}
 
-	public Article ajouterArticle(Article nouvelArticle) throws DALException, BLLException {
+	public Article ajouterArticle(Article nouvelArticle) throws BLLException {
 
 		BLLException ex = new BLLException();
 
@@ -38,10 +38,22 @@ public class ArticleManager {
 		validationDescription(nouvelArticle.getDescription(), ex);
 		validationNom_Article(nouvelArticle.getNameArticle(), ex);
 		validationNo_utilisateur(nouvelArticle.getNoUser(), ex);
+		
+		
+		if(ex.hasErreur()) {
+			throw ex;
+		}
+		
+		try {
+			Article article = dao.insertArticle(nouvelArticle);
 
-		Article article = dao.insertArticle(nouvelArticle);
-
-		return article;
+			return article;
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+		
 
 	}
 	
