@@ -421,21 +421,11 @@ public class UserDAOJdbcImpl implements UserDAO {
 					
 					
 					
-					Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article, no_utilisateur);
+					Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article_auction, no_utilisateur);
 					encheres.add(enchere);	
 				}
 				
-				
-				
-			
-				
-			
 
-			
-			
-	
-			
-			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

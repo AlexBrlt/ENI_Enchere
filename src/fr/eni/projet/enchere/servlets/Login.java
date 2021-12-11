@@ -99,11 +99,16 @@ public class Login extends HttpServlet {
 					
 					session.setAttribute("user", user);
 					session.setAttribute("articleUser", userArticleEnchere.getList_article());
-					
+					session.setAttribute("auctionUser", userArticleEnchere.getList_Auction());
+					session.setAttribute("no_user", user.getNo_utilisateur());
 					System.out.println(session.getAttribute("user").toString());
 
 					for (Article art : userArticleEnchere.getList_article()) {
 					    System.out.println(art);
+					}
+					
+					for (Auction auct : userArticleEnchere.getList_Auction()) {
+					    System.out.println(auct);
 					}
 					
 					

@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.websocket.Session;
 
 import fr.eni.projet.enchere.bll.ArticleManager;
 import fr.eni.projet.enchere.bll.BLLException;
@@ -42,7 +44,7 @@ public class AddArticleServlet extends HttpServlet {
 		// TODO passer en string catégorie
 //		int noCategorie = Integer.valueOf(request.getParameter("categories"));
 		int noCategorie = 1;
-		int noUser=1;
+		
 		int priceStart = Integer.valueOf(request.getParameter("points"));
 				//String photoArticle = request.getParameter("formFile");
 		String dateStartAuction = request.getParameter("StartAuction");
@@ -58,8 +60,11 @@ public class AddArticleServlet extends HttpServlet {
 		LocalDateTime dateTimeEnd = LocalDateTime.parse(dateEndAuction, formatter);
 		
 		// Ajouter Article
-		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie, 1);
-
+		HttpSession session = request.getSession();
+		
+		int no_user = (int)session.getAttribute("no_user");
+		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie,no_user); 
+		
 	
 			try {
 				ArticleManager.getInstance().ajouterArticle(article);

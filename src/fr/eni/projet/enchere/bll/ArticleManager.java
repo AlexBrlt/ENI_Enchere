@@ -56,7 +56,7 @@ public class ArticleManager {
 
 		BLLException ex = new BLLException();
 
-		validationNo_article(nouvelArticle.getNoArticle(), ex);
+		
 		validationDate_Debut(nouvelArticle.getDateStartAuction(), ex);
 		validationDate_Fin(nouvelArticle.getDateEndAuction(), ex);
 		validationNo_Categorie(nouvelArticle.getNoCategorie(), ex);

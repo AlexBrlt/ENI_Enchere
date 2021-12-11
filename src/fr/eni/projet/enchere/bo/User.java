@@ -26,6 +26,12 @@ public class User {
 	public int getNo_utilisateur() {
 		return no_utilisateur;
 	}
+	public List<Auction> getList_Auction() {
+		return list_Auction;
+	}
+	public void setList_Auction(List<Auction> list_Auction) {
+		this.list_Auction = list_Auction;
+	}
 	public List<Article> getList_article() {
 		return list_article;
 	}
