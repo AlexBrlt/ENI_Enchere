@@ -97,7 +97,7 @@ public class Login extends HttpServlet {
 					HttpSession session = request.getSession();
 					
 					
-					session.setAttribute("user", userArticleEnchere);
+					session.setAttribute("user", user);
 					session.setAttribute("articleUser", userArticleEnchere.getList_article());
 					
 					System.out.println(session.getAttribute("user").toString());
@@ -107,7 +107,8 @@ public class Login extends HttpServlet {
 					}
 					
 					
-					System.out.println(session.getAttribute("articleUser").toString());
+
+
 					
 					
 					

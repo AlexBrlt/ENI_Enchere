@@ -334,13 +334,13 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public User userAchatVente(int no_user) throws DALException{
 		List<Article> articles = new ArrayList<Article>();
 		List<Auction> encheres = new ArrayList<Auction>();
-		User u;
+		User u = null;
 		int no_utilisateur = 0;String pseudo = null;String nom = null;String prenom = null;String email = null;
 		String telephone = null;String rue = null;String code_postal = null;String ville = null;String mot_de_passe = null;
 		int credit = 0;int numero_article;String nom_article;String description;
-		LocalDateTime date_start_auction;LocalDateTime date_end_auction;int price_start;
-		int priceSold;int no_categorie;int no_auction;LocalDateTime date_auction;
-		int price_auction;int no_article = 0; int no_article_auction=0;
+		LocalDateTime date_start_auction;LocalDateTime date_end_auction=null;int price_start=0;
+		int priceSold=0;int no_categorie=0;int no_auction=0;LocalDateTime date_auction=null;
+		int price_auction=0;int no_article = 0; int no_article_auction=0;
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
@@ -371,8 +371,19 @@ public class UserDAOJdbcImpl implements UserDAO {
 					numero_article = rs.getInt("no_article");
 					nom_article = rs.getString("nom_article");
 					description = rs.getString("description");
-					date_start_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
-					date_end_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+					
+					if (rs.getTimestamp("date_debut_encheres")==null) {
+						date_start_auction = null;
+					} else {
+						date_start_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+					}
+					
+					if (rs.getTimestamp("date_debut_encheres")==null) {
+						date_end_auction = null;
+					} else {
+						date_end_auction =rs.getTimestamp("date_fin_encheres").toLocalDateTime();
+					}
+										
 					price_start = rs.getInt("prix_initial");
 					priceSold = rs.getInt("prix_vente");
 					no_categorie = rs.getInt("no_categorie");
