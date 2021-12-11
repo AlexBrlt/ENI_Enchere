@@ -13,14 +13,14 @@
 
 <section class="container">
 	<div class="row">
-		<p class="display-4">Bonjour <c:out value="${sessionScope.user.pseudo }! Gardez vos informations à jour"></c:out></p>
+		<h1 class=" display-4 text-center">Bonjour <c:out value="${sessionScope.user.pseudo }! Gardez vos informations à jour"></c:out></h1>
 	</div>
 	<div class="row">
 		<p>Vous possédez : </p><p class="text-success"> <c:out value="${sessionScope.user.credit } crédits"></c:out></p>
 	</div>
 </section>
 
-<section class="container border">
+<section class="container border p-4">
 	<form action="ModifyUser" method="post">
 	 	<div class="form-group">
 	    	<label for="pseudo">Pseudo</label>
@@ -54,12 +54,15 @@
 	    	<label for="city">Ville</label>
 	    	<input type="text" class="form-control" id="city" name="city" value="<c:out value="${sessionScope.user.city}"></c:out>">
 	  	</div>
+	  	<div class="d-flex justify-content-between">
+	  		<button type="submit" class="w-30 btn btn-danger">Supprimer mon compte</button>
+	  		<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
+	  	</div>
 	
-	  	<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
 	</form>
 </section>
 
-<section class="container border">
+<section class="container border mt-5">
 	<form action="ModifyUser" method="post">
 		<h3>Sécurité</h3>
 		
@@ -81,7 +84,10 @@
 	    	<label for="passwordRewrite">Retaper le mot de passe</label>
 	    	<input type="password" class="form-control" id="passwordRewrite" name="passwordRewrite">
 	  	</div>
-	  	<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
+	  	<div class="d-flex justify-content-end">
+	  		<button type="submit" class="w-25 btn btn-success">Mettre à jour</button>
+	  	</div>
+	  	
 	 </form>
 
 </section>

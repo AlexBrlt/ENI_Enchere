@@ -6,11 +6,18 @@
 <meta charset="UTF-8">
 <title>Nouvelle vente</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 <body class="bg-light">
-    <section class="container text-center mb-4">
+    <!-- <section class="container text-center mb-4">
         <h1> Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ? </h1>
-    </section> 
+    </section>  -->
+    
+    <c:choose>
+    	<c:when test="${!empty sessionScope}">
+    		<h1 class="text-center"><c:out value="${sessionScope.user.pseudo},"/><br> souhaitez-vous déposer un nouvel article ? </h1>
+    	</c:when>
+    </c:choose>
     
 
     <section class="container border bg-white p-4 mb-4 w-50">
