@@ -17,13 +17,13 @@ public class CategoriesDAOimpl {
 	private static final String SQL_SELECT_CATEGORY_BY_LIBELLE = "SELECT * FROM CATEGORIES WHERE libelle = ?";
 	
 	
-	public HashMap<Integer, String> selectByLibelle(String libelle) throws DALException  {
+	public HashMap<Integer, String> selectByLibelle() throws DALException  {
 		HashMap<Integer, String> categories =  new HashMap<Integer, String>();
 		
-		try(Connection cnx = ConnectionProvider.getConnection();) {
+		try(Connection cnx = ConnectionProvider.getConnection()) {
 			
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_CATEGORY_BY_LIBELLE);
-		    ordre.setString(2, libelle);
+		    
 		    
 			ResultSet rs = ordre.executeQuery();
 			
