@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bll.UserManager;
+import fr.eni.projet.enchere.bo.Article;
+import fr.eni.projet.enchere.bo.Auction;
 import fr.eni.projet.enchere.bo.User;
 
 /**
@@ -75,13 +77,39 @@ public class Login extends HttpServlet {
 			String pseudo = user.getPseudo();
 			String email = user.getMail();
 			String mot_de_passe = user.getPassword();
+			User userArticleEnchere = null;
 		
 			
 			
 				if ((pseudo.equals(userID) || email.equals(userID)) && mot_de_passe.equals(password)) {
 					System.out.println("ici");
+					
+					
+					try {
+						 userArticleEnchere = UserManager.getInstance().userBuyAndSold(user.getNo_utilisateur());
+					} catch (BLLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+					
 					HttpSession session = request.getSession();
-					session.setAttribute("user", user);
+					
+					
+					session.setAttribute("user", userArticleEnchere);
+					
+					System.out.println(session.getAttribute("user").toString());
+
+					for (Article art : userArticleEnchere.getList_article()) {
+					    System.out.println(art);
+					}
+					
+					
+					
+					
+					
+					
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 					dispatcher.forward(request, response);
 					

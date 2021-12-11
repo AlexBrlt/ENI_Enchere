@@ -34,7 +34,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 	private final static String SQL_SELECT_USER_BY_EMAIL = "SELECT * from UTILISATEURS where email = ? ";
 	private final static String DELETE = "DELETE FROM UTILISATEURS WHERE no_utilisateur=?";		
 	private final static String USER_LIST_ARTICLE = "SELECT * from UTILISATEURS\r\n" + 
-			"INNER JOIN ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur\r\n" + 
+			"LEFT JOIN ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur = ARTICLES_VENDUS.no_utilisateur\r\n" + 
 			"\r\n" + 
 			"WHERE UTILISATEURS.no_utilisateur=?";
 	private final static String USER_LIST_AUCTION = "SELECT * from UTILISATEURS\r\n" + 
@@ -340,7 +340,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 		int credit = 0;int numero_article;String nom_article;String description;
 		LocalDateTime date_start_auction;LocalDateTime date_end_auction;int price_start;
 		int priceSold;int no_categorie;int no_auction;LocalDateTime date_auction;
-		int price_auction;int no_article;
+		int price_auction;int no_article = 0; int no_article_auction=0;
 		
 		try(Connection cnx = ConnectionProvider.getConnection();) {
 			
@@ -350,67 +350,87 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			
 			ResultSet rs = ordre.executeQuery();
-			while(rs.next()) {
+			
+			
+			
+			
+			
+				while(rs.next()) {
+					
+					no_utilisateur = rs.getInt("no_utilisateur");
+					pseudo = rs.getString("pseudo");
+					nom = rs.getString("nom");
+					prenom = rs.getString("prenom");
+					email = rs.getString("email");
+					telephone = rs.getString("telephone");
+					rue = rs.getString("rue");
+					code_postal = rs.getString("code_postal");
+					ville = rs.getString("ville");
+					mot_de_passe = rs.getString("mot_de_passe");
+					credit = rs.getInt("credit");
+					numero_article = rs.getInt("no_article");
+					nom_article = rs.getString("nom_article");
+					description = rs.getString("description");
+					date_start_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+					date_end_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
+					price_start = rs.getInt("prix_initial");
+					priceSold = rs.getInt("prix_vente");
+					no_categorie = rs.getInt("no_categorie");
+					
+					
+					
+					 
+					Article article = new Article(numero_article, nom_article, description, date_start_auction, date_end_auction, price_start, priceSold, no_utilisateur, no_categorie);
+					articles.add(article);	
+	
+				}
+		
 				
-				no_utilisateur = rs.getInt("no_utilisateur");
-				pseudo = rs.getString("pseudo");
-				nom = rs.getString("nom");
-				prenom = rs.getString("prenom");
-				email = rs.getString("email");
-				telephone = rs.getString("telephone");
-				rue = rs.getString("rue");
-				code_postal = rs.getString("code_postal");
-				ville = rs.getString("ville");
-				mot_de_passe = rs.getString("mot_de_passe");
-				credit = rs.getInt("credit");
-				numero_article = rs.getInt("no_article");
-				nom_article = rs.getString("nom_article");
-				description = rs.getString("description");
-				date_start_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
-				date_end_auction = rs.getTimestamp("date_debut_encheres").toLocalDateTime();
-				price_start = rs.getInt("prix_initial");
-				priceSold = rs.getInt("prix_vente");
-				no_categorie = rs.getInt("no_categorie");
 				
-				
-				
-				 
-				Article article = new Article(no_utilisateur, nom_article, description, date_start_auction, date_end_auction, price_start, priceSold, priceSold, no_categorie);
-				articles.add(article);	
-				
-				
-				
-			}
+
 			
 			
 			PreparedStatement ordre2 = cnx.prepareStatement(USER_LIST_AUCTION);
-			ordre.setInt(1, no_user);
+			ordre2.setInt(1, no_user);
 			
 			
 			
 			ResultSet rs2 = ordre2.executeQuery();
-			while(rs2.next()) {
-				
-				no_utilisateur = rs2.getInt("no_utilisateur");
-				no_auction = rs2.getInt("no_enchere");
-				date_auction = rs2.getTimestamp("date_enchere").toLocalDateTime();
-				price_auction = rs2.getInt("montant_enchere");
-				no_article = rs2.getInt("no_article");
-				
-				
-				
-				
-				Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article, no_utilisateur);
-				encheres.add(enchere);	
-			}
 			
-			u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false, articles, encheres);
+			
+				
+				while(rs2.next()) {
+					
+					
+					no_auction = rs2.getInt("no_enchere");
+					date_auction = rs2.getTimestamp("date_enchere").toLocalDateTime();
+					price_auction = rs2.getInt("montant_enchere");
+					no_article_auction = rs2.getInt("no_article");
+					
+					
+					
+					
+					Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article, no_utilisateur);
+					encheres.add(enchere);	
+				}
+				
+				
+				
+			
+				
+			
+
+			
+			
+	
+			
+			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new DALException(e.getMessage());
 		}
-		return u;	
+		return u = new User(no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, false, articles, encheres);	
 	}
 	
 	
