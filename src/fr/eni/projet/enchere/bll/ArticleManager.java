@@ -8,7 +8,7 @@ import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.ArticleDAO;
 import fr.eni.projet.enchere.dal.DALException;
 import fr.eni.projet.enchere.dal.UserDAO;
-import fr.eni.projet.enchere.dal.UserDAOFactory;
+import fr.eni.projet.enchere.dal.DAOFactory;
 
 public class ArticleManager {
 
@@ -17,7 +17,7 @@ public class ArticleManager {
 	private static ArticleDAO dao;
 
 	private ArticleManager() {
-		dao = UserDAOFactory.getArticleDAO();
+		dao = DAOFactory.getArticleDAO();
 	};
 
 	public static ArticleManager getInstance() {

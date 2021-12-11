@@ -4,7 +4,7 @@ import java.util.List;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.DALException;
 import fr.eni.projet.enchere.dal.UserDAO;
-import fr.eni.projet.enchere.dal.UserDAOFactory;
+import fr.eni.projet.enchere.dal.DAOFactory;
 
 public class UserManager {
 	
@@ -13,7 +13,7 @@ public class UserManager {
 	private static UserDAO dao;
 	
 	private UserManager() {
-		dao = UserDAOFactory.getUserDAO();
+		dao = DAOFactory.getUserDAO();
 	};
 
 	public static UserManager getInstance() {

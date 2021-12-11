@@ -2,7 +2,7 @@ package fr.eni.projet.enchere.bll;
 
 import fr.eni.projet.enchere.dal.AuctionDAO;
 import fr.eni.projet.enchere.dal.UserDAO;
-import fr.eni.projet.enchere.dal.UserDAOFactory;
+import fr.eni.projet.enchere.dal.DAOFactory;
 
 public class AuctionManager {
 	
@@ -11,7 +11,7 @@ public class AuctionManager {
 	private static AuctionDAO dao;
 	
 	private AuctionManager() {
-		dao = UserDAOFactory.getEnchere();
+		dao = DAOFactory.getEnchere();
 	};
 
 	public static AuctionManager getInstance() {

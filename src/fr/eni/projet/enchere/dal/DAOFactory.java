@@ -6,7 +6,7 @@ import fr.eni.projet.enchere.dal.jdbc.EnchereDAOjdbcimpl;
 import fr.eni.projet.enchere.dal.jdbc.UserDAOJdbcImpl;
 import jdk.internal.dynalink.beans.StaticClass;
 
-public class UserDAOFactory {
+public class DAOFactory {
 	
 	/**
 	 * Fournit une instance d'une classe
