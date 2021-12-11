@@ -56,12 +56,15 @@
     		<h1>Que cherchez-vous aujourd'hui ? </h1>
     	</c:when>
     </c:choose>
-    		²²²²²²
     </section>
 
     <section class="container border bg-white pt-3 mt-4 w-50">
         <div class="row justify-content-center">
-            <form class=" col-6">
+        <c:choose>
+        	<c:when test="${!empty sessionScope}">
+        		<div class="container">
+          	<div class="row justify-content-center">
+          	 <form class=" col-6">
                 <div class="mb-3 form-group">
                     <label for="nameArticle" class="form-label">Rechercher</label>
                     <input type="text" class="form-control" id="nameArticle">
@@ -79,8 +82,6 @@
                     </select>
                 </div>
                  </form>
-          <div class="container"><!-- justify-content-between -->
-          	<div class="row justify-content-center">
 	                <div class="col-6">
 	                    <ul class="p-0">
 	                        <li  class="form-check p-0">
@@ -128,6 +129,29 @@
 	                </div>
 	       		 </div>
    			</div>
+        	</c:when>
+        	  	<c:when test="${empty sessionScope}">
+    				 <form class=" col-6">
+                <div class="mb-3 form-group">
+                    <label for="nameArticle" class="form-label">Rechercher</label>
+                    <input type="text" class="form-control" id="nameArticle">
+                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+                </div>
+            </form>
+            <form class=" col-6">
+                <div class="form-group">
+                    <label for="categories">Choisir une catégorie</label>
+                    <select class="form-control" id="categories">
+                        <option>Ameublement</option>
+                        <option>Informatique</option>
+                        <option>Vêtements</option>
+                        <option>Sport&Loisirs</option>
+                    </select>
+                </div>
+                 </form>
+    			</c:when>
+        </c:choose>
+           </div>
     </section>
 
     <section class="container pt-3 mt-4">
