@@ -49,84 +49,79 @@
 		</c:choose>
 	</div>
 		
-    <section class="container text-center">
-    <h1>Bon retour nom utilisateur,<br> que cherchez-vous aujourd'hui ? </h1>
-</section>
+    <section class="container text-center"><h1>Bon retour nom utilisateur,<br> que cherchez-vous aujourd'hui ? </h1></section>
+
     <section class="container border bg-white pt-3 mt-4 w-50">
-            <section class="container">
-                <div class="row">
-                    <form class=" col-6">
-                        <div class="mb-3 form-group">
-                            <label for="nameArticle" class="form-label">Rechercher</label>
-                            <input type="text" class="form-control" id="nameArticle">
-                            <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
-                        </div>
-                    </form>
-                    <form class=" col-6">
-                        <div class="form-group">
-                            <label for="categories">Choisir une catégorie</label>
-                            <select class="form-control" id="categories">
-                                <option>Ameublement</option>
-                                <option>Informatique</option>
-                                <option>Vêtements</option>
-                                <option>Sport&Loisirs</option>
-                            </select>
-                        </div>
-                    </form>
+        <div class="row justify-content-center">
+            <form class=" col-6">
+                <div class="mb-3 form-group">
+                    <label for="nameArticle" class="form-label">Rechercher</label>
+                    <input type="text" class="form-control" id="nameArticle">
+                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
                 </div>
-            </section>
-        <section class="container">
-            <div class="row">
-                <div class="col-6">
+                <div>
                     <ul class="p-0">
                         <li  class="form-check p-0">
-                            <input type="radio" id="ventes" name="choices">
-                            <label for="ventes">Mes ventes</label>
+                          <input type="radio" id="achat" name="choices">
+                          <label for="achat">Achat</label>
                         </li>
                         <ul class="p-0">
                             <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name"> Mes ventes en cours </label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name">Ventes non débutées</label>
-                            </li>
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
-                                <label for="name">Ventes terminées</label>
-                            </li>
-                        </ul>
-                    </ul>
-                    <button type="button" class="btn btn-success mb-4">Rechercher</button>
-                </div>
-                <div class="col-6">
-                    <ul class="p-0">
-                        <li  class="form-check p-0">
-                            <input type="radio" id="achat" name="choices">
-                            <label for="achat">Achat</label>
-                        </li>
-                        <ul class="p-0">
-                            <li  class="form-check">
-                                <input type="checkbox" id="name">
+                                <input type="checkbox" id="encheresOuverte" class="achat">
                                 <label for="name"> Enchères ouvertes </label>
                             </li>
                             <li  class="form-check">
-                                <input type="checkbox" id="name">
+                                <input type="checkbox" id="mesEncheres" class="achat">
                                 <label for="name">Mes enchères</label>
                             </li>
                             <li  class="form-check">
-                                <input type="checkbox" id="name">
+                                <input type="checkbox" id="encheresRemporte" class="achat">
                                 <label for="name">Mes enchères remportées</label>
                             </li>
                         </ul>
                     </ul>
                 </div>
-            </div>
-        </section>
+                <button type="button" class="btn btn-success mb-4">Rechercher</button>
+            </form>
+            <form class=" col-6">
+                <div class="form-group">
+                    <label for="categories">Choisir une catégorie</label>
+                    <select class="form-control" id="categories">
+                        <option>Ameublement</option>
+                        <option>Informatique</option>
+                        <option>Vêtements</option>
+                        <option>Sport&Loisirs</option>
+                    </select>
+
+                </div>
+                <div>
+                    <ul class="p-0">
+                        <li  class="form-check p-0">
+                           <input type="radio" id="ventes" name="choices">
+                            <label for="ventes">Mes ventes</label>
+                        </li>
+                        <ul class="p-0">
+                            <li  class="form-check">
+                                <input type="checkbox" id="ventesCours" class="ventes">
+                                <label for="name"> Mes ventes en cours </label>
+                            </li>
+                            <li  class="form-check">
+                                <input type="checkbox" id="ventesNonDebute" class="ventes">
+                                <label for="name">Ventes non débutées</label>
+                            </li>
+                            <li  class="form-check">
+                                <input type="checkbox" id="ventesTermine" class="ventes">
+                                <label for="name">Ventes terminées</label>
+                            </li>
+                        </ul>
+                    </ul>
+                </div>
+            </form>
+        </div>
     </section>
+
     <section class="container pt-3 mt-4">
-        <h2>Résultats</h2>
+    	<h2>Résultats</h2>
     </section>
     <section class="container pt-3 mt-4">
         <div class="row">
@@ -172,6 +167,39 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
-	
+	<script>
+            //Récupérer l'id des radios
+          let ventes =  document.getElementById("achat").onclick = function(){
+              document.getElementById("ventesCours").disabled=true;
+              document.getElementById("ventesNonDebute").disabled=true;
+              document.getElementById("ventesTermine").disabled=true;
+              document.getElementById("encheresOuverte").disabled=false;
+              document.getElementById("mesEncheres").disabled=false;
+              document.getElementById("encheresRemporte").disabled=false;
+              document.getElementById("ventesCours").checked = false;
+              document.getElementById("ventesNonDebute").checked = false;
+              document.getElementById("ventesTermine").checked = false; 
+              document.getElementById("ventes").checked=false;
+/*               document.getElementsByClassName("ventes").disabled=true;
+              document.getElementsByClassName("achat").disabled=false;
+              document.getElementsByClassName("ventes").checked=false; */
+              
+            }
+            let achats =  document.getElementById("ventes").onclick = function(){
+                document.getElementById("encheresOuverte").disabled=true;
+                document.getElementById("mesEncheres").disabled=true;
+                document.getElementById("encheresRemporte").disabled=true;
+                document.getElementById("ventesCours").disabled=false;
+                document.getElementById("ventesNonDebute").disabled=false;
+                document.getElementById("ventesTermine").disabled=false;
+                document.getElementById("encheresOuverte").checked = false;
+                document.getElementById("mesEncheres").checked = false;
+                document.getElementById("encheresRemporte").checked = false;
+                document.getElementById("achat").checked=false;
+/*                 document.getElementsByClassName("achat").disabled=true;
+                document.getElementsByClassName("ventes").disabled=false;
+                document.getElementsByClassName("achat").checked=false; */
+            }
+        </script>
 </body>
 </html>
