@@ -13,6 +13,9 @@ public class Article {
 	private int priceSold;
 	private int noUser;
 	private int noCategorie;
+	private String categorie;
+	private User seller;
+	private User buyer;
 	
 	
 	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
@@ -27,11 +30,9 @@ public class Article {
 		this.noUser=noUser;
 	}
 
-	
-	//TODO Un article a besoin d'une catégorie
+
 	//TODO Un article a besoin d'un point de retrait
-	//TODO Un article a besoin d'un vendeur
-	//TODO Un article a besoin d'un acheteur
+
 
 	// GETTER & SETTER
 	
@@ -89,6 +90,31 @@ public class Article {
 	}
 	public void setNoCategorie(int noCategorie) {
 		this.noCategorie = noCategorie;
+	}	
+	public String getCategorie() {
+		return this.categorie;
+	}
+	
+	public void setCategorie(String categorie) {
+		this.categorie = categorie;
+	}
+	public User getSeller() {
+		return seller;
+	}
+
+
+	public void setSeller(User seller) {
+		this.seller = seller;
+	}
+
+
+	public User getBuyer() {
+		return buyer;
+	}
+
+
+	public void setBuyer(User buyer) {
+		this.buyer = buyer;
 	}
 
 
@@ -106,6 +132,24 @@ public class Article {
 		this.priceSold = priceSold;
 		this.noUser = noUser;
 		this.noCategorie = noCategorie;
+	}
+	
+	public Article(int noArticle, String nameArticle, String description, LocalDateTime dateStartAuction,
+			LocalDateTime dateEndAuction, int priceStart, int priceSold, int noUser, int noCategorie, String categorie,
+			User seller, User buyer) {
+		super();
+		this.noArticle = noArticle;
+		this.nameArticle = nameArticle;
+		this.description = description;
+		this.dateStartAuction = dateStartAuction;
+		this.dateEndAuction = dateEndAuction;
+		this.priceStart = priceStart;
+		this.priceSold = priceSold;
+		this.noUser = noUser;
+		this.noCategorie = noCategorie;
+		this.categorie = categorie;
+		this.seller = seller;
+		this.buyer = buyer;
 	}
 
 	// ToString
