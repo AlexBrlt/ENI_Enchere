@@ -26,6 +26,31 @@ public class ArticleManager {
 		}
 		return instance;
 	}
+	
+	public Article selectArticle(int noArticle) throws BLLException {
+		
+		BLLException ex = new BLLException();
+
+		try {
+			validationNo_article(noArticle, ex);
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			Article article = dao.selectArticle(noArticle);
+
+			return article;
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+
+		
+		
+	}
 
 	public Article ajouterArticle(Article nouvelArticle) throws BLLException {
 
