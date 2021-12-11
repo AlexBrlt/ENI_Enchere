@@ -137,6 +137,7 @@
                     <input type="text" class="form-control" id="nameArticle">
                     <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
                 </div>
+                <button type="button" class="btn btn-success mb-4">Rechercher</button>
             </form>
             <form class=" col-6">
                 <div class="form-group">
