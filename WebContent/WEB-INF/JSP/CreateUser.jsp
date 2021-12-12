@@ -26,73 +26,75 @@
 [dataSource]="countries"> 
 </ejs-autocomplete> 
 
-<div> <a href="Home.jsp">Eni_Enchères</a></div>
-<section class="container border">
-<div style="text-align:center">
-<h1>Inscrivez-vous pour profiter des enchères !</h1>
-<p>Les champs marqués d'une <font class="ast">*</font> sont obligatoires</p>
+<section class="container w-50 d-flex justify-content-center">
+	<div> 
+		<a href="Home.jsp"><img class="mt-5 mb-4 w-50 h-50" src="images/Logo_encheres.svg" alt="Logo_encheres"/></a>
+	</div>
+</section>
 
+<section class="container w-50 d-flex justify-content-center">
+	<div style="text-align:center">
+		<h1 class="h3 fw-normal">Inscrivez-vous pour profiter des enchères !</h1>
+		<p>Les champs marqués d'une <font class="ast">*</font> sont obligatoires</p>
+	</div>
+</section>
 
-<form action="<c:url value="/register" />" method="post">
-  <div>
-        <div class="form-group"> 
-            <input placeholder="Pseudo*"  class="w-50 form-control" type="text" name="pseudo" required>
-        </div>
-			<br>	
-        <div class="form-group">
- 
-            <input placeholder="Prénom*"  class="w-50 form-control" type="text" name="name" required >
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Téléphone*"  class="w-50 form-control" type="text" name="phone" maxlenght=10 required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Code Postal*"  class="w-50 form-control" type="text" name="cp" maxlength=5 required>
-        </div>
-			<br>
-        <div class="form-group">
+<section class="container w-50 d-flex justify-content-center">
+	<form action="<c:url value="/register/"/>" method="post" class="w-25 mb-0">
+	        <div> 
+	            <input placeholder="Pseudo*"  class="form-control" type="text" name="pseudo" required>
+	        </div>
+	        	<br>
+	        <div>    
+	            <input placeholder="Prénom*"  class="form-control" type="text" name="name" required>
+	        </div>
+	        <div>
+	            <input placeholder="Nom*" class="form-control" type="text" name="surname"  required>
+	        </div>
+	        <br>
+	        <div>
+	            <input placeholder="Téléphone*"  class="form-control" type="text" name="phone" maxlength=10 required>
+	        </div>
+	        <div>
+	            <input placeholder="Email*"  class="form-control" type="text" name="mail" required>
+	            <p><small>
+	            Format 0600000000
+	            </small></p>
+	        </div>
+			<div>
+	            <input placeholder="Rue*"  class="form-control" type="text" name="street"  required>
+	        </div>
+	        <div>
+	            <input placeholder="Code Postal*"  class="form-control" type="text" name="cp" maxlength=5 required>
+	        </div>
+	        <div>
+	            <input  placeholder="Ville*"  class="form-control" type="text" name="city"  required>
+	        </div>
+				<br>
+	        <div>
+	            <input placeholder="Mot De Passe*"  class="form-control" type="password" name="password" required>
+	        </div>
+	        <div>
+	            <input placeholder="Confirmer le mot de passe*"  class="form-control" type="password" name="PasswordConf" required>
+	        </div>
+	        <div>
+		        <p class="mb-2"><small>
+		      	 	Le mot de passe doit :<br> - Comporter entre 5 et 25 caractères<br> - Contenir une miniscule et une majuscule<br> - Contenir au moins un chiffre
+		        </small></p>
+	        </div>
+	
+			<div>
+	   			 <button class="w-100 form-control btn btn-success mb-2" type="submit">Valider l'inscription</button>
+			</div>
+    </form>
+</section>
 
-            <input placeholder="Mot De Passe*"  class="w-50 form-control" type="password" name="password" required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Nom*" class="w-50 form-control" type="text" name="surname"  required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Email*"  class="w-50 form-control" type="text" name="mail" required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Rue*"  class="w-50 form-control" type="text" name="street"  required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input  placeholder="Ville*"  class="w-50 form-control" type="text" name="city"  required>
-        </div>
-			<br>
-        <div class="form-group">
-            <input placeholder="Confirmer le mot de passe*"  class="w-50 form-control" type="password" name="PasswordConf" required>
-        </div>
-        <div>
-	        <p>
-	      	  Le mot de passe doit :<br> - Comporter entre 5 et 25 caractères<br> - Contenir une miniscule et une majuscule<br> - Contenir au moins un chiffre
-	        </p>
-        </div>
-
-  </div>
-<div class="form-group">
-    <button class="w-50 form-control btn btn-success" type="submit">Valider l'inscription</button>
-</div>
-
-</form>
-
-<div class="form-group">
-    <a href="<c:url value="/web-inf/jsp/login" />"><button class="w-50 form-control btn btn-danger">Annuler</button></a>
-</div>
-</div>
+<section class="container w-50 d-flex column justify-content-center">
+	<form action="<c:url value="/home/"/>" method="post" class="w-25 mb-0">
+		<div>
+	    	<a href="<c:url value="/web-inf/jsp/home" />"><button class="form-control btn btn-danger w-100">Annuler</button></a>
+		</div>
+	</form>
 </section>
 
 </body>
