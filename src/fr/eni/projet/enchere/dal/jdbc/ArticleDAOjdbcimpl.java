@@ -41,8 +41,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String DATE_FIN_ENCHERES="date_fin_encheres";
 	private static final String PRIX_INITIAL ="prix_initial";
 	private static final String PRIX_VENTE ="prix_vente";
-	private static final String NO_USER ="ARTICLES_VENDUS.no_utilisateur";
-	private static final String NO_CATEGORIE ="ARTICLES_VENDUS.no_categorie";
+	private static final String NO_USER ="no_utilisateur";
+	private static final String NO_CATEGORIE ="no_categorie";
 	private static final String PSEUDO ="pseudo";
 	private static final String NOM ="nom";
 	private static final String PRENOM ="prenom";
@@ -59,7 +59,13 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
 			+ "administrateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
 			"INNER JOIN ARTICLES_VENDUS ON ARTICLES_VENDUS.no_article=ENCHERES.no_article WHERE ENCHERES.no_article=?";
-		
+	
+	
+	private static final String SQL_SELECT_BY_NO_ARTICLE ="select * from UTILISATEURS\r\n" + 
+			"inner join ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur=ARTICLES_VENDUS.no_utilisateur\r\n" + 
+			"inner join CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie\r\n" + 
+			"where ARTICLES_VENDUS.no_article = ?";
+	
 	public Article selectArticle (int no_article) throws DALException{
 		String nameArticle;
 		String description;
@@ -394,6 +400,90 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		}
 		
 		return articles;
+	}
+	
+	
+	
+	public Article selectByNoArticle (int no_article) throws DALException{
+		String nameArticle;
+		String description;
+		LocalDateTime dateStartAuction;
+		LocalDateTime dateEndAuction;
+		int priceStart;
+		int priceSold;
+		int noUser;
+		int noCategorie;
+		String categorie;
+		User seller;
+		User buyer;
+		String pseudo;
+		String surname;
+		String name;
+		String mail;
+		String phone;
+		String street;
+		String postalCode;
+		String city;
+		String password;
+		int credit;
+		boolean administrateur;
+		String libelle;
+		
+		Article article = null;
+		
+		Connection cnx = ConnectionProvider.getConnection();
+		PreparedStatement pstmt = null;
+		PreparedStatement pstmt2 = null;
+		
+		try {
+			pstmt = cnx.prepareStatement(SQL_SELECT_BY_NO_ARTICLE);
+			
+			pstmt.setInt(1, no_article);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				
+				nameArticle = rs.getString(NOM_ARTICLE);
+				description = rs.getString(DESCRIPTION);
+				dateStartAuction = rs.getTimestamp(DATE_DEBUT_ENCHERES).toLocalDateTime();
+				dateEndAuction = rs.getTimestamp(DATE_FIN_ENCHERES).toLocalDateTime();
+				priceStart = rs.getInt(PRIX_INITIAL);
+				priceSold = rs.getInt(PRIX_VENTE);
+				noUser = rs.getInt(NO_USER);
+				noCategorie = rs.getInt(NO_CATEGORIE);
+				categorie = rs.getString(LIBELLE);
+				noUser = rs.getInt(NO_USER);
+				pseudo = rs.getString(PSEUDO);
+				surname = rs.getString(NOM);
+				name = rs.getString(PRENOM);
+				mail = rs.getString(EMAIL);
+				phone = rs.getString(TELEPHONE);
+				street = rs.getString(RUE);
+				postalCode = rs.getString(CODE_POSTAL);
+				city = rs.getString(VILLE);
+				password = rs.getString(MOT_DE_PASSE);
+				credit = rs.getInt(CREDIT);
+				administrateur = rs.getBoolean(ADMINISTRATEUR);
+				libelle = rs.getString(LIBELLE);
+				
+				buyer = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
+				
+				article = new Article(noUser, nameArticle, description, dateStartAuction, dateEndAuction, priceStart, priceSold, noUser, noCategorie);
+				article.setCategorie(libelle);
+				article.setBuyer(buyer);
+			}
+			
+			
+			
+			cnx.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException();
+		}
+		 
+		return article;
 	}
 	
 	

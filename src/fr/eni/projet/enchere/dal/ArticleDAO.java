@@ -11,5 +11,5 @@ public interface ArticleDAO {
 	public List<Article> selectByMotCle(String motcle) throws DALException;
 	public List<Article> selectByMotCleAndCategorie(String motcle, int no_category) throws DALException;
 	public Article selectArticle(int no_article) throws DALException;
-	
+	public Article selectByNoArticle (int no_article) throws DALException;
 }

@@ -12,17 +12,16 @@
 <body class="bg-light">
 
     <section class="container text-center mb-4">
-        <h1> Nom utilisateur,<br> voici quelques détails du produit !</h1>
+        <h1> <c:out value="${sessionScope.user.pseudo}"/>,<br> voici quelques détails du produit !</h1>
     </section>
 
     <section class="container border bg-white p-4 mb-4 w-50">
     
-    <p><strong>Description :</strong> Un PC que même la Nasa ne possède pas. Fais tourner GuildWars 2 en low à 12 FPS.
-		Avec option RGB.<p>
-		
-    <strong>Description :</strong>
+    
+    <p><strong>Description :</strong> <c:out value="${sessionScope.articledesciption}"/><p>
     
     
+
     
     <p><strong>Meilleure offre :</strong> 230 points, par RobertRPZ</p>
      

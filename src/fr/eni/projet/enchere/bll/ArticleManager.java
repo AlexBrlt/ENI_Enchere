@@ -51,6 +51,32 @@ public class ArticleManager {
 		
 		
 	}
+	
+	
+	public Article selectByNo_Article(int noArticle) throws BLLException {
+		
+		BLLException ex = new BLLException();
+
+		try {
+			validationNo_article(noArticle, ex);
+		} catch (BLLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		try {
+			Article article = dao.selectByNoArticle(noArticle);
+
+			return article;
+		} catch (DALException e) {
+			e.printStackTrace();
+			ex.ajouterErreur(e);
+			throw ex;
+		}
+
+		
+		
+	}
 
 	public Article ajouterArticle(Article nouvelArticle) throws BLLException {
 
