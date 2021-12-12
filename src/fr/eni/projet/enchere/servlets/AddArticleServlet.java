@@ -42,8 +42,27 @@ public class AddArticleServlet extends HttpServlet {
 		String nameArticle = request.getParameter("nameArticle");
 		String description = request.getParameter("description");
 		// TODO passer en string catégorie
-//		int noCategorie = Integer.valueOf(request.getParameter("categories"));
-		int noCategorie = 1;
+		String noCategorie = request.getParameter("categories");
+		int no_categorie = 0;
+		switch (noCategorie) {
+		case "Ameublement":
+			no_categorie = 1;
+			break;
+
+		case "Informatique":
+			no_categorie = 2;
+			break;
+		case "Vetement":
+			no_categorie = 3;
+			break;
+		case "Sport&Loisirs":
+			no_categorie = 4;
+			break;
+		}
+		
+		
+		System.out.println(request.getParameter("categories"));
+		
 		
 		int priceStart = Integer.valueOf(request.getParameter("points"));
 				//String photoArticle = request.getParameter("formFile");
@@ -63,7 +82,7 @@ public class AddArticleServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		int no_user = (int)session.getAttribute("no_user");
-		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, noCategorie,no_user); 
+		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, no_categorie,no_user); 
 		
 	
 			try {

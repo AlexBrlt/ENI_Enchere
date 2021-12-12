@@ -38,7 +38,7 @@
                 <select class="form-control" id="categories" name="categories">
                     <option>Ameublement</option>
                     <option>Informatique</option>
-                    <option>Vêtements</option>
+                    <option>Vetement</option>
                     <option>Sport&Loisirs</option>
                 </select>
             </div>

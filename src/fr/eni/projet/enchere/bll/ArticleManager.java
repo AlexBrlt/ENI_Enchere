@@ -177,13 +177,13 @@ public class ArticleManager {
 
 	private void validationNo_utilisateur(int no_user, BLLException ex) throws BLLException {
 		if (no_user < 1) {
-			ex.ajouterErreur(new ParameterException("Le numero d'article doit être un entier positif >= 1"));
+			ex.ajouterErreur(new ParameterException("Le numero d'utilisateur doit être un entier positif >= 1"));
 		}
 	}
 
 	private void validationNo_Categorie(int no_categorie, BLLException ex) throws BLLException {
 		if (no_categorie < 1) {
-			ex.ajouterErreur(new ParameterException("Le numero d'article doit être un entier positif >= 1"));
+			ex.ajouterErreur(new ParameterException("Le numero de categorie doit être un entier positif >= 1"));
 		}
 	}
 
