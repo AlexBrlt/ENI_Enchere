@@ -18,19 +18,18 @@
     <section class="container border bg-white p-4 mb-4 w-50">
     
     
-    <p><strong>Description :</strong> <c:out value="${sessionScope.articledesciption}"/><p>
+    <p><strong>Description :</strong> <c:out value="${requestScope.articledesciption}"/><p>
     
     
 
     
     <p><strong>Meilleure offre :</strong> 230 points, par RobertRPZ</p>
      
-     <p> <strong>Mise à prix :</strong> 210 points</p>  
-     <p> <strong>Fin de l'enchère :</strong> 08/12/2021</p>  
-     <p> <strong>Retrait :</strong> 11 avenue des licornes, 44444 DreamLand</p>  
+     <p> <strong>Mise à prix :</strong> <c:out value="${requestScope.articlesStartPrice}"/> points</p>  
+     <p> <strong>Fin de l'enchère :</strong> <c:out value="${requestScope.articlefinenchere}"/></p>  
+     <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, 44444 DreamLand</p>  
      <p><strong>Vendeur :</strong> LiliDeliceGamerz</p>  
-		
-
+articleretraitstreet
     </section>
 
 

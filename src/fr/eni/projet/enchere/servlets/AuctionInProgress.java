@@ -24,23 +24,27 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Details);
-		dispatcher.forward(request, response);
+		
 		Article article = null;
 		System.out.println("salut");
 		
 		try {
-			 article =ArticleManager.getInstance().selectByNo_Article(12);
+			 article =ArticleManager.getInstance().selectArticle(12);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
 		HttpSession session = request.getSession();
-		session.setAttribute("articledesciption", article.getDescription());
-		session.setAttribute("articlemeilleuroffre", article.getPriceSold());
-		System.out.println(session.getAttribute("articledesciption"));
+		request.setAttribute("articledesciption", article.getDescription());
+		request.setAttribute("articlesStartPrice", article.getPriceStart());
+		request.setAttribute("articlemeilleuroffre", article.getPriceSold());
+		request.setAttribute("articlefinenchere", article.getDateEndAuction());
+		request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
 		
+		System.out.println(request.getAttribute("articledesciption"));
+		RequestDispatcher dispatcher = request.getRequestDispatcher(Details);
+		dispatcher.forward(request, response);
 		
 	}
 	
