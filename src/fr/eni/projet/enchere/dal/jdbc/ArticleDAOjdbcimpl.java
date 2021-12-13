@@ -144,7 +144,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			
 			ResultSet rs2 = pstmt2.executeQuery();
 			
-			if(rs.next()) {
+			if(rs2.next()) {
 				
 				noUser = rs2.getInt(NO_USER);
 				pseudo = rs2.getString(PSEUDO);
