@@ -67,6 +67,24 @@ public Auction modfierAuction(Auction modifyAuction) throws BLLException {
 	}
 
 
+public Auction selectbynoarticle(int no_article) throws BLLException {
+	
+	BLLException ex = new BLLException();
+
+
+	Auction auction = null;
+	try {
+		auction = dao.selectByNo_article(no_article);
+	} catch (DALException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+		throw new BLLException();
+	}
+
+	return auction;
+	
+}
+
 	
 	
 	
