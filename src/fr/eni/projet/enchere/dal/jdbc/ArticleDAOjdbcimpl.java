@@ -67,29 +67,29 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			"where ARTICLES_VENDUS.no_article = ?";
 	
 	public Article selectArticle (int no_article) throws DALException{
-		String nameArticle;
-		String description;
-		LocalDateTime dateStartAuction;
-		LocalDateTime dateEndAuction;
-		int priceStart;
-		int priceSold;
-		int noUser;
-		int noCategorie;
-		String categorie;
-		User seller;
-		User buyer;
-		String pseudo;
-		String surname;
-		String name;
-		String mail;
-		String phone;
-		String street;
-		String postalCode;
-		String city;
-		String password;
-		int credit;
-		boolean administrateur;
-		String libelle;
+		String nameArticle = null;
+		String description = null;
+		LocalDateTime dateStartAuction = null;
+		LocalDateTime dateEndAuction = null;
+		int priceStart = 0;
+		int priceSold = 0;
+		int noUser = 0;
+		int noCategorie = 0;
+		String categorie = null;
+		User seller = null;
+		User buyer = null;
+		String pseudo = null;
+		String surname = null;
+		String name = null;
+		String mail = null;
+		String phone = null;
+		String street = null;
+		String postalCode = null;
+		String city = null;
+		String password = null;
+		int credit = 0;
+		boolean administrateur = false;
+		String libelle = null;
 		
 		Article article = null;
 		
