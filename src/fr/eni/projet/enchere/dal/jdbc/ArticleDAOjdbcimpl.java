@@ -129,11 +129,11 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				administrateur = rs.getBoolean(ADMINISTRATEUR);
 				libelle = rs.getString(LIBELLE);
 				
-				buyer = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
+				seller = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
 				
 				article = new Article(noUser, nameArticle, description, dateStartAuction, dateEndAuction, priceStart, priceSold, noUser, noCategorie);
 				article.setCategorie(libelle);
-				article.setBuyer(buyer);
+				article.setSeller(seller);
 			}
 			
 			pstmt2 = cnx.prepareStatement(SQL_SELECT_ARTICLES_PART_2);
@@ -157,8 +157,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				credit = rs2.getInt(CREDIT);
 				administrateur = rs2.getBoolean(ADMINISTRATEUR);
 				
-				seller = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
-				article.setSeller(seller);
+				buyer = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
+				article.setBuyer(buyer);
 			}
 			
 			cnx.close();
