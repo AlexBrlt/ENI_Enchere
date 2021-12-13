@@ -93,6 +93,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		Article article = null;
 		
+		
+		
 		Connection cnx = ConnectionProvider.getConnection();
 		PreparedStatement pstmt = null;
 		PreparedStatement pstmt2 = null;
@@ -144,7 +146,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			
 			if(rs.next()) {
 				
-				noUser = rs.getInt(NO_USER);
+				noUser = rs2.getInt(NO_USER);
 				pseudo = rs2.getString(PSEUDO);
 				surname = rs2.getString(NOM);
 				name = rs2.getString(PRENOM);
