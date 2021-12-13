@@ -23,16 +23,16 @@
     
 
     
-    <p><strong>Meilleure offre :</strong> 230 points, par RobertRPZ</p>
+    <p><strong>Meilleure offre :</strong> <c:out value="${requestScope.encherefaite}"/> points, par RobertRPZ</p>
      
      <p> <strong>Mise à prix :</strong> <c:out value="${requestScope.articlesStartPrice}"/> points</p>  
      <p> <strong>Fin de l'enchère :</strong> <c:out value="${requestScope.articlefinenchere}"/></p>  
-     <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, 44444 DreamLand</p>  
-     <p><strong>Vendeur :</strong> LiliDeliceGamerz</p>  
-articleretraitstreet
+     <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, <c:out value="${requestScope.articleretraitpostal}"/> <c:out value="${requestScope.articleretraitCity}"/></p>  
+     <p><strong>Vendeur :</strong> <c:out value="${requestScope.articleretraitpseudo}"/></p>  
+
     </section>
 
-
+encherefaite
 																<!-- A modifier si les informations de livraison ne sont pas les mêmes que celle du user -->
     <section class="container border bg-white p-5 w-50 ">
     <form action="<c:url value = "/achatArticle"/>" method="post">
