@@ -75,7 +75,8 @@
 		
 		<p>Vendeur : <c:out value="${requestScope.article.seller }"/></p>
 		
-		<c:choose><!-- La fin de la page change pour chaque cas -->
+		<!-- La fin de la page change pour chaque cas -->
+		<c:choose>
 			<c:when test="${win}">
 				<p>Tel : <c:out value="${requestScope.article.seller.telephone}"/></p>	 
 
