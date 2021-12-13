@@ -11,6 +11,8 @@
 </head>
 <body class="bg-light">
 
+	<%@include file="/header/header.jspf" %>
+
     <section class="container text-center mb-4">
         <h1> <c:out value="${sessionScope.user.pseudo}"/>,<br> voici quelques détails du produit !</h1>
     </section>

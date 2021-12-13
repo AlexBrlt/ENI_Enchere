@@ -18,34 +18,8 @@
 </head>
 <body class="bg-light">
 
+	 	<%@include file="/header/header.jspf" %>
 
-	<div class="d-flex flex-row-reverse pr-4">
-		<c:choose>
-			<c:when test="${!empty sessionScope}">
-				
-			
-					<ul class="nav">
-					  <li class="nav-item">
-					    <a class="nav-link active" href="<c:url value = "/AddArticle"/>">Vendre un article</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
-					  </li>
-					</ul>
-				
-			</c:when>
-			
-			<c:when test="${empty sessionScope}">
-				<a class="btn btn-success" href="<c:url value = "/login"/>">S'inscrire/Se connecter</a>
-			
-			</c:when>
-			
-	
-		</c:choose>
-	</div>
 		
     <section class="container text-center">
   <c:choose>

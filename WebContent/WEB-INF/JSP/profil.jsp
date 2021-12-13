@@ -10,26 +10,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 </head>
 
-<body>
+
 <body class="bg-light">
 
-	<div class="d-flex flex-row-reverse pr-4">
-		
-			<ul class="nav">
-			 <li class="nav-item">
-			    <a class="nav-link active" href="<c:url value = "/selling"/>">Enchères</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link active" href="<c:url value = "/addArticle"/>">Vendre un article</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link disabled" href="<c:url value = "/profil"/>">Mon profil</a>
-			  </li>
-			  <li class="nav-item">
-			    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
-			  </li>
-			</ul>
-	</div>
+ 	<%@include file="/header/header.jspf" %>
 	
  <!--  un get pour lire les informations du profil, pas de modifications de données sur cette page -->
  <div>
