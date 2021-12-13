@@ -56,7 +56,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	private static final String ADMINISTRATEUR ="administrateur";
 	private static final String LIBELLE ="libelle";
 	
-	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
+	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
 			+ "administrateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
 			"INNER JOIN ARTICLES_VENDUS ON ARTICLES_VENDUS.no_article=ENCHERES.no_article WHERE ENCHERES.no_article=?";
 	
