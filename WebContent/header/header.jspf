@@ -10,7 +10,11 @@
 
 </head>
 <body>
+
+
+
 <div class="d-flex flex-row-reverse pr-4">
+	<div><img alt="" src="/images/imageDummy.png"></div>
 		<c:choose>
 			<c:when test="${!empty sessionScope}">
 				
