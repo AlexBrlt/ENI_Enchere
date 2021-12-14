@@ -13,6 +13,8 @@
         <h1> Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ? </h1>
     </section>  -->
     
+    <%@include file="/header/header.jspf" %>
+    
     <c:choose>
     	<c:when test="${!empty sessionScope}">
     		<h1 class="text-center"><c:out value="${sessionScope.user.pseudo},"/><br> souhaitez-vous déposer un nouvel article ? </h1>

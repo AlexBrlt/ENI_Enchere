@@ -20,6 +20,8 @@
 
 <body>
 
+<%@include file="/header/header.jspf" %>
+
 <ejs-autocomplete #ddlChallanType #purchaseType floatLabelType="Always" [fields]="localFields" 
 [ngClass]="{ 'asterix' : enableAsterix }" placeholder=" Choose challan type 
 " showPopupButton="true" 

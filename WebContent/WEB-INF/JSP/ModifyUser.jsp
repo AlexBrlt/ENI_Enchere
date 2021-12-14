@@ -11,6 +11,8 @@
 
 <body>
 
+<%@include file="/header/header.jspf" %>
+
 <section class="container">
 	<div class="row">
 		<h1 class=" display-4 text-center">Bonjour <c:out value="${sessionScope.user.pseudo }! Gardez vos informations à jour"></c:out></h1>

@@ -11,6 +11,8 @@
 </head>
 <body class="bg-light">
 
+<%@include file="/header/header.jspf" %>
+
     <section class="container text-center mb-4">
         <h1> Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ? </h1>
     </section>

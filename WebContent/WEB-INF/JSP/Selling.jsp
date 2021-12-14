@@ -12,6 +12,8 @@
 </head>
 <body>
 
+	<%@include file="/header/header.jspf" %>
+
 	//TODO Vérifier que les var sont bien en pageScope
 
 	<c:if test="sessionScope.user==requestScope.article.winner" var="win">
