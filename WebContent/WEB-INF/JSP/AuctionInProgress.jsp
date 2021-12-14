@@ -23,30 +23,30 @@
     
 
     
-    <p><strong>Meilleure offre :</strong> 230 points, par RobertRPZ</p>
+    <p><strong>Meilleure offre :</strong> <c:out value="${requestScope.encherefaite}"/> points, par <c:out value="${requestScope.articlebuyerpseudo}"/></p>
      
      <p> <strong>Mise à prix :</strong> <c:out value="${requestScope.articlesStartPrice}"/> points</p>  
      <p> <strong>Fin de l'enchère :</strong> <c:out value="${requestScope.articlefinenchere}"/></p>  
-     <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, 44444 DreamLand</p>  
-     <p><strong>Vendeur :</strong> LiliDeliceGamerz</p>  
-articleretraitstreet
-    </section>
+     <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, <c:out value="${requestScope.articleretraitpostal}"/> <c:out value="${requestScope.articleretraitCity}"/></p>  
+     <p><strong>Vendeur :</strong> <c:out value="${requestScope.articleretraitpseudo}"/></p>  
 
+    </section>
 
 																<!-- A modifier si les informations de livraison ne sont pas les mêmes que celle du user -->
     <section class="container border bg-white p-5 w-50 ">
     <form action="<c:url value = "/achatArticle"/>" method="post">
         <h2>Ma Proposition</h2>
         <div class="mb-3 form-group">
-           <p> Proposition d'enchère (Meilleure offre : ###### points)</p>
-            <input type="text" class="form-control" id="rue" name="offre" ">  
+       
+           <p> Proposition d'enchère (Meilleure offre : <c:out value="${requestScope.encherefaite}"/> points)</p>
+            <input type="number" class="form-control" id="rue" name="offre" >  
         </div>
         <button type="submit" class="btn btn-success float-right">Enchérir</button>
      </form>   
     </section>
     
     <div class = "container  w-50">
-    <p> retour à l'acceuil</p>
+   <a  href="<c:url value = "Home"/>">retour a l'accueil</a>
 	</div>
 	
 </body>

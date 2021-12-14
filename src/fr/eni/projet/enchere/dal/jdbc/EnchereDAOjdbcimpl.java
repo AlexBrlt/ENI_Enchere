@@ -6,7 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import fr.eni.projet.enchere.bo.Article;
 import fr.eni.projet.enchere.bo.Auction;
 import fr.eni.projet.enchere.bo.User;
 import fr.eni.projet.enchere.dal.AuctionDAO;
@@ -16,7 +19,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 	
 	private static final String SQL_INSERT_ENCHERE = "INSERT INTO ENCHERES VALUES ( ?, ?, ?, ?)";
 	private static final String SQL_UPDATE_ENCHERE = "UPDATE ENCHERES SET date_enchere = ?, montant_enchere =?, no_utilisateur = ? where no_article = ?";
-	
+	private static final String SQL_SELECT_BY_NO_ARTICLE = "select * from ENCHERES where no_article =?";
 	
 	public Auction insertEnchere(Auction nouvelEnchere) throws DALException{
 
@@ -65,12 +68,14 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 	public Auction updateEnchere(Auction nouvelEnchere) throws DALException{
 
 		// Obtenir une connexion
+
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Obtient une objet de commande (PreparedStatement) = ordre SQL
 		int no_auction = -1;
 		PreparedStatement ordre = null;
 		try {
+			
 			ordre = cnx.prepareStatement(SQL_UPDATE_ENCHERE);
 			
 			// Paramétrer l'objet de commande
@@ -80,7 +85,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 			int no_article = nouvelEnchere.getNo_article();
 			int no_utilisateur = nouvelEnchere.getNo_utilisateur();
 			
-			
+		
 			ordre.setTimestamp(1, Timestamp.valueOf(date_enchere));
 			ordre.setInt(2, montant_enchere);			
 			ordre.setInt(3, no_utilisateur);
@@ -98,7 +103,40 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 
 	}
 	
-	
+	public Auction selectByNo_article(int no_article) throws DALException  {
+		Auction enchere = null;int no_enchere=0;LocalDateTime date_enchere=null;
+		int montant_enchere = 0;int no_utilisateur=0;
+		int numero_article=0;
+		try(Connection cnx = ConnectionProvider.getConnection();) {
+			
+			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_NO_ARTICLE);
+			ordre.setInt(1, no_article);
+			
+			
+			ResultSet rs = ordre.executeQuery();
+			
+			
+			
+			while(rs.next()) {
+				
+				 no_enchere = rs.getInt("no_enchere");
+				 date_enchere = rs.getTimestamp("date_enchere").toLocalDateTime();
+				 montant_enchere =rs.getInt("montant_enchere");
+				 numero_article = rs.getInt("no_article");
+
+				 no_utilisateur = rs.getInt("no_utilisateur");
+				
+				 
+			cnx.close();		
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new DALException(e.getMessage());
+		}
+		
+		return enchere = new Auction(no_enchere, date_enchere, montant_enchere, numero_article, no_utilisateur);
+	}
 	
 	
 	

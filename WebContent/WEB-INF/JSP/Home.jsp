@@ -18,34 +18,8 @@
 </head>
 <body class="bg-light">
 
+	 	<%@include file="/header/header.jspf" %>
 
-	<div class="d-flex flex-row-reverse pr-4">
-		<c:choose>
-			<c:when test="${!empty sessionScope}">
-				
-			
-					<ul class="nav">
-					  <li class="nav-item">
-					    <a class="nav-link active" href="<c:url value = "/AddArticle"/>">Vendre un article</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
-					  </li>
-					  <li class="nav-item">
-					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
-					  </li>
-					</ul>
-				
-			</c:when>
-			
-			<c:when test="${empty sessionScope}">
-				<a class="btn btn-success" href="<c:url value = "/login"/>">S'inscrire/Se connecter</a>
-			
-			</c:when>
-			
-	
-		</c:choose>
-	</div>
 		
     <section class="container text-center">
   <c:choose>
@@ -158,7 +132,7 @@
     <section class="container pt-3 mt-4">
     	<h2>Propositions</h2>
     </section>
-   
+
     <section class="container pt-3 mt-4">
         <div class="row">
             <div class="col-4">
@@ -170,7 +144,14 @@
                             Prix : 210 points <br>
                             Fin de l'enchère : 24/12/2021<br>
                             Vendeur : LiliDeliceGamerz</p>
-                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                            <c:choose>
+                            	<c:when test="${empty sessionScope}">
+                            		<a href="<c:url value = "/register"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            	<c:when test="${!empty sessionScope}">
+                            		<a href="<c:url value = "/selling"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            </c:choose>
                     </div>
                 </div>
             </div>
@@ -183,7 +164,14 @@
                             Prix : 210 points <br>
                             Fin de l'enchère : 24/12/2021<br>
                             Vendeur : LiliDeliceGamerz</p>
-                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                        <c:choose>
+                            	<c:when test="${empty sessionScope}">
+                            		<a href="<c:url value = "/register"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            	<c:when test="${!empty sessionScope}">
+                            		<a href="<c:url value = "/selling"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            </c:choose>
                     </div>
                 </div>
             </div>
@@ -196,7 +184,14 @@
                             Prix : 210 points <br>
                             Fin de l'enchère : 24/12/2021<br>
                             Vendeur : LiliDeliceGamerz</p>
-                        <a href="#" class="btn btn-success">Voir l'enchère</a>
+                        <c:choose>
+                            	<c:when test="${empty sessionScope}">
+                            		<a href="<c:url value = "/register"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            	<c:when test="${!empty sessionScope}">
+                            		<a href="<c:url value = "/selling"/>" class="btn btn-success">Voir l'enchère</a>
+                            	</c:when>
+                            </c:choose>
                     </div>
                 </div>
             </div>
