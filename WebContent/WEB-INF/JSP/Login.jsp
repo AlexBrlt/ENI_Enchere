@@ -15,14 +15,14 @@
   <body class="text-center">
   	<section class="container w-50 pt-5">
   		<div>
-    		<a href="Home.jsp"><img class="mt-5 mb-4 w-50 h-50" src="images/Logo_encheres.svg" alt="Logo_encheres"/></a>
+    		<a href="Home.jsp"><img class="mt-5 mb-4 w-50 h-50" src="images/Logo_encheres.svg" alt="Logo enchères"/></a>
     	</div>
     	<h1 class="h5 mb-3">Veuillez vous connecter</h1>
     </section>
 
     <section class="container w-50" >
 		<div class="row justify-content-center">
-			<form class="w-100 col-5" name="loginForm" method="post" action="<c:url value = "/login"/>">
+			<form class="w-50 col-5" name="loginForm" method="post" action="<c:url value = "/login"/>">
 				<div class="form-control-sm mb-2">
 		     		 <input name = "userID" type="text" class="form-control" id="floatingInput" placeholder="Identifiant" required>
 		    	</div>
