@@ -138,15 +138,31 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
 			
-			enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, enchereAuction.getNo_article(), 1);
 			
+			System.out.println(enchereAuction);
+						if (enchereAuction.getMontant()==0) {
+							
+							enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, 6 );
+							System.out.println(enchereAuction);
+							try {
+								AuctionManager.getInstance().ajouterArticle(enchereAuction);
+							} catch (BLLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+							
+						} else {
+							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, 6);
+							
+							try {
+								AuctionManager.getInstance().modfierAuction(enchereAuction);
+							} catch (BLLException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
+
+						}
 			
-			try {
-				AuctionManager.getInstance().modfierAuction(enchereAuction);
-			} catch (BLLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 			
 			
 			
