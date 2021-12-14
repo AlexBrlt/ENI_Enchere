@@ -68,6 +68,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 	public Auction updateEnchere(Auction nouvelEnchere) throws DALException{
 
 		// Obtenir une connexion
+
 		Connection cnx = ConnectionProvider.getConnection();
 
 		// Obtient une objet de commande (PreparedStatement) = ordre SQL
@@ -75,9 +76,6 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 		PreparedStatement ordre = null;
 		try {
 			
-			
-			
-		
 			ordre = cnx.prepareStatement(SQL_UPDATE_ENCHERE);
 			
 			// Paramétrer l'objet de commande
@@ -129,7 +127,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 				 no_utilisateur = rs.getInt("no_utilisateur");
 				
 				 
-					
+			cnx.close();		
 			}
 			
 		} catch (SQLException e) {
