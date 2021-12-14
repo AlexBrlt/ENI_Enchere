@@ -1,0 +1,8 @@
+﻿# Fichier d'exclusion des fichiers à push
+# Eclipse
+
+.metadata/
+build/
+.classpath
+.settings/org.eclipse.jdt.core.prefs
+test.txt
