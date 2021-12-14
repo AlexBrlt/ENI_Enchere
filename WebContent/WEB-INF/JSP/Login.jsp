@@ -15,7 +15,7 @@
   <body class="text-center">
   	<section class="container w-50 pt-5">
   		<div>
-    		<a href="Home.jsp"><img class="mt-5 mb-4 w-50 h-50" src="images/Logo_encheres.svg" alt="Logo enchères"/></a>
+    		<a href="Home.jsp"><img class="mt-5 mb-4" src="images/Logo_encheres.svg" alt="Logo enchères"/></a>
     	</div>
     	<h1 class="h5 mb-3">Veuillez vous connecter</h1>
     </section>

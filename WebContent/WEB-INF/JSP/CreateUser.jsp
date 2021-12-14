@@ -49,11 +49,11 @@
 
 <section class="container">
 	<div class="row">
-		<div class="col-xs-1 col-sm-2 col-md-2 col-lg-4 col-xl-4 col-4">
+		<div class="col-4">
 		</div>
 			<div class="col-xs-10 col-sm-8 col-md-8">
 				<form action="<c:url value="/register/"/>" method="post">
-				        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-8 mb-0"> 
+				        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 col-6 mb-0"> 
 				            <input placeholder="Pseudo*" style="resize:none"  class="form-control form-control-sm mb-2" type="text" name="pseudo" required>
 
 				            <input placeholder="Prénom*"  class="form-control form-control-sm" type="text" name="name" required>
@@ -75,7 +75,7 @@
 						</div>
 			    </form>
 		    </div>
-		<div class="col-xs-1 col-sm-2 col-md-2 col-lg-4 col-xl-4 col-4">
+		<div class="col-4">
 		</div>
     </div>
 </section>
