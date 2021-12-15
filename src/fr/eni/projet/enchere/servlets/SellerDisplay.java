@@ -27,8 +27,9 @@ public class SellerDisplay extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		request.setAttribute("profilPseudo", "tata");
-		String nomDePseudo = (String) request.getAttribute("profilPseudo");
+		
+		
+		String nomDePseudo = (String) request.getAttribute("pseudo");
 		System.out.println(nomDePseudo);
 		
 		List<User> listPseudo = new ArrayList<User>();
