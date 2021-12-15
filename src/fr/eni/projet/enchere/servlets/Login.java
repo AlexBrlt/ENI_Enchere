@@ -24,7 +24,7 @@ import fr.eni.projet.enchere.bo.User;
 public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VUE = "/WEB-INF/JSP/Login.jsp";
-	private static final String VUETRUE = "/WEB-INF/JSP/Home.jsp";
+	private static final String VUETRUE = "/home";
 	private static final String VUEFALSE = "/WEB-INF/JSP/Login.jsp";
 	
 
@@ -96,6 +96,7 @@ public class Login extends HttpServlet {
 					
 					HttpSession session = request.getSession();
 					
+					session.setMaxInactiveInterval(300);
 					
 					session.setAttribute("user", user);
 					session.setAttribute("articleUser", userArticleEnchere.getList_article());

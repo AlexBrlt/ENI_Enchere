@@ -41,15 +41,14 @@
           	 <form class=" col-6">
                 <div class="mb-3 form-group">
                     <label for="nameArticle" class="form-label">Rechercher</label>
-                    <input type="text" class="form-control" id="nameArticle" name="recherche">
+                    <input type="text" class="form-control" id="nameArticle">
                     <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
                 </div>
             </form>
             <form class=" col-6">
                 <div class="form-group">
                     <label for="categories">Choisir une catégorie</label>
-                    <select class="form-control" id="categories" name="categories">
-                    	<option></option>
+                    <select class="form-control" id="categories">
                         <option>Ameublement</option>
                         <option>Informatique</option>
                         <option>Vêtements</option>

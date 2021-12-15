@@ -2,6 +2,7 @@ package fr.eni.projet.enchere.dal;
 
 import java.util.List;
 
+import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bo.Article;
 
 public interface ArticleDAO {
@@ -12,4 +13,5 @@ public interface ArticleDAO {
 	public List<Article> selectByMotCleAndCategorie(String motcle, int no_category) throws DALException;
 	public Article selectArticle(int no_article) throws DALException;
 	public Article selectByNoArticle (int no_article) throws DALException;
+	public List<Article> selectArticleHome() throws DALException;
 }

@@ -1,6 +1,7 @@
 package fr.eni.projet.enchere.bll;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.eni.projet.enchere.bo.Article;
@@ -27,6 +28,19 @@ public class ArticleManager {
 		return instance;
 	}
 	
+	public List<Article> selectArticleHome() throws BLLException{
+		List<Article> listArticle = new ArrayList<Article>();
+		
+		try {
+			listArticle = dao.selectArticleHome();
+			} catch (DALException e) {
+			e.printStackTrace();
+			BLLException error = new BLLException();
+			throw error;
+		}
+		return listArticle;
+		
+	}
 	public Article selectArticle(int noArticle) throws BLLException {
 		
 		BLLException ex = new BLLException();
