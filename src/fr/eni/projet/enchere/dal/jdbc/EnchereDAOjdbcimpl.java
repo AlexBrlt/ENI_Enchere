@@ -117,7 +117,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 			
 			
 			
-			while(rs.next()) {
+			if(rs.next()) {
 				
 				 no_enchere = rs.getInt("no_enchere");
 				 date_enchere = rs.getTimestamp("date_enchere").toLocalDateTime();

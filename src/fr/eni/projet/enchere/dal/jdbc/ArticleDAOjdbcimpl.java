@@ -144,7 +144,10 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			
 			ResultSet rs2 = pstmt2.executeQuery();
 			
-			
+			if(!rs.next()){
+				buyer = new User(-1, "", "", "", "", "", "", "", "", "", 0, false);
+				article.setBuyer(buyer);
+			}
 				
 			
 			
@@ -167,10 +170,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				article.setBuyer(buyer);
 			}
 			
-			if(!rs.next()){
-				buyer = new User(-1, "", "", "", "", "", "", "", "", "", 0, false);
-				article.setBuyer(buyer);
-			}
+			
 			cnx.close();
 			
 		} catch (SQLException e) {
