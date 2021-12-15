@@ -29,7 +29,7 @@ public class SellerDisplay extends HttpServlet {
 	
 		
 		
-		String nomDePseudo = (String) request.getAttribute("pseudo");
+		String nomDePseudo = (String) request.getParameter("pseudo");
 		System.out.println(nomDePseudo);
 		
 		List<User> listPseudo = new ArrayList<User>();
