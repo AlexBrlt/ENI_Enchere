@@ -6,3 +6,4 @@ build/
 .classpath
 .settings/org.eclipse.jdt.core.prefs
 test.txt
+/bin/
