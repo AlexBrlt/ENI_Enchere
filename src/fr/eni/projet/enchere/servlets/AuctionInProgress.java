@@ -36,9 +36,9 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		Auction enchereAuction = null;
 		Article article = null;
 		System.out.println("salut");
-		
+		int numeroArticle = 12;
 		try {
-			 article =ArticleManager.getInstance().selectArticle(12);
+			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -58,7 +58,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		request.setAttribute("articlefinenchere",formatDateTime);
 		
 		try {
-			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(12);
+			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,7 +86,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
 		
 		
-		int numeroArticle = 12;
+		
 		request.getSession().setAttribute("no_article", numeroArticle);
 			
 		String articlebuyerpseudo;
