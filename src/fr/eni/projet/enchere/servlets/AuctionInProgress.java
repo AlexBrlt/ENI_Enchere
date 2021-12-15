@@ -36,7 +36,12 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		Auction enchereAuction = null;
 		Article article = null;
 		System.out.println("salut");
-		int numeroArticle = 12;
+		
+		
+		
+		String StringArticle = request.getParameter("noArticle");
+		int numeroArticle = Integer.parseInt(StringArticle);
+		System.out.println();
 		try {
 			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
 		} catch (BLLException e) {
@@ -72,7 +77,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		request.setAttribute("encherefaite", enchereAuction.getMontant());
 		
-		
+		request.setAttribute("articleretraitname", article.getNameArticle());
 		request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
 		request.setAttribute("articleretraitpostal", article.getSeller().getPostalCode());
 		request.setAttribute("articleretraitCity", article.getSeller().getCity());
@@ -88,6 +93,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		
 		request.getSession().setAttribute("no_article", numeroArticle);
+		
 			
 		String articlebuyerpseudo;
 		
@@ -127,14 +133,14 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		}
 		 
 		 
-		int no_user_actuel = 1 ;
+		int no_user_actuel = useractuel.getNo_utilisateur() ;
 		
 		int nouveloffre =Integer.valueOf(request.getParameter("offre"));
 		System.out.println(nouveloffre);
 		
 	//	int credituser =useractuel.getCredit();
 		
-		int credituser =1200;
+		int credituser =useractuel.getCredit();
 		
 		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
 			
@@ -142,7 +148,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 			System.out.println(enchereAuction);
 						if (enchereAuction.getMontant()==0) {
 							
-							enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, 6 );
+							enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel );
 							System.out.println(enchereAuction);
 							try {
 								AuctionManager.getInstance().ajouterArticle(enchereAuction);
@@ -152,7 +158,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 							}
 							
 						} else {
-							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, 6);
+							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel);
 							
 							try {
 								AuctionManager.getInstance().modfierAuction(enchereAuction);
