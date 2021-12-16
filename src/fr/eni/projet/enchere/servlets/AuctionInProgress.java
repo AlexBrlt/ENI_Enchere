@@ -1,10 +1,14 @@
 package fr.eni.projet.enchere.servlets;
 
+
+
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
 import java.util.Locale;
+
+
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+
 
 import fr.eni.projet.enchere.bll.ArticleManager;
 import fr.eni.projet.enchere.bll.AuctionManager;
@@ -23,264 +29,180 @@ import fr.eni.projet.enchere.bo.User;
 import sun.java2d.d3d.D3DDrawImage;
 import sun.util.resources.fr.LocaleNames_fr;
 
+
+
 /**
- * Servlet implementation class ArticleBuying
- */
+* Servlet implementation class ArticleBuying
+*/
 @WebServlet("/achatArticle")
 public class AuctionInProgress extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		Auction enchereAuction = null;
-		Article article = null;
-		System.out.println("salut");
-		
-		
-<<<<<<< Updated upstream
-		
-		String StringArticle = request.getParameter("noArticle");
-		System.out.println(StringArticle);
-		int numeroArticle = Integer.parseInt(StringArticle);
-		System.out.println();
-		try {
-<<<<<<< Updated upstream
-			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
-=======
-			 article =ArticleManager.getInstance().selectArticle(1);
->>>>>>> Stashed changes
-=======
-		int numeroArticle = 1;
-		
-		try {
-			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
->>>>>>> Stashed changes
-		} catch (BLLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		HttpSession session = request.getSession();
-		request.setAttribute("articledesciption", article.getDescription());
-		request.setAttribute("articlesStartPrice", article.getPriceStart());
-	//	request.setAttribute("articlemeilleuroffre", article.getPriceSold());
-		
-		LocalDateTime date =article.getDateEndAuction();
-		
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.FRENCH);
-        String formatDateTime = date.format(formatter);
-		
-		
-		request.setAttribute("articlefinenchere",formatDateTime);
-		
-		try {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
-=======
-			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(1);
->>>>>>> Stashed changes
-=======
-			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
->>>>>>> Stashed changes
-		} catch (BLLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		int enchereprix;
-		
-		
-		System.out.println(enchereAuction.getMontant());
-	//	Integer encherepourArticle = Integer.valueOf(enchereAuction.getMontant());
-		
-		
-		request.setAttribute("encherefaite", enchereAuction.getMontant());
-		
-		request.setAttribute("articleretraitname", article.getNameArticle());
-		request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
-		request.setAttribute("articleretraitpostal", article.getSeller().getPostalCode());
-		request.setAttribute("articleretraitCity", article.getSeller().getCity());
-		request.setAttribute("articleretraitname", article.getSeller().getName());
-		
-<<<<<<< Updated upstream
-=======
-		request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
-		request.setAttribute("articleretraitpostal", article.getSeller().getPostalCode());
-		request.setAttribute("articleretraitCity", article.getSeller().getCity());
-		request.setAttribute("articleretraitname", article.getSeller().getName());
-		
->>>>>>> Stashed changes
-		request.setAttribute("articleretraitpseudo", article.getSeller().getPseudo());
-		
-		
-		//pour la servlet afficher profil 
-<<<<<<< Updated upstream
-=======
-		
-		request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
-		
->>>>>>> Stashed changes
-		
-		request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
-		
-		
-		
-		request.getSession().setAttribute("no_article", numeroArticle);
-		
-<<<<<<< Updated upstream
-			
-		String articlebuyerpseudo;
-		
-		
-=======
-		request.getSession().setAttribute("no_article", numeroArticle);
-			
-		String articlebuyerpseudo;
-		System.out.println(article);
-		System.out.println(article.getBuyer().getPseudo());
->>>>>>> Stashed changes
-		if (article.getBuyer().getPseudo()=="") {
-			 articlebuyerpseudo ="pas d'enchere en cours";
-			request.setAttribute("articlebuyerpseudo", article.getBuyer().getPseudo());
-		} else {
-			
-			 articlebuyerpseudo = article.getBuyer().getPseudo();
-<<<<<<< Updated upstream
-=======
-			 request.setAttribute("articlebuyerpseudo", article.getBuyer().getPseudo());
->>>>>>> Stashed changes
-		}
-		
-		request.setAttribute("articlebuyerpseudo", articlebuyerpseudo);
-		
-	
-		System.out.println(request.getAttribute("articledesciption"));
-		RequestDispatcher dispatcher = request.getRequestDispatcher(Details);
-		dispatcher.forward(request, response);
-		
-	}
-	
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		 Auction enchereAuction = null;
-		 
-		 User useractuel=(User) request.getSession().getAttribute("user");
-<<<<<<< Updated upstream
-		 Article actualArticle = null;
-		 
-		
-	
-		int numero_article =(int) request.getSession().getAttribute("no_article");
-		
-		try {
-			 actualArticle = ArticleManager.getInstance().selectByNo_Article(numero_article);
-		} catch (BLLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-		
-		
-		int prix_initial = actualArticle.getPriceStart();
-		 
-=======
-		 
-		
-	
-			int numero_article =(int) request.getSession().getAttribute("no_article");
->>>>>>> Stashed changes
-		 
-		try {
-			enchereAuction = AuctionManager.getInstance().selectbynoarticle(numero_article);
-		} catch (BLLException e) {
-		
-			e.printStackTrace();
-		}
-		 
-		 
-<<<<<<< Updated upstream
-		int no_user_actuel = useractuel.getNo_utilisateur() ;
-=======
-		int no_user_actuel = 1 ;
->>>>>>> Stashed changes
-		
-		int nouveloffre =Integer.valueOf(request.getParameter("offre"));
-		System.out.println(nouveloffre);
-		
-	//	int credituser =useractuel.getCredit();
-		
-<<<<<<< Updated upstream
-		int credituser =useractuel.getCredit();
-		
-		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre && prix_initial<=nouveloffre) {
-			
-			
-			System.out.println(enchereAuction);
-						if (enchereAuction.getMontant()==0) {
-							
-							enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel );
-							System.out.println(enchereAuction);
-=======
-		int credituser =1200;
-		
-		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
-			
 
-			
-						if (enchereAuction.getMontant()==0) {
-							System.out.println(enchereAuction.getNo_article());
-							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, 7);
-							
->>>>>>> Stashed changes
-							try {
-								AuctionManager.getInstance().ajouterArticle(enchereAuction);
-							} catch (BLLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-							
-<<<<<<< Updated upstream
-						} else {
-							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel);
-							
-=======
-							
-						} else {
-							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, enchereAuction.getNo_article(), 7);
-							System.out.println(enchereAuction.getNo_article());
->>>>>>> Stashed changes
-							try {
-								AuctionManager.getInstance().modfierAuction(enchereAuction);
-							} catch (BLLException e) {
-								// TODO Auto-generated catch block
-								e.printStackTrace();
-							}
-<<<<<<< Updated upstream
-=======
-							
->>>>>>> Stashed changes
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-						}
-			
-			
-			
-			
-			this.doGet(request, response);
-			
-			
-		} else {
-			
-			
-			this.doGet(request, response);
+Auction enchereAuction = null;
+Article article = null;
+System.out.println("salut");
 
-		}
-		
-		
-		
-		
-		
-		
-	
-	}
+
+
+String StringArticle = request.getParameter("noArticle");
+int numeroArticle = Integer.parseInt(StringArticle);
+System.out.println();
+try {
+article =ArticleManager.getInstance().selectArticle(numeroArticle);
+} catch (BLLException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+HttpSession session = request.getSession();
+request.setAttribute("articledesciption", article.getDescription());
+request.setAttribute("articlesStartPrice", article.getPriceStart());
+// request.setAttribute("articlemeilleuroffre", article.getPriceSold());
+
+LocalDateTime date =article.getDateEndAuction();
+
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.FRENCH);
+String formatDateTime = date.format(formatter);
+
+
+request.setAttribute("articlefinenchere",formatDateTime);
+
+try {
+enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
+} catch (BLLException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+int enchereprix;
+
+
+System.out.println(enchereAuction.getMontant());
+// Integer encherepourArticle = Integer.valueOf(enchereAuction.getMontant());
+
+
+request.setAttribute("encherefaite", enchereAuction.getMontant());
+
+request.setAttribute("articleretraitname", article.getNameArticle());
+request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
+request.setAttribute("articleretraitpostal", article.getSeller().getPostalCode());
+request.setAttribute("articleretraitCity", article.getSeller().getCity());
+request.setAttribute("articleretraitname", article.getSeller().getName());
+
+request.setAttribute("articleretraitpseudo", article.getSeller().getPseudo());
+
+
+//pour la servlet afficher profil
+
+request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
+
+
+
+request.getSession().setAttribute("no_article", numeroArticle);
+
+
+String articlebuyerpseudo;
+
+
+if (article.getBuyer().getPseudo()=="") {
+articlebuyerpseudo ="pas d'enchere en cours";
+request.setAttribute("articlebuyerpseudo", article.getBuyer().getPseudo());
+} else {
+
+articlebuyerpseudo = article.getBuyer().getPseudo();
+}
+
+request.setAttribute("articlebuyerpseudo", articlebuyerpseudo);
+
+
+System.out.println(request.getAttribute("articledesciption"));
+RequestDispatcher dispatcher = request.getRequestDispatcher(Details);
+dispatcher.forward(request, response);
 
 }
+
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+Auction enchereAuction = null;
+
+User useractuel=(User) request.getSession().getAttribute("user");
+
+
+
+int numero_article =(int) request.getSession().getAttribute("no_article");
+
+try {
+enchereAuction = AuctionManager.getInstance().selectbynoarticle(numero_article);
+} catch (BLLException e) {
+
+e.printStackTrace();
+}
+
+
+int no_user_actuel = useractuel.getNo_utilisateur() ;
+
+int nouveloffre =Integer.valueOf(request.getParameter("offre"));
+System.out.println(nouveloffre);
+
+// int credituser =useractuel.getCredit();
+
+int credituser =useractuel.getCredit();
+
+if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
+
+
+System.out.println(enchereAuction);
+if (enchereAuction.getMontant()==0) {
+
+enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel );
+System.out.println(enchereAuction);
+try {
+AuctionManager.getInstance().ajouterArticle(enchereAuction);
+} catch (BLLException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+} else {
+enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel);
+
+try {
+AuctionManager.getInstance().modfierAuction(enchereAuction);
+} catch (BLLException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+
+
+}
+
+
+
+
+this.doGet(request, response);
+
+
+} else {
+
+
+this.doGet(request, response);
+
+
+
+}
+
+
+
+
+
+
+
+}
+
+
+
+}
+
