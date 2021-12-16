@@ -39,7 +39,7 @@
 	        		<div class="container">
 	          			<div>
 				          	 <form method="post" action="home">
-				          	 <div class ="d-flex justify-content-around"">
+				          	 <div>
 					          	 <div>
 					                <div class="mb-3 form-group">
 					                    <label for="nameArticle" class="form-label">Rechercher</label>
@@ -48,7 +48,7 @@
 					                </div>
 					             </div>
 					             
-						            <div class="col-6">
+						            <div class="w-25">
 						                <div class="form-group">
 						                    <label for="categories">Choisir une catégorie</label>
 						                    <select class="form-control" id="categories" name="categories">
@@ -63,7 +63,7 @@
 				               </div>
 				               
 				               
-					                <div class ="d-flex justify-content-around"">
+					                <div class ="d-flex">
 					                    <ul class="p-0">
 					                        <li  class="form-check p-0">
 					                           <input type="radio" id="ventes" name="choices">
@@ -106,8 +106,11 @@
 						                        </ul>
 						                    </ul>
 						                </div>
+						                 
 					       			</div>
-					       			<input type="submit" value="Recherche" class="btn btn-success mb-4"> 
+					       			<div>
+					       				<input type="submit" value="Recherche" class="btn btn-success mb-4">
+					       			</div> 			
 			                	</form>
 		       		 		</div>
 	   					</div>
@@ -115,28 +118,31 @@
 	        	</c:when>
 	        	  	<c:when test="${empty sessionScope}">
 	    			 <form method="post" action="home">
-	    			 	<div class= col-6>
-			                <div class="mb-3 form-group">
-			                    <label for="nameArticle" class="form-label">Rechercher</label>
-			                    <input type="text" class="form-control" id="nameArticle" name="recherche">
-			                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
-			                </div>
-		                	
-		                </div>
-	            	
-	           			<div class=" col-6">
-	           				<div class="form-group">
-			                    <label for="categories">Choisir une catégorie</label>
-						              <select class="form-control" id="categories" name="categories">
-						                  <option value="">Choisir une catégorie</option>
-						                  <option value="Ameublement">Ameublement</option>
-						                  <option value="Informatique">Informatique</option>
-						                  <option value="Vêtements">Vêtements</option>
-						                  <option value="Sport&Loisirs">Sport&Loisirs</option>
-			                    </select>
-			                </div>
-	           			</div>	
-	           			<input type="submit" value="Recherche" class="btn btn-success mb-4">                
+	    			 	<div class ="d-flex justify-content-around">
+					          	 <div>
+					                <div class="mb-3 form-group">
+					                    <label for="nameArticle" class="form-label">Rechercher</label>
+					                    <input type="text" class="form-control" id="nameArticle" name="recherche">
+					                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+					                </div>
+					             </div>
+					             
+						            <div class="col-6">
+						                <div class="form-group">
+						                    <label for="categories">Choisir une catégorie</label>
+						                    <select class="form-control" id="categories" name="categories">
+						                    	<option value="">Choisir une catégorie</option>
+						                        <option value="Ameublement">Ameublement</option>
+						                        <option value="Informatique">Informatique</option>
+						                        <option value="Vêtements">Vêtements</option>
+						                        <option value="Sport&Loisirs">Sport&Loisirs</option>
+						                    </select>
+						                </div>
+						            </div> 
+				               </div>
+				            	<div>
+					       			<input type="submit" value="Recherche" class="btn btn-success mb-4">
+					       		</div>        
 	                 </form>
 	    			</c:when>
 	        </c:choose>
