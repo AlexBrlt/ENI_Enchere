@@ -89,7 +89,7 @@ public class AddArticleServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/JSP/Home.jsp");
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/home");
 		dispatcher.forward(request, response);
 	}
 
