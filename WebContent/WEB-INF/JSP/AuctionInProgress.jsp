@@ -28,7 +28,7 @@
      <p> <strong>Mise à prix :</strong> <c:out value="${requestScope.articlesStartPrice}"/> points</p>  
      <p> <strong>Fin de l'enchère :</strong> <c:out value="${requestScope.articlefinenchere}"/></p>  
      <p> <strong>Retrait :</strong> <c:out value="${requestScope.articleretraitstreet}"/>, <c:out value="${requestScope.articleretraitpostal}"/> <c:out value="${requestScope.articleretraitCity}"/></p>  
-     <p><strong>Vendeur :</strong> <c:out value="${requestScope.articleretraitpseudo}"/></p>  
+     <p><strong>Vendeur :</strong> <a href="${pageContext.request.contextPath}/SellerDisplay?pseudo=${requestScope.articleretraitpseudo}"><c:out value="${requestScope.articleretraitpseudo}"></c:out></a></p>  
 
     </section>
 
