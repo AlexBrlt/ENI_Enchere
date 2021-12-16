@@ -38,9 +38,7 @@ public class Home extends HttpServlet {
 		
 		request.setAttribute(LIST_ARTICLE, listArticle);
 			
-		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
-	
-		 
+		this.getServletContext().getRequestDispatcher(VUE).forward(request, response); 
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -24,7 +24,6 @@ import fr.eni.projet.enchere.bo.User;
 public class ModifyArticle extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String VUE = "/WEB-INF/JSP/ModifyArticle.jsp";
-	
 	private static final String ARTICLE = "article"; 
 	private static final String NAME_ARTICLE = "nameArticle";   
 	private static final String DESCRIPTION = "description";

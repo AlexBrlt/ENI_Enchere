@@ -53,8 +53,8 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			"WHERE nom_article LIKE ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
 	
 	
-	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE ="SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,\r\n" + 
-			"a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
+	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE ="SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial,\r\n" 
+			+ " prix_vente, a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
 			"mot_de_passe, credit, administrateur\r\n" + 
 			"FROM ARTICLES_VENDUS a \r\n" + 
 			"INNER JOIN CATEGORIES c\r\n" + 
