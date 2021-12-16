@@ -54,6 +54,8 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 				no_auction = rs.getInt(1); // 1 : première colonne du résultat (qui n'en contient qu'une)
 				nouvelEnchere.setNo_utilisateur(no_auction);
 			}
+			
+			cnx.close();
 
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
@@ -93,6 +95,8 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
+			
+			cnx.close();
 
 
 		} catch (SQLException sqle) {

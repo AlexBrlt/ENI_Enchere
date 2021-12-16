@@ -41,6 +41,75 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 			"ON u.no_utilisateur = a.no_utilisateur\r\n" + 
 			"WHERE libelle = ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
 	
+	
+	private static final String SQL_SELECT_BY_MOTCLE = "SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,\r\n" + 
+			"a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
+			"mot_de_passe, credit, administrateur\r\n" + 
+			"FROM ARTICLES_VENDUS a\r\n" + 
+			"INNER JOIN UTILISATEURS u \r\n" +
+			"ON a.no_utilisateur = u.no_utilisateur\r\n" +
+			"INNER JOIN CATEGORIES c\r\n" + 
+			"ON a.no_categorie = c.no_categorie\r\n" + 
+			"WHERE nom_article LIKE ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
+	
+	
+	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE ="SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,\r\n" + 
+			"a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
+			"mot_de_passe, credit, administrateur\r\n" + 
+			"FROM ARTICLES_VENDUS a \r\n" + 
+			"INNER JOIN CATEGORIES c\r\n" + 
+			"ON a.no_categorie = c.no_categorie\r\n" + 
+			"INNER JOIN UTILISATEURS u \r\n" + 
+			"ON u.no_utilisateur = a.no_utilisateur\r\n" + 
+			"WHERE libelle = ? AND nom_article LIKE ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
+
+	
+	private static final String SQL_SELECT_ARTICLES_PART_1 = "SELECT ARTICLES_VENDUS.no_article AS article_number, nom_article, description, date_debut_encheres, "
+			+ "date_fin_encheres, prix_initial" + 
+			", prix_vente, ARTICLES_VENDUS.no_utilisateur, ARTICLES_VENDUS.no_categorie, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, "
+			+ "mot_de_passe, credit, administrateur, libelle FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur=ARTICLES_VENDUS.no_utilisateur " + 
+			"INNER JOIN CATEGORIES ON CATEGORIES.no_categorie = ARTICLES_VENDUS.no_categorie WHERE ARTICLES_VENDUS.no_article=?";
+
+
+	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT UTILISATEURS.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
+
+			+ "administrateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
+			"INNER JOIN ARTICLES_VENDUS ON ARTICLES_VENDUS.no_article=ENCHERES.no_article WHERE ENCHERES.no_article=?";
+	
+	
+	private static final String SQL_SELECT_BY_NO_ARTICLE ="select * from UTILISATEURS\r\n" + 
+			"inner join ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur=ARTICLES_VENDUS.no_utilisateur\r\n" + 
+			"inner join CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie\r\n" + 
+			"where ARTICLES_VENDUS.no_article = ?";
+	
+	private static final String SQL_SELECT_HOME = " SELECT TOP 3 a.no_article, u.pseudo, a.no_utilisateur, nom_article, description, date_debut_encheres,"
+			+ " date_fin_encheres , prix_initial, prix_vente, a.no_categorie, pseudo, nom, prenom, email, telephone, rue, code_postal, ville," + 
+			"  mot_de_passe, credit, administrateur, libelle FROM ARTICLES_VENDUS a INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur" + 
+			"  INNER JOIN CATEGORIES ON CATEGORIES.no_categorie = a.no_categorie WHERE a.date_fin_encheres >= GETDATE() ORDER BY "
+			+ "a.prix_initial DESC";
+	
+	private static final String ARTICLE_NUMBER="no_article";
+	private static final String NOM_ARTICLE="nom_article";
+	private static final String DESCRIPTION="description";
+	private static final String DATE_DEBUT_ENCHERES="date_debut_encheres";
+	private static final String DATE_FIN_ENCHERES="date_fin_encheres";
+	private static final String PRIX_INITIAL ="prix_initial";
+	private static final String PRIX_VENTE ="prix_vente";
+	private static final String NO_USER ="no_utilisateur";
+	private static final String NO_CATEGORIE ="no_categorie";
+	private static final String PSEUDO ="pseudo";
+	private static final String NOM ="nom";
+	private static final String PRENOM ="prenom";
+	private static final String EMAIL ="email";
+	private static final String TELEPHONE ="telephone";
+	private static final String RUE ="rue";
+	private static final String CODE_POSTAL ="code_postal";
+	private static final String VILLE ="ville";
+	private static final String MOT_DE_PASSE ="mot_de_passe";
+	private static final String CREDIT ="credit";
+	private static final String ADMINISTRATEUR ="administrateur";
+	private static final String LIBELLE ="libelle";
+
 	public List<Article> selectByCategory(String libelle) throws DALException{
 		String nameArticle = null;
 		String description = null;
@@ -111,76 +180,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		return listArticles ;
 	}
 	
-
-	
-	private static final String SQL_SELECT_BY_MOTCLE = "SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,\r\n" + 
-			"a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
-			"mot_de_passe, credit, administrateur\r\n" + 
-			"FROM ARTICLES_VENDUS a\r\n" + 
-			"INNER JOIN UTILISATEURS u \r\n" +
-			"ON a.no_utilisateur = u.no_utilisateur\r\n" +
-			"INNER JOIN CATEGORIES c\r\n" + 
-			"ON a.no_categorie = c.no_categorie\r\n" + 
-			"WHERE nom_article LIKE ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
-	
-	
-	private static final String SQL_SELECT_BY_MOTCLE_STRING_AND_CATEGORIE ="SELECT TOP 3 no_article, nom_article, description, date_debut_encheres, date_fin_encheres, prix_initial, prix_vente,\r\n" + 
-			"a.no_utilisateur, a.no_categorie, c.libelle, u.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville,\r\n" + 
-			"mot_de_passe, credit, administrateur\r\n" + 
-			"FROM ARTICLES_VENDUS a \r\n" + 
-			"INNER JOIN CATEGORIES c\r\n" + 
-			"ON a.no_categorie = c.no_categorie\r\n" + 
-			"INNER JOIN UTILISATEURS u \r\n" + 
-			"ON u.no_utilisateur = a.no_utilisateur\r\n" + 
-			"WHERE libelle = ? AND nom_article LIKE ? AND a.date_fin_encheres >= GETDATE() ORDER BY a.prix_initial DESC";
-
-	
-	private static final String SQL_SELECT_ARTICLES_PART_1 = "SELECT ARTICLES_VENDUS.no_article AS article_number, nom_article, description, date_debut_encheres, "
-			+ "date_fin_encheres, prix_initial" + 
-			", prix_vente, ARTICLES_VENDUS.no_utilisateur, ARTICLES_VENDUS.no_categorie, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, "
-			+ "mot_de_passe, credit, administrateur, libelle FROM ARTICLES_VENDUS INNER JOIN UTILISATEURS ON UTILISATEURS.no_utilisateur=ARTICLES_VENDUS.no_utilisateur " + 
-			"INNER JOIN CATEGORIES ON CATEGORIES.no_categorie = ARTICLES_VENDUS.no_categorie WHERE ARTICLES_VENDUS.no_article=?";
-	
-	private static final String ARTICLE_NUMBER="no_article";
-	private static final String NOM_ARTICLE="nom_article";
-	private static final String DESCRIPTION="description";
-	private static final String DATE_DEBUT_ENCHERES="date_debut_encheres";
-	private static final String DATE_FIN_ENCHERES="date_fin_encheres";
-	private static final String PRIX_INITIAL ="prix_initial";
-	private static final String PRIX_VENTE ="prix_vente";
-	private static final String NO_USER ="no_utilisateur";
-	private static final String NO_CATEGORIE ="no_categorie";
-	private static final String PSEUDO ="pseudo";
-	private static final String NOM ="nom";
-	private static final String PRENOM ="prenom";
-	private static final String EMAIL ="email";
-	private static final String TELEPHONE ="telephone";
-	private static final String RUE ="rue";
-	private static final String CODE_POSTAL ="code_postal";
-	private static final String VILLE ="ville";
-	private static final String MOT_DE_PASSE ="mot_de_passe";
-	private static final String CREDIT ="credit";
-	private static final String ADMINISTRATEUR ="administrateur";
-	private static final String LIBELLE ="libelle";
-	
-
-	private static final String SQL_SELECT_ARTICLES_PART_2 = "SELECT UTILISATEURS.no_utilisateur, pseudo, nom, prenom, email, telephone, rue, code_postal, ville, mot_de_passe, credit, "
-
-			+ "administrateur FROM ENCHERES INNER JOIN UTILISATEURS ON ENCHERES.no_utilisateur=UTILISATEURS.no_utilisateur " + 
-			"INNER JOIN ARTICLES_VENDUS ON ARTICLES_VENDUS.no_article=ENCHERES.no_article WHERE ENCHERES.no_article=?";
-	
-	
-	private static final String SQL_SELECT_BY_NO_ARTICLE ="select * from UTILISATEURS\r\n" + 
-			"inner join ARTICLES_VENDUS ON UTILISATEURS.no_utilisateur=ARTICLES_VENDUS.no_utilisateur\r\n" + 
-			"inner join CATEGORIES ON ARTICLES_VENDUS.no_categorie=CATEGORIES.no_categorie\r\n" + 
-			"where ARTICLES_VENDUS.no_article = ?";
-	
-	private static final String SQL_SELECT_HOME = " SELECT TOP 3 a.no_article, u.pseudo, a.no_utilisateur, nom_article, description, date_debut_encheres,"
-			+ " date_fin_encheres , prix_initial, prix_vente, a.no_categorie, pseudo, nom, prenom, email, telephone, rue, code_postal, ville," + 
-			"  mot_de_passe, credit, administrateur, libelle FROM ARTICLES_VENDUS a INNER JOIN UTILISATEURS u ON a.no_utilisateur = u.no_utilisateur" + 
-			"  INNER JOIN CATEGORIES ON CATEGORIES.no_categorie = a.no_categorie WHERE a.date_fin_encheres >= GETDATE() ORDER BY "
-			+ "a.prix_initial DESC";
-
 	
 	@Override
     public List<Article> selectByMotCleAndCategory(String motcle, String libelle) throws DALException {
@@ -321,9 +320,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
     }
 	
 	
-	
-	
-	
 	public List<Article> selectArticleHome() throws DALException{
 		String nameArticle = null;
 		String description = null;
@@ -385,9 +381,7 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				
 				seller = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, credit, administrateur);
 				article1.setSeller(seller);
-				listArticle.add(article1);
-				
-				
+				listArticle.add(article1);	
 			}
 			
 			cnx.close();
@@ -400,8 +394,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		}
 		
 		return listArticle;
-		
-		
 	}
 	
 	
@@ -434,8 +426,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		// On initialise un article
 		Article article = null;
-	
-		
 
 		// On va chercher une connexion
 		Connection cnx = ConnectionProvider.getConnection();
@@ -519,7 +509,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				buyer = new User(noUser, pseudo, name, surname, mail, phone, street, postalCode, city, password, credit, administrateur);
 				article.setBuyer(buyer);
 			}
-			
 			
 			cnx.close();
 			
@@ -620,8 +609,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 		
 		return nouvelArticle;
 	}
-	
-	
 	
 	
 	public void modifyArticle (Article article) throws DALException {
@@ -728,8 +715,6 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 				article.setCategorie(libelle);
 				article.setBuyer(buyer);
 			}
-			
-			
 			
 			cnx.close();
 			
