@@ -39,15 +39,19 @@ public class Register extends HttpServlet {
 
 		
 		String pseudo = request.getParameter("pseudo");
+		System.out.println(pseudo);
 		
 		String surname = request.getParameter("surname");
 		String name = request.getParameter("name");
 		String mail = request.getParameter("mail");
+		
+		System.out.println(mail);
 		String phone = request.getParameter("phone");
 		String street = request.getParameter("street");
 		String postalCode = request.getParameter("cp");
 		String city = request.getParameter("city");
 		String password = request.getParameter("password");
+		System.out.println(password);
 		
 		List<User> userMail = null;
 		try {
@@ -55,17 +59,23 @@ public class Register extends HttpServlet {
 		} catch (BLLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			System.out.println(userMail.get(0));
+			
+		
 		} 
-		List<User> userPseudo = null;
+		List<User> userPseudo = null ;
 		try {
 			userPseudo = UserManager.getInstance().getByPseudo(pseudo);
 		} catch (BLLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
+			
+			
 		}
 		if (userMail.isEmpty() && userPseudo.isEmpty()) {
 			
 			System.out.println("salut");
+			
 
 			User user = new User(pseudo, surname, name, mail, phone, street, postalCode, city, password, 100, false);
 
