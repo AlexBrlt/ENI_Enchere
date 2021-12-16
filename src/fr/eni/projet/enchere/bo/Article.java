@@ -35,8 +35,6 @@ public class Article {
 
 
 	// GETTER & SETTER
-	
-
 	public int getNoArticle() {
 		return noArticle;
 	}
@@ -101,18 +99,12 @@ public class Article {
 	public User getSeller() {
 		return seller;
 	}
-
-
 	public void setSeller(User seller) {
 		this.seller = seller;
 	}
-
-
 	public User getBuyer() {
 		return buyer;
 	}
-
-
 	public void setBuyer(User buyer) {
 		this.buyer = buyer;
 	}

@@ -38,6 +38,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		System.out.println("salut");
 		
 		
+<<<<<<< Updated upstream
 		
 		String StringArticle = request.getParameter("noArticle");
 		System.out.println(StringArticle);
@@ -48,6 +49,12 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
 =======
 			 article =ArticleManager.getInstance().selectArticle(1);
+>>>>>>> Stashed changes
+=======
+		int numeroArticle = 1;
+		
+		try {
+			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
 >>>>>>> Stashed changes
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
@@ -69,9 +76,13 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		try {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
 =======
 			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(1);
+>>>>>>> Stashed changes
+=======
+			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
 >>>>>>> Stashed changes
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
@@ -92,10 +103,24 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		request.setAttribute("articleretraitCity", article.getSeller().getCity());
 		request.setAttribute("articleretraitname", article.getSeller().getName());
 		
+<<<<<<< Updated upstream
+=======
+		request.setAttribute("articleretraitstreet", article.getSeller().getStreet());
+		request.setAttribute("articleretraitpostal", article.getSeller().getPostalCode());
+		request.setAttribute("articleretraitCity", article.getSeller().getCity());
+		request.setAttribute("articleretraitname", article.getSeller().getName());
+		
+>>>>>>> Stashed changes
 		request.setAttribute("articleretraitpseudo", article.getSeller().getPseudo());
 		
 		
 		//pour la servlet afficher profil 
+<<<<<<< Updated upstream
+=======
+		
+		request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
+		
+>>>>>>> Stashed changes
 		
 		request.setAttribute("articleencherepseudo", article.getSeller().getPseudo());
 		
@@ -103,16 +128,28 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		request.getSession().setAttribute("no_article", numeroArticle);
 		
+<<<<<<< Updated upstream
 			
 		String articlebuyerpseudo;
 		
 		
+=======
+		request.getSession().setAttribute("no_article", numeroArticle);
+			
+		String articlebuyerpseudo;
+		System.out.println(article);
+		System.out.println(article.getBuyer().getPseudo());
+>>>>>>> Stashed changes
 		if (article.getBuyer().getPseudo()=="") {
 			 articlebuyerpseudo ="pas d'enchere en cours";
 			request.setAttribute("articlebuyerpseudo", article.getBuyer().getPseudo());
 		} else {
 			
 			 articlebuyerpseudo = article.getBuyer().getPseudo();
+<<<<<<< Updated upstream
+=======
+			 request.setAttribute("articlebuyerpseudo", article.getBuyer().getPseudo());
+>>>>>>> Stashed changes
 		}
 		
 		request.setAttribute("articlebuyerpseudo", articlebuyerpseudo);
@@ -129,6 +166,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		 Auction enchereAuction = null;
 		 
 		 User useractuel=(User) request.getSession().getAttribute("user");
+<<<<<<< Updated upstream
 		 Article actualArticle = null;
 		 
 		
@@ -145,6 +183,12 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		int prix_initial = actualArticle.getPriceStart();
 		 
+=======
+		 
+		
+	
+			int numero_article =(int) request.getSession().getAttribute("no_article");
+>>>>>>> Stashed changes
 		 
 		try {
 			enchereAuction = AuctionManager.getInstance().selectbynoarticle(numero_article);
@@ -154,13 +198,18 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		}
 		 
 		 
+<<<<<<< Updated upstream
 		int no_user_actuel = useractuel.getNo_utilisateur() ;
+=======
+		int no_user_actuel = 1 ;
+>>>>>>> Stashed changes
 		
 		int nouveloffre =Integer.valueOf(request.getParameter("offre"));
 		System.out.println(nouveloffre);
 		
 	//	int credituser =useractuel.getCredit();
 		
+<<<<<<< Updated upstream
 		int credituser =useractuel.getCredit();
 		
 		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre && prix_initial<=nouveloffre) {
@@ -171,6 +220,18 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 							
 							enchereAuction = new Auction( LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel );
 							System.out.println(enchereAuction);
+=======
+		int credituser =1200;
+		
+		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
+			
+
+			
+						if (enchereAuction.getMontant()==0) {
+							System.out.println(enchereAuction.getNo_article());
+							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, 7);
+							
+>>>>>>> Stashed changes
 							try {
 								AuctionManager.getInstance().ajouterArticle(enchereAuction);
 							} catch (BLLException e) {
@@ -178,15 +239,26 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 								e.printStackTrace();
 							}
 							
+<<<<<<< Updated upstream
 						} else {
 							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, numero_article, no_user_actuel);
 							
+=======
+							
+						} else {
+							enchereAuction = new Auction(enchereAuction.getNo_enchere(), LocalDateTime.now(), nouveloffre, enchereAuction.getNo_article(), 7);
+							System.out.println(enchereAuction.getNo_article());
+>>>>>>> Stashed changes
 							try {
 								AuctionManager.getInstance().modfierAuction(enchereAuction);
 							} catch (BLLException e) {
 								// TODO Auto-generated catch block
 								e.printStackTrace();
 							}
+<<<<<<< Updated upstream
+=======
+							
+>>>>>>> Stashed changes
 
 						}
 			

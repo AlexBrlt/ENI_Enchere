@@ -22,18 +22,19 @@
 
 		
     <section class="container text-center">
-  <c:choose>
-    	<c:when test="${!empty sessionScope}">
-    		<h1>Bon retour, <c:out value="${sessionScope.user.pseudo}"/><br> que cherchez-vous aujourd'hui ? </h1>
-    	</c:when>
-    	<c:when test="${empty sessionScope}">
-    		<h1>Que cherchez-vous aujourd'hui ? </h1>
-    	</c:when>
-    </c:choose>
+		  <c:choose>
+		    	<c:when test="${!empty sessionScope}">
+		    		<h1>Bon retour, <c:out value="${sessionScope.user.pseudo}"/><br> que cherchez-vous aujourd'hui ? </h1>
+		    	</c:when>
+		    	<c:when test="${empty sessionScope}">
+		    		<h1>Que cherchez-vous aujourd'hui ? </h1>
+		    	</c:when>
+		    </c:choose>
     </section>
 
     <section class="container border bg-white pt-3 mt-4 w-50">
         <div class="row justify-content-center">
+<<<<<<< Updated upstream
         <c:choose>
         	<c:when test="${!empty sessionScope}">
         		<div class="container">
@@ -127,14 +128,123 @@
                  </form>
     			</c:when>
         </c:choose>
+=======
+	        <c:choose>
+	        	<c:when test="${!empty sessionScope}">
+	        		<div class="container">
+	          			<div>
+				          	 <form method="post" action="home">
+				          	 <div class ="d-flex justify-content-around"">
+					          	 <div>
+					                <div class="mb-3 form-group">
+					                    <label for="nameArticle" class="form-label">Rechercher</label>
+					                    <input type="text" class="form-control" id="nameArticle" name="recherche">
+					                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+					                </div>
+					             </div>
+					             
+						            <div class="col-6">
+						                <div class="form-group">
+						                    <label for="categories">Choisir une catégorie</label>
+						                    <select class="form-control" id="categories" name="categories">
+						                    	<option value="">Choisir une catégorie</option>
+						                        <option value="Ameublement">Ameublement</option>
+						                        <option value="Informatique">Informatique</option>
+						                        <option value="Vêtements">Vêtements</option>
+						                        <option value="Sport&Loisirs">Sport&Loisirs</option>
+						                    </select>
+						                </div>
+						            </div> 
+				               </div>
+				               
+				               
+					                <div class ="d-flex justify-content-around"">
+					                    <ul class="p-0">
+					                        <li  class="form-check p-0">
+					                           <input type="radio" id="ventes" name="choices">
+					                            <label for="ventes">Mes ventes</label>
+					                        </li>
+					                        <ul class="p-0">
+					                            <li  class="form-check">
+					                                <input type="checkbox" id="ventesCours" class="ventes">
+					                                <label for="name"> Mes ventes en cours </label>
+					                            </li>
+					                            <li  class="form-check">
+					                                <input type="checkbox" id="ventesNonDebute" class="ventes">
+					                                <label for="name">Ventes non débutées</label>
+					                            </li>
+					                            <li  class="form-check">
+					                                <input type="checkbox" id="ventesTermine" class="ventes">
+					                                <label for="name">Ventes terminées</label>
+					                            </li>
+					                        </ul>
+					                    </ul>    
+						                <div>
+						                    <ul class="p-0">
+						                        <li  class="form-check p-0">
+						                          <input type="radio" id="achat" name="choices">
+						                          <label for="achat">Achat</label>
+						                        </li>
+						                        <ul class="p-0">
+						                            <li  class="form-check">
+						                                <input type="checkbox" id="encheresOuverte" class="achat">
+						                                <label for="name"> Enchères ouvertes </label>
+						                            </li>
+						                            <li  class="form-check">
+						                                <input type="checkbox" id="mesEncheres" class="achat">
+						                                <label for="name">Mes enchères</label>
+						                            </li>
+						                            <li  class="form-check">
+						                                <input type="checkbox" id="encheresRemporte" class="achat">
+						                                <label for="name">Mes enchères remportées</label>
+						                            </li>
+						                        </ul>
+						                    </ul>
+						                </div>
+					       			</div>
+					       			<input type="submit" value="Recherche" class="btn btn-success mb-4"> 
+			                	</form>
+		       		 		</div>
+	   					</div>
+	   			
+	        	</c:when>
+	        	  	<c:when test="${empty sessionScope}">
+	    			 <form method="post" action="home">
+	    			 	<div class= col-6>
+			                <div class="mb-3 form-group">
+			                    <label for="nameArticle" class="form-label">Rechercher</label>
+			                    <input type="text" class="form-control" id="nameArticle" name="recherche">
+			                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
+			                </div>
+		                	
+		                </div>
+	            	
+	           			<div class=" col-6">
+	           				<div class="form-group">
+			                    <label for="categories">Choisir une catégorie</label>
+						              <select class="form-control" id="categories" name="categories">
+						                  <option value="">Choisir une catégorie</option>
+						                  <option value="Ameublement">Ameublement</option>
+						                  <option value="Informatique">Informatique</option>
+						                  <option value="Vêtements">Vêtements</option>
+						                  <option value="Sport&Loisirs">Sport&Loisirs</option>
+			                    </select>
+			                </div>
+	           			</div>	
+	           			<input type="submit" value="Recherche" class="btn btn-success mb-4">                
+	                 </form>
+	    			</c:when>
+	        </c:choose>
+>>>>>>> Stashed changes
            </div>
     </section>
 
-    <section class="container pt-3 mt-4">
-    	<h2>Propositions</h2>
-    </section>
 
 	<section class="container pt-3 mt-4">
+<<<<<<< Updated upstream
+=======
+	<h2>Propositions</h2>
+>>>>>>> Stashed changes
 		<div class="row">
 			<c:forEach items="${requestScope.listArticle}" var="article">
 	            <div class="col-4">
@@ -145,13 +255,21 @@
 	                        <p class="card-text">
 	                            Prix : <c:out value="${article.priceStart }"></c:out><br>
 	                            Fin de l'enchère : <c:out value="${article.dateEndAuction}"></c:out><br>
+<<<<<<< Updated upstream
 	                            Vendeur : <a href="${pageContext.request.contextPath}/achatArticle?noArticle=${article.noArticle}"><c:out value="${article.seller.pseudo}"></c:out></a></p>
+=======
+	                            Vendeur : <a href="${pageContext.request.contextPath}/SellerDisplay?pseudo=${article.seller.pseudo}"><c:out value="${article.seller.pseudo}"></c:out></a></p>
+>>>>>>> Stashed changes
 	                            <c:choose>
 	                            	<c:when test="${empty sessionScope}">
 	                            		<a href="<c:url value = "/login"/>" class="btn btn-success">Voir l'enchère</a>
 	                            	</c:when>
 	                            	<c:when test="${!empty sessionScope}">
+<<<<<<< Updated upstream
 	                            		<a href="<c:url value = "/selling"/>" class="btn btn-success">Voir l'enchère</a>
+=======
+	                            		<a href="<c:url value = "${pageContext.request.contextPath}/achatArticle?noArticle=${article.noArticle}"/>" class="btn btn-success">Voir l'enchère</a>
+>>>>>>> Stashed changes
 	                            	</c:when>
 	                            </c:choose>
 	                    </div>

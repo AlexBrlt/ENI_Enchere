@@ -15,6 +15,7 @@
 
 
 
+<<<<<<< Updated upstream
 	<div class="d-flex flex-row-reverse pr-4">
 		<div>
 			<img alt="" src="/images/imageDummy.png">
@@ -32,6 +33,26 @@
 						href="<c:url value = "/deconnexion"/>">Déconnexion</a></li>
 				</ul>
 
+=======
+<div class="d-flex flex-row-reverse pr-4">
+	<div> 
+		<a href="<c:url value = "/home"/>"><img alt="" src="C:\Users\amondelice2021\Documents\GitHub\ENI_Enchere\WebContent\images\Logo_encheres.svg"></a>
+	</div>
+		<c:choose>
+			<c:when test="${!empty sessionScope}">
+					<ul class="nav">
+					  <li class="nav-item">
+					    <a class="nav-link active" href="<c:url value = "/AddArticle"/>">Vendre un article</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="<c:url value = "/profil"/>">Mon profil</a>
+					  </li>
+					  <li class="nav-item">
+					    <a class="nav-link" href="<c:url value = "/deconnexion"/>">Déconnexion</a>
+					  </li>
+					</ul>
+				
+>>>>>>> Stashed changes
 			</c:when>
 
 			<c:when test="${empty sessionScope}">
