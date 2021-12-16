@@ -20,14 +20,9 @@
      <p><strong>Nom de l'article :</strong> <c:out value="${requestScope.articleretraitname}"/><p>
     <p><strong>Description :</strong> <c:out value="${requestScope.articledesciption}"/><p>
     
-    
 
-    
-<<<<<<< Updated upstream
     <p><strong>Meilleure offre :</strong> <c:out value="${requestScope.encherefaite}"/> points, par <a href="${pageContext.request.contextPath}/SellerDisplay?pseudo=${requestScope.articlebuyerpseudo}"><c:out value="${requestScope.articlebuyerpseudo}"></c:out></a></p>
-=======
-    <p><strong>Meilleure offre :</strong> <c:out value="${requestScope.encherefaite}"/> points, par <c:out value="${requestScope.articlebuyerpseudo}"/></p>
->>>>>>> Stashed changes
+
      
      <p> <strong>Mise à prix :</strong> <c:out value="${requestScope.articlesStartPrice}"/> points</p>  
      <p> <strong>Fin de l'enchère :</strong> <c:out value="${requestScope.articlefinenchere}"/></p>  
