@@ -116,10 +116,7 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_BY_NO_ARTICLE);
 			ordre.setInt(1, no_article);
 			
-			
 			ResultSet rs = ordre.executeQuery();
-			
-			
 			
 			if(rs.next()) {
 				
@@ -130,7 +127,6 @@ public class EnchereDAOjdbcimpl implements AuctionDAO{
 
 				 no_utilisateur = rs.getInt("no_utilisateur");
 				
-				 
 			cnx.close();		
 			}
 			

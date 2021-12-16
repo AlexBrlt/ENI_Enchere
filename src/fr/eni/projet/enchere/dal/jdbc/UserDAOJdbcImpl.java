@@ -51,12 +51,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
 
-		// Inserer le repas
-		// ET
-		// Insérer chaque aliment du repas
-		// REM : on ne vérifier pas que le meme nom d'aliment est déjà présnt en base de
-		// données
-
 		// Obtient une objet de commande (PreparedStatement) = ordre SQL
 		int no_user = -1;
 		PreparedStatement ordre = null;
@@ -106,7 +100,7 @@ public class UserDAOJdbcImpl implements UserDAO {
 			// Execute l'ordre SQL
 			ordre.executeUpdate();
 
-			// Récupérer l'identifiant du repas généré par la base de données
+			// Récupérer l'identifiant du client généré par la base de données
 			ResultSet rs = ordre.getGeneratedKeys();
 			if (rs.next()) {
 				no_user = rs.getInt(1); // 1 : première colonne du résultat (qui n'en contient qu'une)
@@ -125,12 +119,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 	public User updateUser(User usermodifie) {
 		
 		Connection cnx = ConnectionProvider.getConnection();
-
-		// Inserer le repas
-		// ET
-		// Insérer chaque aliment du repas
-		// REM : on ne vérifier pas que le meme nom d'aliment est déjà présnt en base de
-		// données
 
 		// Obtient une objet de commande (PreparedStatement) = ordre SQL
 		int no_user = -1;
@@ -259,8 +247,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_PSEUDO);
 			ordre.setString(1, pseudonym);
 			
-			
-			
 			ResultSet rs = ordre.executeQuery();
 			while(rs.next()) {
 				
@@ -299,8 +285,6 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			PreparedStatement ordre = cnx.prepareStatement(SQL_SELECT_USER_BY_EMAIL);
 			ordre.setString(1, mail);
-			
-			
 			
 			ResultSet rs = ordre.executeQuery();
 			while(rs.next()) {
@@ -346,15 +330,9 @@ public class UserDAOJdbcImpl implements UserDAO {
 			
 			PreparedStatement ordre = cnx.prepareStatement(USER_LIST_ARTICLE);
 			ordre.setInt(1, no_user);
-			
-			
-			
+				
 			ResultSet rs = ordre.executeQuery();
-			
-			
-			
-			
-			
+
 				while(rs.next()) {
 					
 					no_utilisateur = rs.getInt("no_utilisateur");
@@ -388,28 +366,17 @@ public class UserDAOJdbcImpl implements UserDAO {
 					priceSold = rs.getInt("prix_vente");
 					no_categorie = rs.getInt("no_categorie");
 					
-					
-					
-					 
+
 					Article article = new Article(numero_article, nom_article, description, date_start_auction, date_end_auction, price_start, priceSold, no_utilisateur, no_categorie);
 					articles.add(article);	
 	
 				}
-		
-				
-				
 
-			
-			
 			PreparedStatement ordre2 = cnx.prepareStatement(USER_LIST_AUCTION);
 			ordre2.setInt(1, no_user);
 			
-			
-			
 			ResultSet rs2 = ordre2.executeQuery();
 			
-			
-				
 				while(rs2.next()) {
 					
 					
@@ -418,14 +385,9 @@ public class UserDAOJdbcImpl implements UserDAO {
 					price_auction = rs2.getInt("montant_enchere");
 					no_article_auction = rs2.getInt("no_article");
 					
-					
-					
-					
 					Auction enchere = new Auction(no_auction, date_auction, price_auction, no_article_auction, no_utilisateur);
 					encheres.add(enchere);	
 				}
-				
-
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
