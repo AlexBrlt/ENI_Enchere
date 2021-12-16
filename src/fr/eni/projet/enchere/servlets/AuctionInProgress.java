@@ -40,6 +40,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		
 		String StringArticle = request.getParameter("noArticle");
+		System.out.println(StringArticle);
 		int numeroArticle = Integer.parseInt(StringArticle);
 		System.out.println();
 		try {
@@ -120,10 +121,22 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		 Auction enchereAuction = null;
 		 
 		 User useractuel=(User) request.getSession().getAttribute("user");
+		 Article actualArticle = null;
 		 
 		
 	
-			int numero_article =(int) request.getSession().getAttribute("no_article");
+		int numero_article =(int) request.getSession().getAttribute("no_article");
+		
+		try {
+			 actualArticle = ArticleManager.getInstance().selectByNo_Article(numero_article);
+		} catch (BLLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		int prix_initial = actualArticle.getPriceStart();
+		 
 		 
 		try {
 			enchereAuction = AuctionManager.getInstance().selectbynoarticle(numero_article);
@@ -142,7 +155,7 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		
 		int credituser =useractuel.getCredit();
 		
-		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre) {
+		if (nouveloffre > enchereAuction.getMontant() && credituser>=nouveloffre && prix_initial<=nouveloffre) {
 			
 			
 			System.out.println(enchereAuction);
