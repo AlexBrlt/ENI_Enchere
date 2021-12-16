@@ -14,12 +14,5 @@ public interface ArticleDAO {
 	public Article selectArticle(int no_article) throws DALException;
 	public Article selectByNoArticle (int no_article) throws DALException;
 	public List<Article> selectArticleHome() throws DALException;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 }
