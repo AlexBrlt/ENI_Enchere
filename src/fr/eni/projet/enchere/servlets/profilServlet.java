@@ -19,11 +19,7 @@ import fr.eni.projet.enchere.bo.User;
 
 public class profilServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public profilServlet() {
-        super();
-
-    }
+      
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Modifier le setAttribute car les élements à afficher dans la jps profil (venant de la servlet profil) sont en durs pour le moment.

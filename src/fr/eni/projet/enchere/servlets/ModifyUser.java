@@ -33,8 +33,6 @@ public class ModifyUser extends HttpServlet {
 	private static final String PASSWORD_CURRENT = "passwordCurrent";
 	private static final String PASSWORD_REWRITE = "passwordRewrite";
 	
-	
-	
     /**
      * @see HttpServlet#HttpServlet()
      */

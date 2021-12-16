@@ -60,10 +60,8 @@ public class AddArticleServlet extends HttpServlet {
 			break;
 		}
 		
-		
 		System.out.println(request.getParameter("categories"));
-		
-		
+			
 		int priceStart = Integer.valueOf(request.getParameter("points"));
 				//String photoArticle = request.getParameter("formFile");
 		String dateStartAuction = request.getParameter("StartAuction");
@@ -84,7 +82,6 @@ public class AddArticleServlet extends HttpServlet {
 		int no_user = (int)session.getAttribute("no_user");
 		Article article = new Article(nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, no_categorie,no_user); 
 		
-	
 			try {
 				ArticleManager.getInstance().ajouterArticle(article);
 			} catch (BLLException e) {

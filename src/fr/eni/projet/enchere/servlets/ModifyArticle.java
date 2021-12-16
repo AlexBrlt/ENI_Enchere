@@ -50,8 +50,8 @@ public class ModifyArticle extends HttpServlet {
 		
 		String nameArticle = request.getParameter(NAME_ARTICLE);
 		String description = request.getParameter(DESCRIPTION);
-		String dateStartAuction = request.getParameter(DATE_START_AUCTION)+ " 00:00:00";
-		String dateEndAuction = request.getParameter(DATE_END_AUCTION) + " 00:00:00";
+		String dateStartAuction = request.getParameter(DATE_START_AUCTION);
+		String dateEndAuction = request.getParameter(DATE_END_AUCTION);
 		int priceStart = Integer.valueOf(request.getParameter(PRICE_START));
 		Integer priceSold = null; // On peut modifier l'article puisqu'il n'est pas vendu
 		
@@ -60,9 +60,9 @@ public class ModifyArticle extends HttpServlet {
 		dateEndAuction = dateEndAuction.replace('T', ' ');
 		
 		// BON CODE, SERT A RECUPERER LE NUMERO UTILISATEUR
-//		HttpSession session = request.getSession();
-//		User user = (User) session.getAttribute(USER);
-//		int noUser = user.getNo_utilisateur();
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(USER);
+		int noUser = user.getNo_utilisateur();
 		
 		int noCategorie = 2;
 		int noArticle = 1;
@@ -71,19 +71,9 @@ public class ModifyArticle extends HttpServlet {
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
 		LocalDateTime dateTimeStart = LocalDateTime.parse(dateStartAuction, formatter);
 		LocalDateTime dateTimeEnd = LocalDateTime.parse(dateEndAuction, formatter);
-		System.out.println(dateTimeStart.toString());
-		
-		System.out.println(noArticle);
-		System.out.println(nameArticle);
-		System.out.println(description);
-		System.out.println(dateTimeStart.toString());
-		System.out.println(dateTimeEnd.toString());
-		System.out.println(priceStart);
-		System.out.println(priceSold);
-		System.out.println(noCategorie);
-		
+
 		//Ajouter Article
-		Article article = new Article(noArticle, nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, priceSold, noCategorie, 1);
+		Article article = new Article(noArticle, nameArticle, description, dateTimeStart, dateTimeEnd, priceStart, priceSold, noCategorie, noUser);
 		
 		try {
 			ArticleManager.getInstance().modfierArticle(article);
@@ -91,19 +81,7 @@ public class ModifyArticle extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		//TODO La catégorie
-		
-//		private int noArticle;
-//		private String nameArticle;
-//		private String description;
-//		private LocalDateTime dateStartAuction;
-//		private LocalDateTime dateEndAuction;
-//		private int priceStart;
-//		private int priceSold;
-//		private int noUser;
-//		private int noCategorie;
+
 	}
 
 }

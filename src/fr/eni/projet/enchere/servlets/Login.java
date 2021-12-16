@@ -110,13 +110,7 @@ public class Login extends HttpServlet {
 					
 					for (Auction auct : userArticleEnchere.getList_Auction()) {
 					    System.out.println(auct);
-					}
-					
-					
-
-
-					
-					
+					}	
 					
 					RequestDispatcher dispatcher = request.getRequestDispatcher(VUETRUE);
 					dispatcher.forward(request, response);
