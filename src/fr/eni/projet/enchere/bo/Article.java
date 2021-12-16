@@ -17,20 +17,6 @@ public class Article {
 	private User seller;
 	private User buyer;
 	
-	
-	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
-			int priceStart, int noCategorie, int noUser) {
-		
-		this.nameArticle = nameArticle;
-		this.description = description;
-		this.dateStartAuction = dateStartAuction;
-		this.dateEndAuction = dateEndAuction;
-		this.priceStart = priceStart;
-		this.noCategorie = noCategorie;
-		this.noUser=noUser;
-	}
-
-
 	//TODO Un article a besoin d'un point de retrait
 
 
@@ -114,7 +100,7 @@ public class Article {
 
 	public Article(int noArticle, String nameArticle, String description, LocalDateTime dateStartAuction,
 			LocalDateTime dateEndAuction, int priceStart, int priceSold, int noUser, int noCategorie) {
-		super();
+		
 		this.noArticle = noArticle;
 		this.nameArticle = nameArticle;
 		this.description = description;
@@ -129,7 +115,7 @@ public class Article {
 	public Article(int noArticle, String nameArticle, String description, LocalDateTime dateStartAuction,
 			LocalDateTime dateEndAuction, int priceStart, int priceSold, int noUser, int noCategorie, String categorie,
 			User seller, User buyer) {
-		super();
+		
 		this.noArticle = noArticle;
 		this.nameArticle = nameArticle;
 		this.description = description;
@@ -142,6 +128,18 @@ public class Article {
 		this.categorie = categorie;
 		this.seller = seller;
 		this.buyer = buyer;
+	}
+	
+	public Article(String nameArticle, String description, LocalDateTime dateStartAuction, LocalDateTime dateEndAuction,
+			int priceStart, int noCategorie, int noUser) {
+		
+		this.nameArticle = nameArticle;
+		this.description = description;
+		this.dateStartAuction = dateStartAuction;
+		this.dateEndAuction = dateEndAuction;
+		this.priceStart = priceStart;
+		this.noCategorie = noCategorie;
+		this.noUser=noUser;
 	}
 
 	// ToString

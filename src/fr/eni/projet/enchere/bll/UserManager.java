@@ -22,12 +22,9 @@ public class UserManager {
 		}
 		return instance;
 	}
-
-
 	
 	public User ajouterUser(User nouveauUser) throws BLLException {
-		
-		
+				
 		BLLException ex = new BLLException();
 		
 		validationPseudo(nouveauUser.getPseudo(), ex);
@@ -37,8 +34,6 @@ public class UserManager {
 		validationEmail(nouveauUser.getMail(), ex);
 		validationVille(nouveauUser.getStreet(), ex);
 		validationCode_postal(nouveauUser.getPostalCode(), ex);
-		
-		
 		
 		if(ex.hasErreur()) {
 			throw ex;
@@ -53,9 +48,6 @@ public class UserManager {
 			ex.ajouterErreur(e);
 			throw ex;
 		}
-		
-		
-		
 		
 	}
 	
@@ -85,13 +77,6 @@ public class UserManager {
 			throw ex;
 		}
 		
-		
-	
-		
-		
-	
-	
-	
 	}
 	
 	public void removeUser(int no_utilisateur) throws BLLException {
@@ -99,7 +84,6 @@ public class UserManager {
 		BLLException ex = new BLLException();
 		validationId(no_utilisateur, ex);
 		
-	
 		// A faire vérife
 	//	validationId(idArticle, ex);   
 		
@@ -133,7 +117,6 @@ public class UserManager {
 			ex.ajouterErreur(e);
 			throw ex;
 		}
-		
 		
 	}
 	
@@ -178,10 +161,7 @@ public class UserManager {
 	
 	public User userBuyAndSold(int no_user) throws BLLException{
 		
-		
 		BLLException ex = new BLLException();
-		
-		
 		
 		if(ex.hasErreur()) {
 			throw ex;
@@ -197,12 +177,6 @@ public class UserManager {
 
 	}
 		
-		
-		
-		
-		
-
-	
 
 	private void validationId(int no_user, BLLException ex) throws BLLException {
 		if(no_user < 1) {

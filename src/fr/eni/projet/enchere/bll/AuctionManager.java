@@ -44,14 +44,11 @@ public class AuctionManager {
 			ex.ajouterErreur(e);
 			throw ex;
 		}
-		
-
 	}
 	
 public Auction modfierAuction(Auction modifyAuction) throws BLLException {
 		
 		BLLException ex = new BLLException();
-
 
 		Auction auction = null;
 		try {
@@ -70,7 +67,6 @@ public Auction modfierAuction(Auction modifyAuction) throws BLLException {
 public Auction selectbynoarticle(int no_article) throws BLLException {
 	
 	BLLException ex = new BLLException();
-
 
 	Auction auction = null;
 	try {

@@ -61,14 +61,8 @@ public class Auction {
 		this.montant = montant;
 		this.no_article = no_article;
 		this.no_utilisateur = no_utilisateur;
-
-		// ToString
-
 	}
 	
-	
-	
-
 	public Auction(LocalDateTime date_enchere, int montant, int no_article, int no_utilisateur) {
 		
 		this.date_enchere = date_enchere;
