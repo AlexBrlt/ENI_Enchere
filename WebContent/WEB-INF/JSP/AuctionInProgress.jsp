@@ -33,7 +33,7 @@
 
 																<!-- A modifier si les informations de livraison ne sont pas les mêmes que celle du user -->
     <section class="container border bg-white p-5 w-50 ">
-    <form action="<c:url value = "/achatArticle"/>" method="post">
+    <form action="<c:url value ="/achatArticle"/>" method="post">
         <h2>Ma Proposition</h2>
         <div class="mb-3 form-group">
        
