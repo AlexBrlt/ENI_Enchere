@@ -22,7 +22,7 @@
 		<div>
 			<h1 class="container text-center">Mon compte</h1>
 		</div>
-		<section class="container border">
+		<section class="container border p-4"">
 			<form action="<c:url value="/ModifyUser" />" method="get">
 
 				<div class="form-group">

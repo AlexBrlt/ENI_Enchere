@@ -28,7 +28,7 @@
 	</c:choose>
 
 
-	<section class="container border bg-white p-4 mb-4 w-50">
+	<section class="container border bg-white p-4 mb-5"">
 		<h2>Informations article</h2>
 		<form method="post" action="AddArticle">
 			<div class="mb-3 form-group">
@@ -78,10 +78,10 @@
 					DD/MM/YYYY</div>
 			</div>
 			<section
-				class="container d-flex justify-content-between mt-3 mb-5 pr-0 pl-0 w-50">
+				class="container d-flex justify-content-between">
 				<a href="${pageContext.request.contextPath}/home "><button
 						type="button" class="btn btn-danger">Annuler</button></a>
-				<button type="submit" class="btn btn-success">Mettre en
+				<button type="submit" class="btn btn-success w-25">Mettre en
 					ligne</button>
 
 			</section>
@@ -89,7 +89,7 @@
 	</section>
 
 
-	<section class="container border bg-white p-4 w-50">
+	<section class="container border bg-white p-4 mb-5">
 		<h2>Informations retrait</h2>
 		<div class="mb-3 form-group">
 			<label for="rue" class="form-label">Rue</label> <input type="text"

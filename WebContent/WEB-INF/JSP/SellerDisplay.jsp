@@ -19,7 +19,7 @@
 
 	<!--  un get pour lire les informations du profil, pas de modifications de données sur cette page -->
 	<div>
-		<section class="container border">
+		<section class="container border p-4">
 			<form action="<c:url value="/AuctionInProgress" />" method="get">
 
 				<div class="form-group">
@@ -62,6 +62,9 @@
 					<label for="city">Ville </label> <input class="form-control"
 						value="<c:out value="${requestScope.city}"></c:out>"
 						name="city" type="text" disabled>
+				</div>
+				<div class="form-group mt-5 d-flex justify-content-end">
+					<a href="<c:url value = "/home"/>" class="btn btn-success w-25">Retour</a>
 				</div>
 		</section>
 	</form>
