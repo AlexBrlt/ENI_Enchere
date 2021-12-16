@@ -147,7 +147,7 @@ public class ArticleManager {
 		
 	}
 
-	public List<Article> getByCategorie(int no_categorie) throws BLLException {
+	public List<Article> getByCategorie(String category) throws BLLException {
 
 		BLLException ex = new BLLException();
 
@@ -156,7 +156,7 @@ public class ArticleManager {
 		}
 
 		try {
-			return dao.selectByCategorie(no_categorie);
+			return dao.selectByCategory(category);
 		} catch (DALException e) {
 			e.printStackTrace();
 			ex.ajouterErreur(e);
@@ -166,21 +166,24 @@ public class ArticleManager {
 	}
 
 	public List<Article> getByMotCle(String motcle) throws BLLException {
-
-		BLLException ex = new BLLException();
-
-		if (ex.hasErreur()) {
-			throw ex;
-		}
-
+		
 		try {
 			return dao.selectByMotCle(motcle);
 		} catch (DALException e) {
 			e.printStackTrace();
-			ex.ajouterErreur(e);
-			throw ex;
+			throw new BLLException();
 		}
 
+	}
+	public List<Article> getByMotCleAndCategory(String motcle, String category) throws BLLException {
+		
+		try {
+			return dao.selectByMotCleAndCategory(motcle, category);
+		} catch (DALException e) {
+			e.printStackTrace();
+			throw new BLLException();
+		}
+		
 	}
 
 	private void validationNo_article(int no_article, BLLException ex) throws BLLException {

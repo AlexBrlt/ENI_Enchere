@@ -44,7 +44,11 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		int numeroArticle = Integer.parseInt(StringArticle);
 		System.out.println();
 		try {
+<<<<<<< Updated upstream
 			 article =ArticleManager.getInstance().selectArticle(numeroArticle);
+=======
+			 article =ArticleManager.getInstance().selectArticle(1);
+>>>>>>> Stashed changes
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -64,7 +68,11 @@ private static final String Details = "/WEB-INF/JSP/AuctionInProgress.jsp" ;
 		request.setAttribute("articlefinenchere",formatDateTime);
 		
 		try {
+<<<<<<< Updated upstream
 			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(numeroArticle);
+=======
+			 enchereAuction = AuctionManager.getInstance().selectbynoarticle(1);
+>>>>>>> Stashed changes
 		} catch (BLLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

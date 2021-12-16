@@ -8,10 +8,14 @@ import fr.eni.projet.enchere.bo.Article;
 public interface ArticleDAO {
 	
 	public Article insertArticle(Article nouvelArticle) throws DALException;
-	List<Article> selectByCategorie(int no_categorie) throws DALException;
+	List<Article> selectByCategory(String libelle) throws DALException;
 	public List<Article> selectByMotCle(String motcle) throws DALException;
-	public List<Article> selectByMotCleAndCategorie(String motcle, int no_category) throws DALException;
+	public List<Article> selectByMotCleAndCategory(String motcle, String libelle) throws DALException;
 	public Article selectArticle(int no_article) throws DALException;
 	public Article selectByNoArticle (int no_article) throws DALException;
 	public List<Article> selectArticleHome() throws DALException;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 }
