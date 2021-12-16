@@ -34,101 +34,6 @@
 
     <section class="container border bg-white pt-3 mt-4 w-50">
         <div class="row justify-content-center">
-<<<<<<< Updated upstream
-        <c:choose>
-        	<c:when test="${!empty sessionScope}">
-        		<div class="container">
-          	<div class="row justify-content-center">
-          	 <form class=" col-6">
-                <div class="mb-3 form-group">
-                    <label for="nameArticle" class="form-label">Rechercher</label>
-                    <input type="text" class="form-control" id="nameArticle" name="recherche">
-                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
-                </div>
-            </form>
-            <form class=" col-6">
-                <div class="form-group">
-                    <label for="categories">Choisir une catégorie</label>
-                    <select class="form-control" id="categories" name="categories">
-                    	<option></option>
-                        <option>Ameublement</option>
-                        <option>Informatique</option>
-                        <option>Vêtements</option>
-                        <option>Sport&Loisirs</option>
-                    </select>
-                </div>
-                 </form>
-	                <div class="col-6">
-	                    <ul class="p-0">
-	                        <li  class="form-check p-0">
-	                           <input type="radio" id="ventes" name="choices">
-	                            <label for="ventes">Mes ventes</label>
-	                        </li>
-	                        <ul class="p-0">
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="ventesCours" class="ventes">
-	                                <label for="name"> Mes ventes en cours </label>
-	                            </li>
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="ventesNonDebute" class="ventes">
-	                                <label for="name">Ventes non débutées</label>
-	                            </li>
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="ventesTermine" class="ventes">
-	                                <label for="name">Ventes terminées</label>
-	                            </li>
-	                        </ul>
-	                    </ul>
-	                    <button type="button" class="btn btn-success mb-4">Rechercher</button>
-	                </div>
-	                <div class="col-6">
-	                    <ul class="p-0">
-	                        <li  class="form-check p-0">
-	                          <input type="radio" id="achat" name="choices">
-	                          <label for="achat">Achat</label>
-	                        </li>
-	                        <ul class="p-0">
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="encheresOuverte" class="achat">
-	                                <label for="name"> Enchères ouvertes </label>
-	                            </li>
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="mesEncheres" class="achat">
-	                                <label for="name">Mes enchères</label>
-	                            </li>
-	                            <li  class="form-check">
-	                                <input type="checkbox" id="encheresRemporte" class="achat">
-	                                <label for="name">Mes enchères remportées</label>
-	                            </li>
-	                        </ul>
-	                    </ul>
-	                </div>
-	       		 </div>
-   			</div>
-        	</c:when>
-        	  	<c:when test="${empty sessionScope}">
-    				 <form class=" col-6">
-                <div class="mb-3 form-group">
-                    <label for="nameArticle" class="form-label">Rechercher</label>
-                    <input type="text" class="form-control" id="nameArticle">
-                    <div id="helpNameArticle" class="form-text text-secondary">Un large choix d'objets</div>
-                </div>
-                <button type="button" class="btn btn-success mb-4">Rechercher</button>
-            </form>
-            <form class=" col-6">
-                <div class="form-group">
-                    <label for="categories">Choisir une catégorie</label>
-                    <select class="form-control" id="categories">
-                        <option>Ameublement</option>
-                        <option>Informatique</option>
-                        <option>Vêtements</option>
-                        <option>Sport&Loisirs</option>
-                    </select>
-                </div>
-                 </form>
-    			</c:when>
-        </c:choose>
-=======
 	        <c:choose>
 	        	<c:when test="${!empty sessionScope}">
 	        		<div class="container">
@@ -235,16 +140,12 @@
 	                 </form>
 	    			</c:when>
 	        </c:choose>
->>>>>>> Stashed changes
            </div>
     </section>
 
 
 	<section class="container pt-3 mt-4">
-<<<<<<< Updated upstream
-=======
 	<h2>Propositions</h2>
->>>>>>> Stashed changes
 		<div class="row">
 			<c:forEach items="${requestScope.listArticle}" var="article">
 	            <div class="col-4">
@@ -255,21 +156,13 @@
 	                        <p class="card-text">
 	                            Prix : <c:out value="${article.priceStart }"></c:out><br>
 	                            Fin de l'enchère : <c:out value="${article.dateEndAuction}"></c:out><br>
-<<<<<<< Updated upstream
-	                            Vendeur : <a href="${pageContext.request.contextPath}/achatArticle?noArticle=${article.noArticle}"><c:out value="${article.seller.pseudo}"></c:out></a></p>
-=======
 	                            Vendeur : <a href="${pageContext.request.contextPath}/SellerDisplay?pseudo=${article.seller.pseudo}"><c:out value="${article.seller.pseudo}"></c:out></a></p>
->>>>>>> Stashed changes
 	                            <c:choose>
 	                            	<c:when test="${empty sessionScope}">
 	                            		<a href="<c:url value = "/login"/>" class="btn btn-success">Voir l'enchère</a>
 	                            	</c:when>
 	                            	<c:when test="${!empty sessionScope}">
-<<<<<<< Updated upstream
-	                            		<a href="<c:url value = "/selling"/>" class="btn btn-success">Voir l'enchère</a>
-=======
 	                            		<a href="<c:url value = "${pageContext.request.contextPath}/achatArticle?noArticle=${article.noArticle}"/>" class="btn btn-success">Voir l'enchère</a>
->>>>>>> Stashed changes
 	                            	</c:when>
 	                            </c:choose>
 	                    </div>
