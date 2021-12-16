@@ -2,15 +2,7 @@
 package fr.eni.projet.enchere.servlets;
 
 import java.io.IOException;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import java.util.ArrayList;
-=======
 
->>>>>>> Stashed changes
-=======
-
->>>>>>> Stashed changes
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -22,15 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import fr.eni.projet.enchere.bll.ArticleManager;
 import fr.eni.projet.enchere.bll.BLLException;
 import fr.eni.projet.enchere.bo.Article;
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-import sun.security.jca.GetInstance;
-=======
 
->>>>>>> Stashed changes
-=======
 
->>>>>>> Stashed changes
 
 
 /**
@@ -59,27 +44,6 @@ public class Home extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-		this.doGet(request, response);
-=======
-		List<Article> listArticle = null;
-
-		String categories = request.getParameter("categories");
-		String saisieUtilisateur = request.getParameter("recherche").toLowerCase().trim(); 
-	
-		if(!categories.equals("") && !saisieUtilisateur.equals("")) {
-			listArticle = ArticleManager.getInstance().getByMotCleAndCategory(motcle, category);
-		} else if (!categories.equals("")) {
-			listArticle = ArticleManager.getInstance().getByCategorie(category);
-		} else if (!saisieUtilisateur.equals("")) {
-			listArticle = ArticleManager.getInstance().getByMotCle(motcle);
-		} else{
-			this.doGet(request, response);
-		}
-	
->>>>>>> Stashed changes
-=======
 		List<Article> listArticle = null;
 
 		String category = request.getParameter("categories");
@@ -117,10 +81,8 @@ public class Home extends HttpServlet {
 		request.setAttribute(LIST_ARTICLE, listArticle);
 		this.getServletContext().getRequestDispatcher(VUE).forward(request, response);
 	
->>>>>>> Stashed changes
 	}
 
-
-
-
 }
+
+
