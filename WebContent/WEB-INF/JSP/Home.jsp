@@ -171,7 +171,9 @@
 	                            		<c:if test="${sessionScope.user.pseudo == article.seller.pseudo}">
 	                            			<a href="<c:url value = "/ModifyArticle?noArticle=${article.noArticle}&noCategorie=${article.noCategorie}"/>" class="btn btn-success">Voir l'enchère</a>
 	                            		</c:if>
-	                            		<c:if test="${sessionScope.user.pseudo != article.seller.pseudo }">
+
+	                            		<c:if test="${!sessionScope.user.pseudo == article.seller.pseudo }">
+
 	                            			<a href="<c:url value = "/achatArticle?noArticle=${article.noArticle}"/>" class="btn btn-success">Voir l'enchère</a>
 	                            		</c:if>
 	                            	</c:when>
