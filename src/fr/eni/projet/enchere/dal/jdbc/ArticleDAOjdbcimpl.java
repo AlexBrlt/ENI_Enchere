@@ -521,8 +521,14 @@ public class ArticleDAOjdbcimpl implements ArticleDAO {
 	}
 	
 	public Article insertArticle(Article nouvelArticle) {
-		String pseudo;String nom;String prenom;String email;String telephone;String rue = null;
-		String code_postal = null;String ville = null;
+		String pseudo;
+		String nom;
+		String prenom;
+		String email;
+		String telephone;
+		String rue = null;
+		String code_postal = null;
+		String ville = null;
 
 		// Obtenir une connexion
 		Connection cnx = ConnectionProvider.getConnection();
