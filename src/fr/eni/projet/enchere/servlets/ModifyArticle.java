@@ -63,8 +63,8 @@ public class ModifyArticle extends HttpServlet {
 		User user = (User) session.getAttribute(USER);
 		int noUser = user.getNo_utilisateur();
 		
-		int noCategorie = 2;
-		int noArticle = 1;
+		int noCategorie = Integer.valueOf(request.getParameter("noCategorie"));
+		int noArticle = Integer.valueOf(request.getParameter("noArticle"));
 
 		//Conversion des paramètres
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.US);
