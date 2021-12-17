@@ -17,7 +17,7 @@
 
 	<section class="container text-center mb-4">
 		<h1>
-			Nom utilisateur,<br> souhaitez-vous déposer un nouvel article ?
+			<c:out value="${sessionScope.user.pseudo}"></c:out>,<br> souhaitez-vous modifier un article ?
 		</h1>
 	</section>
 
