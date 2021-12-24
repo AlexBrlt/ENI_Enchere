@@ -174,7 +174,7 @@
 
 	                            		<c:if test="${sessionScope.user.pseudo != article.seller.pseudo }">
 
-	                            			<a href="<c:url value = "/achatArticle?noArticle=${article.noArticle}"/>" class="btn btn-success">Voir l'enchère</a>
+	                            			<a href="<c:url value = "/achatArticle?noArticle=${article.noArticle}"/>" class="btn btn-success">Modifier l'enchère</a>
 	                            		</c:if>
 	                            	</c:when>
 	                            </c:choose>
